@@ -1,0 +1,240 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-hochrechnung-kanton",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Hochrechnung Kanton (Insert)",
+  "description": "Insert unten rechts mit der Hochrechnung bzw. dem Resultat eines Kantons für den Nationalrat: Titel mit Kantonswappen, Sitzzahl, je Seite bis zu drei Parteien. Schritte: pro Seite zuerst Sitze (mit Veränderung), dann Wähleranteil (mit Veränderung); ohne Sitze nur Wähleranteil. Jeder weitere playAction geht einen Schritt weiter, nach dem letzten Schritt blendet die Grafik aus.",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": -1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": -1
+    },
+    {
+      "type": "stopAction",
+      "duration": 560
+    },
+    {
+      "type": "updateAction",
+      "duration": -1
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "titel": {
+        "type": "string",
+        "label": "Titel",
+        "description": "Erste Zeile, z. B. «Hochrechnung BS».",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Hochrechnung BS"
+      },
+      "untertitel": {
+        "type": "string",
+        "label": "Untertitel",
+        "description": "Zweite Zeile, z. B. «Nationalrat, 4 Sitze».",
+        "gddType": "single-line",
+        "order": 2,
+        "default": "Nationalrat, 4 Sitze"
+      },
+      "kanton": {
+        "type": "string",
+        "label": "Kanton (Kürzel)",
+        "description": "Kantonskürzel für das Wappen hinter dem Titel (Datei wappen/<Kürzel>.svg oder .png). Leer: kein Wappen.",
+        "gddType": "select",
+        "enum": [
+          "",
+          "AG",
+          "AI",
+          "AR",
+          "BE",
+          "BL",
+          "BS",
+          "FR",
+          "GE",
+          "GL",
+          "GR",
+          "JU",
+          "LU",
+          "NE",
+          "NW",
+          "OW",
+          "SG",
+          "SH",
+          "SO",
+          "SZ",
+          "TG",
+          "TI",
+          "UR",
+          "VD",
+          "VS",
+          "ZG",
+          "ZH"
+        ],
+        "order": 3,
+        "default": "BS",
+        "gddOptions": {
+          "labels": {
+            "": "(kein Wappen)",
+            "AG": "Aargau",
+            "AI": "Appenzell Innerrhoden",
+            "AR": "Appenzell Ausserrhoden",
+            "BE": "Bern",
+            "BL": "Basel-Landschaft",
+            "BS": "Basel-Stadt",
+            "FR": "Freiburg",
+            "GE": "Genf",
+            "GL": "Glarus",
+            "GR": "Graubünden",
+            "JU": "Jura",
+            "LU": "Luzern",
+            "NE": "Neuenburg",
+            "NW": "Nidwalden",
+            "OW": "Obwalden",
+            "SG": "St. Gallen",
+            "SH": "Schaffhausen",
+            "SO": "Solothurn",
+            "SZ": "Schwyz",
+            "TG": "Thurgau",
+            "TI": "Tessin",
+            "UR": "Uri",
+            "VD": "Waadt",
+            "VS": "Wallis",
+            "ZG": "Zug",
+            "ZH": "Zürich"
+          }
+        }
+      },
+      "mit_sitzen": {
+        "type": "boolean",
+        "label": "Sitze anzeigen",
+        "description": "Wenn ja: pro Seite zuerst Sitze, dann Wähleranteil. Wenn nein (z. B. Zwischenstand): nur Wähleranteil.",
+        "order": 4,
+        "default": true
+      },
+      "nachkommastellen": {
+        "type": "integer",
+        "label": "Nachkommastellen Wähleranteil",
+        "minimum": 0,
+        "maximum": 1,
+        "order": 5,
+        "default": 1
+      },
+      "pro_seite": {
+        "type": "integer",
+        "label": "Parteien pro Seite",
+        "minimum": 1,
+        "maximum": 3,
+        "order": 6,
+        "default": 3,
+        "hidden": true
+      },
+      "parteien": {
+        "type": "array",
+        "label": "Parteien",
+        "description": "In Anzeige-Reihenfolge. Seiten werden aus je «Parteien pro Seite» gebildet. Fehlende Werte (z. B. Sitze im Zwischenstand) weglassen.",
+        "order": 7,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kurz": {
+              "type": "string",
+              "label": "Partei",
+              "gddType": "single-line"
+            },
+            "farbe": {
+              "type": "string",
+              "label": "Farbe",
+              "gddType": "color-rrggbb",
+              "pattern": "^#[0-9a-f]{6}$",
+              "description": "Kleinbuchstaben, z. B. #f0554d"
+            },
+            "sitze": {
+              "type": "integer",
+              "label": "Sitze"
+            },
+            "sitze_diff": {
+              "type": "integer",
+              "label": "± Sitze"
+            },
+            "staerke": {
+              "type": "number",
+              "label": "Wähleranteil %"
+            },
+            "staerke_diff": {
+              "type": "number",
+              "label": "± Prozentpunkte"
+            },
+            "staerke_diff_unsicher": {
+              "type": "boolean",
+              "label": "Veränderung im Fehlerbereich",
+              "description": "Ja: «±» statt Vorzeichen (Veränderung kleiner als der Fehlerbereich der Hochrechnung)."
+            }
+          },
+          "required": [
+            "kurz",
+            "farbe"
+          ]
+        },
+        "default": [
+          {
+            "kurz": "SP",
+            "farbe": "#f0554d",
+            "sitze": 1,
+            "sitze_diff": -1,
+            "staerke": 31.7,
+            "staerke_diff": -1.0
+          },
+          {
+            "kurz": "Grüne",
+            "farbe": "#84b547",
+            "sitze": 1,
+            "sitze_diff": 0,
+            "staerke": 16.9,
+            "staerke_diff": -0.8
+          },
+          {
+            "kurz": "LDP",
+            "farbe": "#3872b5",
+            "sitze": 1,
+            "sitze_diff": 0,
+            "staerke": 10.5,
+            "staerke_diff": -4.8
+          }
+        ]
+      }
+    }
+  }
+}

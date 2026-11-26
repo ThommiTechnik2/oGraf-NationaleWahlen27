@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Renderer Wahlen 2027</title>
+<!--
+  oGraf-Renderer für OBS: Browserquelle mit 1920x1080, diese Seite als URL.
+  Empfängt Befehle vom Grafik-Server (Server-Sent Events) und ruft die OGraf-Methoden der Grafiken auf:
+  load() -> playAction()/updateAction()/customAction() -> stopAction() -> dispose()
+  Hintergrund transparent. ?test=1 zeigt ein Prüfraster und Statusmeldungen.
+-->
+<style>
+  html, body { margin: 0; padding: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+  .layer { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+  .layer > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #status { position: absolute; left: 12px; top: 12px; z-index: 999; font: 14px/1.3 monospace; color: #fff;
+            background: rgba(0,0,0,0.6); padding: 4px 8px; display: none; }
+  body.test { background: #3a4a55 repeating-linear-gradient(0deg, transparent 0 107px, rgba(255,255,255,0.08) 107px 108px),
+                         repeating-linear-gradient(90deg, transparent 0 191px, rgba(255,255,255,0.08) 191px 192px); }
+  body.test #status { display: block; }
+</style>
+</head>
+<body>
+<div id="status">Renderer: verbinde …</div>
+<script type="module">
+const W = 1920, H = 1080
+const params = new URLSearchParams(location.search)
+if (params.get('test') === '1') document.body.classList.add('test')
+if (params.get('hintergrund')) document.body.style.background = params.get('hintergrund')
+const status = document.getElementById('status')
+const layers = new Map()        // layer -> {el, instanceId}
+let tagZaehler = 0
+
+function layerDiv (n) {
+  let d = document.getElementById(`layer-${n}`)
+  if (!d) {
+    d = document.createElement('div')
+    d.id = `layer-${n}`
+    d.className = 'layer'
+    d.style.zIndex = String(10 + n)
+    document.body.appendChild(d)
+  }
+  return d
+}
+
+function zeige (text) { status.textContent = text }
+
+async function entfernen (n) {
+  const eintrag = layers.get(n)
+  if (!eintrag) return []
+  layers.delete(n)
+  try { await eintrag.el.dispose({}) } catch (e) { console.warn('dispose', e) }
+  eintrag.el.remove()
+  return [eintrag.instanceId]
+}
+
+function instanz (id) {
+  for (const [n, e] of layers) if (e.instanceId === id) return e
+  return null
+}
+
+async function ausfuehren (b) {
+  if (b.typ === 'load') {
+    await entfernen(b.layer)
+    // Jede Ladung importiert das Modul neu (aktuelle Version nach Änderungen) und registriert ein eigenes Tag
+    const modul = await import(`${b.main}?v=${Date.now()}`)
+    const tag = `ograf-${b.graphicId.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${++tagZaehler}`
+    customElements.define(tag, modul.default)
+    const el = document.createElement(tag)
+    layerDiv(b.layer).appendChild(el)
+    layers.set(b.layer, { el, instanceId: b.instanceId })
+    const ergebnis = await el.load({
+      data: b.data, renderType: 'realtime',
+      renderCharacteristics: { resolution: { width: W, height: H }, frameRate: 50 }
+    })
+    zeige(`Layer ${b.layer}: ${b.graphicId} geladen`)
+    return { ergebnis: ergebnis || { statusCode: 200 } }
+  }
+  if (b.typ === 'aktion') {
+    const e = instanz(b.instanceId)
+    if (!e) return { unbekannt: true }   // andere Renderer-Seite (z. B. Vorschau) kennt die Instanz vielleicht
+    const ergebnis = await e.el[b.methode](b.params || {})
+    zeige(`${b.methode} → ${JSON.stringify(ergebnis || { statusCode: 200 })}`)
+    return { ergebnis: ergebnis || { statusCode: 200 } }
+  }
+  if (b.typ === 'wiederherstellen') {
+    // Seite war nicht verbunden, als die Grafik geladen wurde (OBS neu geladen o. ä.)
+    const da = layers.get(b.layer)
+    if (da && da.instanceId === b.load.instanceId) return { ok: true }
+    await ausfuehren(b.load)
+    if (b.schritt !== null && b.schritt !== undefined) {
+      await ausfuehren({ typ: 'aktion', instanceId: b.load.instanceId, methode: 'playAction',
+        params: { goto: b.schritt, skipAnimation: true } })
+    }
+    return { ok: true }
+  }
+  if (b.typ === 'clear') {
+    return { entfernt: await entfernen(b.layer) }
+  }
+  return { fehler: `Unbekannter Befehl ${b.typ}` }
+}
+
+let kette = Promise.resolve()
+function verbinden () {
+  // Renderer-Id: /renderer → «haupt», /renderer/wand → «wand» (oder ?renderer=…)
+  const rid = params.get('renderer') || (location.pathname.replace(/\/+$/, '').split('/')[2] || 'haupt')
+  const es = new EventSource(`/renderer/ereignisse?renderer=${encodeURIComponent(rid)}`)
+  es.onopen = () => zeige('Renderer verbunden')
+  es.onerror = () => zeige('Renderer: Verbindung unterbrochen, verbinde neu …')
+  es.onmessage = ev => {
+    const b = JSON.parse(ev.data)
+    // Befehle strikt nacheinander abarbeiten (load muss fertig sein, bevor playAction kommt)
+    kette = kette.then(async () => {
+      let antwort
+      try { antwort = await ausfuehren(b) } catch (e) { antwort = { fehler: String(e && e.message ? e.message : e) } }
+      try {
+        await fetch(`/renderer/antwort/${b.id}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(antwort) })
+      } catch (e) { console.warn('Antwort nicht gesendet', e) }
+    })
+  }
+}
+verbinden()
+</script>
+</body>
+</html>

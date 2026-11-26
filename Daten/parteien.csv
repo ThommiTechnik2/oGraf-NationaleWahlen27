@@ -1,0 +1,15 @@
+kuerzel,name,farbe,links_rechts,nr_sitze_2023,nr_sitze_veraenderung,nr_wähleranteil,nr_wähleranteil_veraenderung,sr_sitze_2023,sr_sitze_veraenderung
+SVP,Schweizerische Volkspartei,#4B8A3E,240,62,9,27.9,2.3,6,-1
+SP,Sozialdemokratische Partei,#F0554D,60,41,2,18.3,1.5,9,2
+Mitte,Die Mitte,#D6862B,150,29,1,14.1,0.3,15,1
+FDP,FDP.Die Liberalen,#3872B5,205,28,-1,14.3,-0.8,11,-1
+Grüne,Grüne,#84B547,50,23,-5,9.8,-3.4,3,-2
+GLP,Grünliberale,#C4C43D,120,10,-6,7.6,-0.2,1,1
+EDU,Eidgenössisch-Demokratische Union,#A65E42,250,2,1,1.2,0.2,,
+EVP,Evangelische Volkspartei,#DEAA28,140,2,-1,2,-0.1,,
+MCG,Mouvement Citoyens Genevois,#49A5E7,231,2,2,0.5,0.3,1,1
+Lega,Lega dei Ticinesi,#9070D4,260,1,0,0.6,-0.2,,
+PdA/Sol.,Partei der Arbeit / SolidaritéS,#BF3939,15,0,-2,0.7,-0.3,,
+Übrige,Übrige,#B8B8B8,300,0,0,3,0.4,,
+partl.,partl.,#666666,,,,,,,
+CSP,Mitte Links – CSP Freiburg,#35AEB2,,,,,,,

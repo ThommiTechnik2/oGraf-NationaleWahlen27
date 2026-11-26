@@ -1,0 +1,196 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-hochrechnung-schweiz",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Hochrechnung Schweiz (Insert)",
+  "description": "Insert unten rechts mit der Hochrechnung bzw. dem Resultat Schweiz für den Nationalrat: Titel mit Schweizer Kreuz, je Seite bis zu drei Parteien, nach Parteistärke absteigend (Übrige am Schluss). Ohne Sitze: ein Schritt pro Seite (Wähleranteil mit Veränderung); mit Sitzen: pro Seite zuerst Sitze, dann Wähleranteil. Jeder weitere playAction geht einen Schritt weiter, nach dem letzten Schritt blendet die Grafik aus. playAction mit goto springt direkt zu einer Seite (z. B. Fortsetzen nach kurzfristigem Ausblenden).",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": -1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": -1
+    },
+    {
+      "type": "stopAction",
+      "duration": 560
+    },
+    {
+      "type": "updateAction",
+      "duration": -1
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "titel": {
+        "type": "string",
+        "label": "Titel",
+        "description": "Erste Zeile, z. B. «Hochrechnung Schweiz».",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Hochrechnung Schweiz"
+      },
+      "untertitel": {
+        "type": "string",
+        "label": "Untertitel",
+        "description": "Zweite Zeile, z. B. «Nationalrat, Parteistärke».",
+        "gddType": "single-line",
+        "order": 2,
+        "default": "Nationalrat, Parteistärke"
+      },
+      "kanton": {
+        "type": "string",
+        "label": "Symbol hinter dem Titel",
+        "description": "CH = Schweizer Kreuz (wappen/CH.svg). Leer: kein Symbol.",
+        "gddType": "select",
+        "enum": [
+          "",
+          "CH"
+        ],
+        "order": 3,
+        "default": "CH",
+        "gddOptions": {
+          "labels": {
+            "": "(kein Symbol)",
+            "CH": "Schweizer Kreuz"
+          }
+        }
+      },
+      "mit_sitzen": {
+        "type": "boolean",
+        "label": "Sitze anzeigen",
+        "description": "Wenn ja: pro Seite zuerst Sitze, dann Wähleranteil. Für die Parteistärke: nein.",
+        "order": 4,
+        "default": false
+      },
+      "nachkommastellen": {
+        "type": "integer",
+        "label": "Nachkommastellen Wähleranteil",
+        "minimum": 0,
+        "maximum": 1,
+        "order": 5,
+        "default": 1
+      },
+      "pro_seite": {
+        "type": "integer",
+        "label": "Parteien pro Seite",
+        "minimum": 1,
+        "maximum": 3,
+        "order": 6,
+        "default": 3,
+        "hidden": true
+      },
+      "parteien": {
+        "type": "array",
+        "label": "Parteien",
+        "description": "In Anzeige-Reihenfolge. Seiten werden aus je «Parteien pro Seite» gebildet. Fehlende Werte (z. B. Sitze im Zwischenstand) weglassen.",
+        "order": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kurz": {
+              "type": "string",
+              "label": "Partei",
+              "gddType": "single-line"
+            },
+            "farbe": {
+              "type": "string",
+              "label": "Farbe",
+              "gddType": "color-rrggbb",
+              "pattern": "^#[0-9a-f]{6}$",
+              "description": "Kleinbuchstaben, z. B. #f0554d"
+            },
+            "sitze": {
+              "type": "integer",
+              "label": "Sitze"
+            },
+            "sitze_diff": {
+              "type": "integer",
+              "label": "± Sitze"
+            },
+            "staerke": {
+              "type": "number",
+              "label": "Wähleranteil %"
+            },
+            "staerke_diff": {
+              "type": "number",
+              "label": "± Prozentpunkte"
+            },
+            "staerke_diff_unsicher": {
+              "type": "boolean",
+              "label": "Veränderung im Fehlerbereich",
+              "description": "Ja: «±» statt Vorzeichen (Veränderung kleiner als der Fehlerbereich der Hochrechnung)."
+            }
+          },
+          "required": [
+            "kurz",
+            "farbe"
+          ]
+        },
+        "default": [
+          {
+            "kurz": "SVP",
+            "farbe": "#4b8a3e",
+            "staerke": 29.0,
+            "staerke_diff": 3.4
+          },
+          {
+            "kurz": "SP",
+            "farbe": "#f0554d",
+            "staerke": 17.2,
+            "staerke_diff": 0.4
+          },
+          {
+            "kurz": "Mitte",
+            "farbe": "#d6862b",
+            "staerke": 14.7,
+            "staerke_diff": 0.9
+          }
+        ]
+      },
+      "seiten": {
+        "type": "array",
+        "label": "Parteien je Seite",
+        "description": "Optional, redaktionelle Aufteilung, z. B. [3, 3, 2, 3]. Fehlt sie oder reicht sie nicht, werden die übrigen Parteien zu «Parteien pro Seite» aufgeteilt.",
+        "order": 7,
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "default": []
+      }
+    }
+  }
+}

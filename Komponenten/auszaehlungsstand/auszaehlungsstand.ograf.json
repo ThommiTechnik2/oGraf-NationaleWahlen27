@@ -1,0 +1,158 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-auszaehlungsstand",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Auszählungsstand Nationalrat (Videowand)",
+  "description": "Vollbild-Grafik für die Studio-Videowand: Schweizer Karte mit Kantonsgrenzen (swisstopo/BFS). Kantone mit Resultat dunkelrot, mit Hochrechnung rosa, ohne Resultat grau; Legende mit Anzahl je Status. playAction blendet ein, zweiter playAction oder stopAction blendet aus. updateAction färbt Kantone um.",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": 1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 800
+    },
+    {
+      "type": "stopAction",
+      "duration": 250
+    },
+    {
+      "type": "updateAction",
+      "duration": 450
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "titel": {
+        "type": "string",
+        "label": "Titel",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Auszählungsstand Nationalrat"
+      },
+      "flagge": {
+        "type": "boolean",
+        "label": "Schweizer Kreuz hinter dem Titel",
+        "order": 2,
+        "default": true
+      },
+      "legende_resultat": {
+        "type": "string",
+        "label": "Legende: Resultat",
+        "gddType": "single-line",
+        "order": 3,
+        "default": "Resultat"
+      },
+      "legende_hochrechnung": {
+        "type": "string",
+        "label": "Legende: Hochrechnung",
+        "gddType": "single-line",
+        "order": 4,
+        "default": "Hochrechnung"
+      },
+      "legende_keines": {
+        "type": "string",
+        "label": "Legende: Kein Resultat",
+        "gddType": "single-line",
+        "order": 5,
+        "default": "Kein Resultat"
+      },
+      "kantone": {
+        "type": "array",
+        "label": "Kantone",
+        "description": "Status je Kanton; fehlende Kantone gelten als «keines».",
+        "order": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kanton": {
+              "type": "string",
+              "label": "Kanton",
+              "enum": [
+                "ZH",
+                "BE",
+                "LU",
+                "UR",
+                "SZ",
+                "OW",
+                "NW",
+                "GL",
+                "ZG",
+                "FR",
+                "SO",
+                "BS",
+                "BL",
+                "SH",
+                "AR",
+                "AI",
+                "SG",
+                "GR",
+                "AG",
+                "TG",
+                "TI",
+                "VD",
+                "VS",
+                "NE",
+                "GE",
+                "JU"
+              ]
+            },
+            "status": {
+              "type": "string",
+              "label": "Status",
+              "enum": [
+                "resultat",
+                "hochrechnung",
+                "keines"
+              ]
+            }
+          },
+          "required": [
+            "kanton",
+            "status"
+          ]
+        },
+        "default": [
+          {
+            "kanton": "ZG",
+            "status": "resultat"
+          },
+          {
+            "kanton": "GR",
+            "status": "hochrechnung"
+          }
+        ]
+      }
+    }
+  }
+}

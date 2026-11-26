@@ -1,0 +1,535 @@
+kanton_nummer,liste_nummer_bfs,liste_nummer_kanton,liste_bezeichnung,liste_verbindung,liste_unterlistenverbindung,partei_id,anzahl_gewaehlte,stimmen_liste,listen_staerke
+1,1,1,SVP Schweizerische Volkspartei,A,A1,4,10,3775767,25.872438404
+1,2,2,Sozialdemokratische Partei (SP),B,B1,3,7,2417472,16.565083442
+1,3,3,FDP.Die Liberalen,C,,1,5,1944944,13.327211091
+1,4,4,Grünliberale,D,D1,31,6,1802530,12.351357061
+1,5,5,CVP,D,D2,2,1,529899,3.630991859
+1,6,6,Grüne,B,B2,13,5,1824558,12.502298068
+1,7,7,BDP Bürgerlich-Demokratische Partei,D,,32,0,239376,1.640260327
+1,8,8,Evangelische Volkspartei (EVP),D,D3,7,1,391797,2.684684661
+1,9,9,"Grüne, Junge Grüne – Klima vor Profit",B,B2,13,0,193573,1.326407461
+1,10,10,Jungfreisinnige Kanton Zürich,C,,1,0,48700,0.333703788
+1,11,11,Piratenpartei – humanistisch liberal progressiv,B,,35,0,67005,0.459133928
+1,12,12,Integrale Politik (IP),,,35,0,45514,0.311872571
+1,13,13,"CVP, Frauen",D,D2,2,0,48833,0.334615135
+1,14,14,"Sozialdemokratische Partei (SP), JUSO",B,B1,3,0,108605,0.744186856
+1,15,15,Öko-Partei Schweiz,,,35,0,3063,0.020988392
+1,16,16,Sarantidis Chrisoula (Chris),,,35,0,1851,0.012683485
+1,17,17,die Guten,B,,35,0,47154,0.323110234
+1,18,18,"CVP, Junge",D,D2,2,0,27841,0.190773042
+1,19,19,"Grünliberale, UnternehmerInnen",D,D1,31,0,85520,0.586003038
+1,20,20,"CVP, Christlichsoziale Vereinigung (CSV)",D,D2,2,0,36786,0.252066274
+1,21,21,"Evangelische Volkspartei (EVP), Frauen EVP",D,D3,7,0,40533,0.277741594
+1,22,22,Unabhängigkeitspartei up!,,,35,0,9540,0.065370311
+1,23,23,"Grünliberale, senior GLP",D,D1,31,0,41796,0.286395966
+1,24,24,"Linke Alternative, Partei der Arbeit",B,B3,9,0,45271,0.310207478
+1,25,25,"Linke Alternative, AL – Alternative Liste",B,B3,12,0,234589,1.607458684
+1,26,26,Schweizer Demokraten (SD),,,14,0,27242,0.186668554
+1,27,27,"Evangelische Volkspartei (EVP), Junge EVP",D,D3,7,0,49484,0.339075939
+1,28,28,"SVP Schweizerische Volkspartei, 55plus",A,A1,4,0,70050,0.47999898
+1,29,29,"Grünliberale, Junge Grünliberale",D,D1,31,0,112490,0.770807784
+1,30,30,"Grüne, Migrant*innen und Second@s",B,B2,13,0,36252,0.248407181
+1,31,31,EDU Eidgenössisch-Demokratische Union,A,,16,0,235022,1.610425701
+1,32,32,"SVP Schweizerische Volkspartei, Junge",A,A1,4,0,50724,0.347572709
+2,1,1,SVP Kanton Bern (Frauen und Männer) // UDC canton de Berne (femmes et hommes),D,D1,4,7,2382287,28.875149055
+2,2,2,SVP (Junge SVP) // UDC (Jeune UDC),D,D1,4,0,95347,1.155678907
+2,3,3,Sozialdemokratische Partei und Gewerkschaften – Frauen // Parti socialiste et syndicats – femmes,C,C1,3,3,768987,9.320713351
+2,4,4,Sozialdemokratische Partei und Gewerkschaften – Männer // Parti socialiste et syndicats – hommes,C,C1,3,1,505909,6.132005834
+2,5,5,Sozialdemokratische Partei – Internationale Liste // Parti socialiste – liste internationale,C,C1,3,0,35121,0.425693508
+2,6,6,Jungsozialist*innen // Jeunesse Socialiste,C,C1,3,0,77922,0.944474517
+2,7,7,Bürgerlich-Demokratische Partei Kanton Bern // Parti Bourgeois-Démocratique Canton de Berne,B,B1,32,2,589239,7.142029468
+2,8,8,Junge BDP // Les Jeunes PBD,B,B1,32,0,74204,0.8994095
+2,9,9,FDP.Die Liberalen // PLR.Les Libéraux-Radicaux,A,,1,2,655801,7.948812056
+2,10,10,Jungfreisinnige Stadt,A,A1,1,0,16211,0.196489777
+2,11,11,Jungfreisinnige Land,A,A1,1,0,17725,0.21484062
+2,12,12,Grüne // Les Verts,C,C2,13,4,978537,11.860620375
+2,13,13,Junge Grüne // Jeunes vert-e-s,C,C2,13,0,142270,1.724421724
+2,14,14,Grüne - Junge Alternative JA!,C,C2,35,0,45924,0.556634169
+2,15,15,Grünliberale // Vert'libéraux,B,B2,31,3,612302,7.42157075
+2,16,16,Junge Grünliberale // Jeunes Vert'libéraux,B,B2,31,0,89566,1.085608745
+2,17,17,Grünliberale KMU // Vert'libéraux PME,B,B2,31,0,101313,1.227991412
+2,18,18,Evangelische Volkspartei // Parti Evangélique,B,B3,7,1,297423,3.604995308
+2,19,19,Junge Evangelische Volkspartei // Jeune Parti Evangélique,B,B3,7,0,47160,0.571615439
+2,20,20,Eidgenössisch-Demokratische Union // Union Démocratique Fédérale,E,,16,1,202288,2.451886004
+2,21,21,Christlichdemokratische Volkspartei // Parti démocrate-chrétien,B,B4,2,0,110976,1.345114397
+2,22,22,PDC liste romande,B,B4,2,0,43525,0.527556446
+2,23,23,Piraten // Pirates,B,,35,0,55410,0.671611779
+2,24,24,Partei der Arbeit // Parti Ouvrier et Populaire,C,,9,0,50917,0.617153166
+2,25,25,Schweizer Demokraten // Démocrates Suisses,E,,14,0,30200,0.366047207
+2,26,26,JutziPhilipp.com,E,,35,0,8713,0.105608255
+2,27,27,Die Musketiere // Les Mousquetaires,E,,35,0,30578,0.370628857
+2,28,28,"Die liebe, sehr sehr liebe Partei",,,35,0,6269,0.075985097
+2,29,29,Gesundheit-Energie-Natur,D,,35,0,4003,0.048519436
+2,30,30,DU - Die Unabhängigen // LI - Les Indépendants,,,35,0,61529,0.745778761
+2,31,31,Menschen mit Zukunft sagen 5G ade!,E,,35,0,40207,0.487339736
+2,32,32,Partei der unbegrenzten Möglichkeiten,E,,35,0,5635,0.06830053
+2,33,33,Landliste // Liste du Terroir,E,,35,0,12121,0.146915834
+2,34,34,Armin Capaul Parteilos und weitere Parteilose,,,35,0,54683,0.66279998
+3,1,1,Grüne,A,A1,13,1,123739,10.427537551
+3,2,2,Schweizerische Volkspartei (SVP),B,,4,2,271467,22.876638217
+3,3,3,Sozialdemokratische Partei (SP) und Gewerkschaften,A,A2,3,1,142369,11.997495483
+3,4,4,Grünliberale Partei (glp),A,A3,31,1,72066,6.073032117
+3,5,5,Christlichdemokratische Volkspartei (CVP),C,C1,2,3,248219,20.917519483
+3,6,6,FDP.Die Liberalen Luzern,C,C2,1,1,169105,14.250549443
+3,7,7,Aktive Senioren Luzern (SVP),B,,4,0,8087,0.68149489
+3,8,8,Junge Grüne,A,A1,13,0,11963,1.008127039
+3,9,9a,Junge Christlichdemokratische Volkspartei (JCVP) a,C,C1,2,0,6474,0.545566702
+3,10,9b,Junge Christlichdemokratische Volkspartei (JCVP) b,C,C1,2,0,6268,0.528206995
+3,11,10,Evangelische Volkspartei (EVP),,,7,0,8451,0.712169323
+3,12,11,SP – Second@s Plus und MigrantInnen,A,A2,3,0,5894,0.496689858
+3,13,12a,JungsozialistInnen und Junge Linke (JUSOplus)-Stadt Luzern,A,A2,3,0,3516,0.296294798
+3,14,12b,JungsozialistInnen und Junge Linke (JUSOplus)-Land und Agglomeration,A,A2,3,0,1722,0.145113664
+3,15,13,Jungfreisinnige (JFLU),C,C2,1,0,4092,0.34483456
+3,16,14,Integrale Politik (IP),A,,35,0,5945,0.500987649
+3,17,15,Junge Grünliberale Partei (jglp),A,A3,31,0,9936,0.837310897
+3,18,17,SP 60+,A,A2,3,0,5890,0.496352776
+3,19,20,Junge Schweizerische Volkspartei (JSVP),B,,4,0,2755,0.232165008
+3,20,22,FDP-Frauen Kanton Luzern,C,C2,1,0,11425,0.962789553
+3,21,23,AWG Arbeitsgemeinschaft Wirtschaft und Gesellschaft (CVP),C,C1,2,0,3418,0.288036297
+3,22,24,Klimaschutz (CVP),C,C1,2,0,13388,1.128212388
+3,23,25,CSV Christlichsoziale Vereinigung (CVP),C,C1,2,0,4791,0.403739584
+3,24,26,CVP Frauen,C,C1,2,0,4713,0.397166491
+3,25,27,Luzerner Bauernliste (CVP),C,C1,2,0,15209,1.281668824
+3,26,28,SVP-Frauen für Stadt und Land,B,,4,0,2948,0.248429199
+3,27,29,Büezer und Bauern JSVP,B,,4,0,3242,0.273204703
+3,28,30,LU-Biker SVP,B,,4,0,2818,0.237474045
+3,29,31,SVP International,B,,4,0,2333,0.196602891
+3,30,32,Unternehmer*innen für eine grüne Wirtschaft (Grüne),A,A1,13,0,9405,0.792563304
+3,31,33,glp international,A,A3,31,0,2225,0.187501685
+3,32,34,Schweizer Demokraten SD für Volk und Heimat / Nationale Aktion NA,,,14,0,1766,0.148821562
+3,33,35,SP International (Auslandschweizer*innen),A,A2,3,0,1017,0.085703018
+4,1,1,Pascal Blöchlinger (Schweizerische Volkspartei),,,4,0,4341,36.326359833
+4,2,2,Urs Kälin (Sozialdemokratische Partei der Schweiz),,,3,0,2659,22.251046025
+4,3,3,Simon Stadler (Christlichdemokratische Volkspartei der Schweiz),,,2,1,4685,39.205020921
+4,99,99,Vereinzelte / Autres / Altri,,,35,0,265,2.217573222
+5,1,1,CVP – Bürgerlich mit sozialer Verantwortung,A,,2,1,29768,14.597452017
+5,2,2,CVP – Bauern und Gewerbe,A,,2,0,4544,2.228259271
+5,3,3,Junge CVP,A,,2,0,2000,0.980747918
+5,4,4,CVP 60 plus,A,,2,0,1206,0.591390995
+5,5,5,Sozialdemokratische Partei (SP),B,B1,3,0,21123,10.35816914
+5,6,6,FDP.Die Liberalen Kanton Schwyz,C,,1,1,39803,19.518354697
+5,7,7,Gemeinsam fürs Schwyzer Gewerbe,C,,1,0,2793,1.369614468
+5,8,8,Junge Schweizerische Volkspartei Kanton Schwyz (JSVP),D,,4,0,3198,1.568215921
+5,9,9,Grünliberale – GLP Kanton Schwyz,A,,31,0,6289,3.083961829
+5,10,10,Junge Grünliberale – jglp Kanton Schwyz,A,,31,0,3059,1.500053941
+5,11,11,JUSOplus,B,B1,3,0,1668,0.817943764
+5,12,12,Gewerkschaftsbund Kanton Schwyz,B,,3,0,1426,0.699273266
+5,13,13,Liste für Kultur,B,,3,0,1415,0.693879152
+5,14,14,Jungfreisinnige Kanton Schwyz,C,,1,0,720,0.353069251
+5,15,15,Generation 60plus,B,,3,0,1043,0.511460039
+5,16,16,Schweizerische Volkspartei Kanton Schwyz,D,,4,2,72036,35.324578524
+5,17,17,Schwyz für alle,B,,3,0,1497,0.734089817
+5,18,18,EVP Evangelische Volkspartei,A,,7,0,1229,0.602669596
+5,19,19,Umwelt.Die Liberalen,C,,1,0,2206,1.081764954
+5,20,20,Grüne Schwyz – Für eine langfristige Zukunft,B,,13,0,5322,2.609770211
+5,21,21,Vorwärts Schwyz! Mobilität mit Zukunft.,C,,1,0,1581,0.775281229
+6,1,1,Marco De Col (FDP.Die Liberalen),,,1,0,1683,11.591707418
+6,2,2,Luke Gasser (Komitee 'Luke Gasser i Nationalrat'),,,35,0,1675,11.536607204
+6,3,3,Mirjam Hostetmann (JungsozialistInnen),,,3,0,424,2.920311316
+6,4,4,Peter Krummenacher (Christlichdemokratische Volkspartei der Schweiz),,,2,0,5325,36.67607962
+6,5,5,Monika Rüegger-Hurschler (Schweizerische Volkspartei),,,4,1,5412,37.275294442
+7,1,1,Peter Keller (Schweizerische Volkspartei),,,4,1,9655,64.204016492
+7,2,2,Alois Bissig (Überparteiliches Komitee (CVP)),,,2,0,5383,35.795983508
+8,1,1,Martin Landolt (Bürgerlich-Demokratische Partei),,,32,1,6396,63.027197477
+8,2,2,Priska Grünenfelder (Sozialdemokratische Partei der Schweiz),,,3,0,2861,28.192747339
+8,3,3,Mathias Zopfi,,,13,0,279,2.749310209
+8,99,99,Vereinzelte / Autres / Altri,,,35,0,612,6.030744974
+9,1,1,Alternative – die Grünen und CSP,A,A1,13,1,16135,13.730512628
+9,2,2,Alternative – die Grünen und CSP – Urban,A,A1,13,0,3000,2.552930765
+9,3,3,Alternative – die Grünen und CSP – Landschaft,A,A1,13,0,948,0.806726122
+9,4,4,Alternative – die Grünen und CSP – Frauenpower,A,A1,13,0,542,0.461229491
+9,5,5,Alternative – die Grünen und CSP – Junge Alternative,A,A1,13,0,1972,1.678126489
+9,6,6,Christlichdemokratische Volkspartei Kanton Zug (CVP),B,B1,2,1,21426,18.23303152
+9,7,7,Christlichdemokratische Volkspartei Kanton Zug (CVP) – CVP Frauen Kanton Zug,B,B1,2,0,2917,2.48229968
+9,8,8,Christlichdemokratische Volkspartei Kanton Zug (CVP) – Junge Liste (JCVP),B,B1,2,0,1429,1.216046021
+9,9,9,Christlichdemokratische Volkspartei Kanton Zug (CVP) – Gemeinderatsliste,B,B1,2,0,2174,1.850023827
+9,10,10,Evangelische Volkspartei (EVP),A,,7,0,964,0.820341752
+9,11,11,FDP Zug – A,B,B2,1,0,9919,8.440840084
+9,12,12,FDP Zug – B,B,B2,1,0,4309,3.666859555
+9,13,13,FDP Zug – C,B,B2,1,0,3019,2.569099326
+9,14,14,Grünliberale Partei (GLP),C,,31,0,5410,4.603785145
+9,15,15,Grünliberale Partei (GLP) – Junge Grünliberale (JGLP),C,,31,0,1095,0.931819729
+9,16,16,SP Kanton Zug,A,A2,3,0,2065,1.757267343
+9,17,17,SP Kanton Zug – SP Zug für Bern,A,A2,3,0,4669,3.973211247
+9,18,18,SP Kanton Zug – SP 60+,A,A2,3,0,795,0.676526653
+9,19,19,SP Kanton Zug – SP Klimaschutz,A,A2,3,0,733,0.623766083
+9,20,20,SP Kanton Zug – SP Frauen,A,A2,3,0,900,0.765879229
+9,21,21,SP Kanton Zug – SP Männer,A,A2,3,0,1296,1.10286609
+9,22,22,SP Kanton Zug – SP JUSO,A,A2,3,0,524,0.445911907
+9,23,23,SVP Schweizerische Volkspartei,D,,4,1,26504,22.554292328
+9,24,24,SVP – Wirtschaft und Gewerbe,D,,4,0,3299,2.807372864
+9,25,25,SVP – Zukunft,D,,4,0,1468,1.249234121
+10,1,1,Parti démocrate-chrétien fribourgeois // Christlichdemokratische Volkspartei des Kantons Freiburg,A,A1,2,2,86896,14.406528165
+10,2,2,Parti socialiste fribourgeois // Sozialdemokratische Partei Freiburg,C,C1,3,2,105117,17.427396211
+10,3,3,PLR.Les Libéraux-Radicaux du canton de Fribourg // FDP.Die Liberalen des Kantons Freiburg,D,,1,1,87082,14.437365192
+10,4,4,Verts – CG-PCS : Centre Gauche-PCS // ML-CSP – Grüne : Mitte Links-CSP,C,C2,8,0,19610,3.251151
+10,5,5,Union Démocratique du Centre // Schweizerische Volkspartei,B,B1,4,1,116109,19.249764992
+10,6,6,Parti vert'libéral (pvl) // Grünliberale Partei (glp),A,A2,31,0,22780,3.776706771
+10,7,7,Verts – CG-PCS : les Verts // ML-CSP – Grüne : Grüne,C,C2,13,1,75178,12.463795507
+10,8,8,Union Démocratique Fédérale // Eidgenössisch-Demokratische Union,B,,16,0,4430,0.734451756
+10,9,9,Jeunes vert'libéraux (jvl) // Junge Grünliberale (jglp),A,A2,31,0,9671,1.603359578
+10,10,10,Jeunes PDC Grand-Fribourg // Junge CVP Grossfreiburg,A,A1,2,0,3309,0.548600646
+10,11,11,Jeunes PDC Sud fribourgeois // Junge CVP Südfreiburg,A,A1,2,0,5759,0.954787283
+10,12,12,Junge CVP Deutschfreiburg // Jeunes PDC Fribourg alémanique,A,A1,2,0,5205,0.862939365
+10,13,13,Jeunes PDC Sarine-Campagne et Broye // Junge CVP Saane Land und Broye,A,A1,2,0,6204,1.028564039
+10,14,14,Jeunes libéraux-radicaux fribourgeois // Jungfreisinnige Freiburg,D,,1,0,5929,0.982971661
+10,15,15,Parti socialiste 60+ // Sozialdemokratische Partei 60+,C,C1,3,0,7213,1.195846617
+10,16,16,Parti socialiste Intégration // Sozialdemokratische Partei Integration,C,C1,3,0,3436,0.569656035
+10,17,17,Parti socialiste international // Sozialdemokratische Partei International,C,C1,3,0,1852,0.307043939
+10,18,18,Jeunesse socialiste fribourgeoise // Jungsozialiste-innen Kanton Freiburg,C,C1,3,0,10410,1.725878731
+10,19,19,PBD-Centre droit // BDP-Mitte Rechts,A,,32,0,3933,0.652053895
+10,20,20,Parti Evangélique PEV // Evangelische Volkspartei EVP,A,,7,0,4482,0.74307286
+10,21,21,Jeunes UDC Fribourg // Junge SVP Freiburg,B,B1,4,0,5618,0.931410827
+10,22,22,Parti des artistes // Künstler Partei,,,35,0,2162,0.358438983
+10,23,23,Objectif 2030 // Ziel 2030,C,,35,0,6960,1.15390163
+10,24,24,Démocratie directe spiritualitéS et nature // Direkt Demokratie Spiritualität und Natur,,,35,0,2436,0.40386557
+10,25,25,Mouvement Citoyen Indépendant // Unabhängige Bürger Bewegung,,,35,0,1390,0.230448745
+11,1,1,SVP Kanton Solothurn,D,,4,2,105527,22.271960761
+11,2,2,"CVP Nord-Ost (Thal-Gäu, Olten-Gösgen, Dorneck-Thierstein)",B,B1,2,1,36716,7.749081385
+11,3,3,"CVP Süd-West (Solothurn-Lebern, Bucheggberg-Wasseramt)",B,B1,2,0,21445,4.526066301
+11,4,4,"Junge CVP Nord (Thal-Gäu, Dorneck-Thierstein)",B,B1,2,0,5048,1.065403716
+11,5,5,"Junge CVP Süd (Solothurn-Lebern, Bucheggberg-Wasseramt, Olten-Gösgen)",B,B1,2,0,4067,0.858359135
+11,6,6,Junge SP Region Olten,C,C1,3,0,4809,1.014961662
+11,7,7,JUSO Kanton Solothurn,C,C1,3,0,3859,0.814459774
+11,8,8,SVP Unternehmer und Bauern,D,,4,0,10330,2.180194212
+11,9,9,"Sozialdemokratische Partei (SP) Region Süd-West (Solothurn-Lebern, Bucheggberg-Wasseramt)",C,C1,3,1,44646,9.422744512
+11,10,10,"Sozialdemokratische Partei (SP) Region Nord-Ost (Thal-Gäu, Olten-Gösgen, Dorneck-Thierstein)",C,C1,3,0,30451,6.426824198
+11,11,11,Liste Grüne,C,C2,13,1,36270,7.654951025
+11,12,12,Liste Grüne Plus,C,C2,13,0,11015,2.324766626
+11,13,13,Jungfreisinnige Liste Digitalisierung,A,,1,0,3314,0.699435007
+11,14,14,Jungfreisinnige Liste Gesellschaftsliberalismus,A,,1,0,2568,0.541988261
+11,15,15,FDP.Die Liberalen Kanton Solothurn - Freiheit,A,,1,1,55297,11.670687257
+11,16,16,FDP.Die Liberalen Kanton Solothurn - Verantwortung,A,,1,0,26572,5.608143331
+11,17,17,"SVP Bürger, Büezer, International",D,,4,0,3651,0.770560413
+11,18,18,Sozialdemokratische Partei 60+,C,C1,3,0,3606,0.761062955
+11,19,19,Junge SVP Kanton Solothurn,D,,4,0,3253,0.686560675
+11,20,20,Grünliberale,B,B2,31,0,17510,3.695566376
+11,21,21,Grünliberale Unternehmer,B,B2,31,0,7801,1.646437081
+11,22,22,Junge Grünliberale,B,B2,31,0,6946,1.465985382
+11,23,23,Junge Grüne Solothurn,C,C2,13,0,6811,1.437493009
+11,24,24,Bürgerlich Demokratische Partei Liste eins,B,B3,32,0,5079,1.071946409
+11,25,25,Bürgerlich Demokratische Partei Liste zwei,B,B3,32,0,3004,0.634008075
+11,26,26,Junge Bürgerlich Demokratische Partei,B,B3,32,0,1340,0.282813189
+11,27,27,Evangelische Volkspartei,B,,7,0,5683,1.199423399
+11,28,28,Schweizer Demokraten / Die sozial-ökologische Heimatpartei,,,14,0,2855,0.602560937
+11,29,29,Schweizerische Hanf Partei SHP,,,35,0,4338,0.915554936
+12,1,1,FDP.Die Liberalen Basel-Stadt,A,A1,1,0,14593,5.446836147
+12,2,2,Piratenpartei,B,,35,0,1179,0.440061661
+12,3,3,LDP Liberal-Demokratische Partei Basel-Stadt,A,A4,5,1,38104,14.22231512
+12,4,4,Mitte – Evangelische Volkspartei Basel-Stadt (EVP),A,A2,7,0,5406,2.017789091
+12,5,5,Sozialdemokratische Partei Basel-Stadt (SP),B,B1,3,2,83674,31.231314176
+12,6,6,Jungfreisinnige Basel-Stadt,A,A1,1,0,717,0.267620196
+12,7,7,CVP Basel-Stadt,A,A3,2,0,9111,3.400680061
+12,8,8,Bündnis Grüne BastA! jgb,B,B2,13,1,36525,13.632953489
+12,9,9,Eidgenössisch-Demokratische Union Basel-Stadt (EDU),C,,16,0,756,0.282176943
+12,10,10,Mitte – Grünliberale GLP,A,A2,31,1,13799,5.150475707
+12,11,11,Mitte – Bürgerlich-Demokratische Partei (BDP),A,A2,32,0,985,0.367651176
+12,12,12,SVP Basel-Stadt,C,C1,4,0,30679,11.450934431
+12,13,14,Volks-Aktion gegen zuviele Ausländer und Asylanten in unserer Heimat (VA) – Liste Ausländerstopp,,,35,0,2178,0.812938335
+12,14,18,Junge SVP Basel-Stadt,C,C1,4,0,949,0.354214178
+12,15,21,Bündnis: Junge Grüne (jgb),B,B2,13,0,5239,1.955456354
+12,16,22,Junge CVP Basel-Stadt,A,A3,2,0,1005,0.375116174
+12,17,23,Jungliberale Basel JLB,A,A4,5,0,1072,0.400123919
+12,18,25,Mitte – Junge Grünliberale jglp,A,A2,31,0,1468,0.547930889
+12,19,31,SVP Frauen Basel-Stadt,C,C1,4,0,772,0.288148942
+12,20,32,FDP.Die Liberalen Frauen Basel-Stadt,A,A1,1,0,884,0.329952933
+12,21,34,Gewerbe LDP,A,A4,5,0,1901,0.709548106
+12,22,36,CVP 60+ Basel-Stadt,A,A3,2,0,2128,0.794275839
+12,23,37,Liste SVP – Neue Heimat Schweiz Basel-Stadt,C,C1,4,0,689,0.257169198
+12,24,38,"JUSO Basel-Stadt, Frauen*",B,B1,3,0,2611,0.974555553
+12,25,39,"JUSO Basel-Stadt, Männer*",B,B1,3,0,1190,0.44416741
+12,26,40,Bündnis – Die Alternativen,B,B2,13,0,5644,2.106622573
+12,27,41,PNOS Partei National Orientierter Schweizer,,,35,0,297,0.110855228
+12,28,42,Bündnis – Integrale Politik,B,B2,35,0,4362,1.62811617
+13,1,1,FDP.Die Liberalen Baselland,A,A1,1,1,88885,16.251266131
+13,2,2,Sozialdemokratische Partei und Gewerkschaften,B,B1,3,2,113689,20.786299096
+13,3,3,Schweizerische Volkspartei Baselland,A,A2,4,2,131564,24.054470127
+13,4,4,Evangelische Volkspartei BL,C,C1,7,0,16074,2.938885659
+13,5,5,Christlichdemokratische Volkspartei,C,C2,2,1,37974,6.94296653
+13,6,6,Jungfreisinnige Baselland,A,A1,1,0,1467,0.268218568
+13,7,7,Grüne Baselland,B,B2,13,1,87578,16.012301122
+13,8,8,Bürgerlich-Demokratische Partei,C,,32,0,6470,1.182940787
+13,9,11,Grünliberale Partei,C,C3,31,0,23337,4.266814397
+13,10,12,Junge Grünliberale Partei,C,C3,31,0,5419,0.990781472
+13,11,13,Christ-und-Politik.CH,,,35,0,634,0.115917227
+13,12,22,Jungsozialist*innen Unterbaselbiet,B,B1,3,0,2658,0.485974747
+13,13,23,Jungsozialist*innen Oberbaselbiet,B,B1,3,0,2862,0.523273034
+13,14,33,Junge Schweizerische Volkspartei,A,A2,4,0,3922,0.717077862
+13,15,34,SVP International,A,A2,4,0,2058,0.376273901
+13,16,44,Evangelische Volkspartei - Zukunft,C,C1,7,0,3051,0.557828801
+13,17,55,Junge CVP,C,C2,2,0,4341,0.793685619
+13,18,56,CVP Wirtschaft und Gesellschaft,C,C2,2,0,4111,0.751633628
+13,19,70,Grüne Panther,B,B2,13,0,4690,0.857494945
+13,20,77,Junge Grüne,B,B2,13,0,6158,1.125896347
+14,1,1,Schweizerische Volkspartei (SVP),A,A1,4,1,21412,35.365430671
+14,2,2,Sozialdemokratische Partei (SP),B,B1,3,1,15154,25.029317037
+14,3,3,FDP.Die Liberalen,C,,1,0,6192,10.227103807
+14,4,4,Alternative Liste Schaffhausen (AL),B,,12,0,1929,3.186059955
+14,5,5,Grünliberale Partei (GLP),D,D1,31,0,2637,4.355438104
+14,6,6,Grüne Partei,B,B2,13,0,2670,4.409943018
+14,7,7,Eidgenössisch-Demokratische Union (EDU),A,,16,0,2041,3.371046329
+14,8,8,Christlichdemokratische Volkspartei (CVP),D,,2,0,1297,2.142208275
+14,9,9,Evangelische Volkspartei (EVP),D,,7,0,1138,1.879593691
+14,10,11,Junge SVP,A,A1,4,0,413,0.682137253
+14,11,13,Jungfreisinnige,C,,1,0,489,0.807663721
+14,12,14,JUSO,B,B1,3,0,682,1.126434883
+14,13,16,Junge GLP,D,D1,31,0,965,1.59385581
+14,14,17,SVP Agro / KMU,A,A1,4,0,2061,3.40407961
+14,15,18,Junge Grüne,B,B2,13,0,1465,2.419687835
+15,1,1,David Zuberbühler (Schweizerische Volkspartei),,,4,1,7720,49.455477258
+15,2,2,Jennifer Abderhalden (FDP.Die Liberalen),,,1,0,7561,48.436899423
+15,99,99,Vereinzelte / Autres / Altri,,,35,0,329,2.107623318
+16,1,1,Ruedi Eberle (Schweizerische Volkspartei),,,4,0,1642,29.077386223
+16,2,2,Martin Pfister (Sozialdemokratische Partei der Schweiz),,,3,0,493,8.730299274
+16,3,3,Antonia Fässler (Christlichdemokratische Volkspartei der Schweiz),,,2,0,1446,25.606516735
+16,4,4,Thomas Rechsteiner (Christlichdemokratische Volkspartei der Schweiz),,,2,1,2014,35.664954843
+16,99,99,Vereinzelte / Autres / Altri,,,35,0,52,0.920842925
+17,1,1a,"SVP Schweizerische Volkspartei, Hauptliste",B,B1,4,4,454580,28.549859568
+17,2,1b,"SVP Schweizerische Volkspartei, Unternehmerliste",B,B1,4,0,14960,0.939561571
+17,3,1c,"SVP Schweizerische Volkspartei, Seniorenliste",B,B1,4,0,10214,0.641489431
+17,4,1d,"SVP Schweizerische Volkspartei, Landliste",B,B1,4,0,18921,1.188331851
+17,5,2a,"CVP Kanton St.Gallen, Liste Süd-Ost",A,A1,2,1,164005,10.300320556
+17,6,2b,"CVP Kanton St.Gallen, Liste Nord-West",A,A1,2,1,96959,6.089502032
+17,7,2c,"CVP Kanton St.Gallen, Junge CVP – Liste Süd-Ost",A,A1,2,0,19362,1.21602882
+17,8,2d,"CVP Kanton St.Gallen, Junge CVP – Liste Nord-West",A,A1,2,0,18702,1.174577574
+17,9,3a,"SP und Gewerkschaften, Hauptliste",C,C1,3,2,191730,12.041586904
+17,10,3b,"SP und Gewerkschaften, JUSO-Liste",C,C1,3,0,10326,0.648523582
+17,11,4a,"FDP.Die Liberalen, Hauptliste",D,,1,2,186383,11.705769009
+17,12,4b,"FDP.Die Liberalen, Jungfreisinnige",D,,1,0,13039,0.818913324
+17,13,4c,"FDP.Die Liberalen, Umweltfreisinnige",D,,1,0,16183,1.016371986
+17,14,4d,"FDP.Die Liberalen, FDP Frauen",D,,1,0,23144,1.453557019
+17,15,5a,"Grünliberale (glp), Hauptliste",A,A2,31,1,96205,6.042147124
+17,16,5b,"Grünliberale (glp), Junge Grünliberale",A,A2,31,0,20323,1.276384346
+17,17,6a,"GRÜNE, Hauptliste",C,C2,13,1,131827,8.279383909
+17,18,6b,"GRÜNE, Junge Grüne",C,C2,13,0,26095,1.638894332
+17,19,6c,"GRÜNE, KlimaseniorInnen",C,C2,13,0,9830,0.617372343
+17,20,7,"EVP, Evangelische Volkspartei",A,,7,0,24907,1.56428209
+17,21,8,Parteifrei SG,,,35,0,12222,0.767601706
+17,22,9,EDU – Eidgenössisch-Demokratische Union,B,,16,0,14768,0.927503027
+17,23,10,Der Pflug,,,35,0,3407,0.213976355
+17,24,11,"Schweizer Demokraten (SD) – für Volk und Heimat, Schwiizer zerscht",,,14,0,4006,0.251596501
+17,25,12,BDP Bürgerlich-Demokratische Partei Kanton St.Gallen,A,,32,0,10134,0.636465038
+18,1,1,BDP Graubünden - Junge BDP Graubünden,A,A3,32,0,4973,1.719101629
+18,2,2,FDP.Die Liberalen Graubünden - Hauptliste,A,A1,1,1,31431,10.865289219
+18,3,3,SP JUSO Männer*,C,C1,3,0,1501,0.518876241
+18,4,4,CVP - Die Jungen 1,A,A2,2,0,2754,0.952022096
+18,5,5,CVP - Die Jungen A,A,A2,2,0,2612,0.902934537
+18,6,6,Verda - Grüne Graubünden,C,,13,0,15958,5.516473716
+18,7,7,Grünliberale Partei - Junge Grünliberale Partei,C,C2,31,0,5946,2.055455114
+18,8,8,SVP Graubünden - Junge SVP Graubünden,B,,4,0,1598,0.552407883
+18,9,9,SP Sozialdemokratische Partei,C,C1,3,2,45677,15.78994673
+18,10,10,CVP Graubünden,A,A2,2,1,41927,14.493620346
+18,11,11,Jungfreisinnige Graubünden - FDP-Futuro,A,A1,1,0,2369,0.818932588
+18,12,12,BDP Graubünden,A,A3,32,0,21351,7.380763899
+18,13,13,Grünliberale Partei,C,C2,31,0,18201,6.291849737
+18,14,14,SVP Graubünden - Liste Martullo,B,,4,1,45263,15.646832297
+18,15,15,SP JUSO Frauen*,C,C1,3,0,2343,0.809944725
+18,16,16,SVP Graubünden - Liste Brand,B,,4,0,35353,12.221073773
+18,17,17,FDP.Die Liberalen GR - Support Gemeindepolitik,A,A1,1,0,2082,0.719720408
+18,18,18,FDP.Die Liberalen GR - Support Gewerbe,A,A1,1,0,3547,1.226151916
+18,19,19,SVP Graubünden - Liste SVP International,B,,4,0,1667,0.576260289
+18,20,20,SVP Graubünden - Team 60+ für ein sicheres Rentenalter,B,,4,0,2726,0.942342859
+19,1,1a,SVP – Schweizerische Volkspartei,A,A1,4,6,916647,30.698795487
+19,2,1b,JSVP – Junge Schweizerische Volkspartei,A,A1,4,0,24769,0.829521577
+19,3,2a,SP und Gewerkschaften,B,B1,3,3,420492,14.082408945
+19,4,2b,SP und Gewerkschaften – JUSO (Jungsozialist*innen),B,B1,3,0,21732,0.727811495
+19,5,2c,SP und Gewerkschaften – SP 60+,B,B1,3,0,12515,0.419131275
+19,6,2d,SP und Gewerkschaften – queer*feministisch!,B,B1,3,0,21432,0.717764401
+19,7,2e,SP und Gewerkschaften – SP Migrant*innen,B,B1,3,0,15503,0.519200332
+19,8,3a,FDP.Die Liberalen,A,A2,1,2,385936,12.925117668
+19,9,3b,FDP.Die Liberalen – Jungfreisinnige,A,A2,1,0,18796,0.629483934
+19,10,4a,CVP.Miteinander.Für den Aargau.,C,C1,2,2,205895,6.895488118
+19,11,4b,CVPLA.Miteinander.Für Land- & Ernährungswirtschaft,C,C1,2,0,23925,0.801255753
+19,12,4c,CVPCS.Miteinander.Für die Christlichsozialen.,C,C1,2,0,6178,0.206903157
+19,13,4d,CVPE.Miteinander.Für die Städte und Gemeinden.,C,C1,2,0,9266,0.310321246
+19,14,4e,CVPAZ.Miteinander.Für Aarau und Zofingen.,C,C1,2,0,6682,0.223782275
+19,15,4f,CVPBZ.Miteinander.Für Baden und Zurzach.,C,C1,2,0,13705,0.458984748
+19,16,4g,"CVP#1.Miteinander.Für Kulm, Lenzburg, Brugg.",C,C1,2,0,5416,0.181383538
+19,17,4h,CVPFA.Miteinander.Für das Freiamt.,C,C1,2,0,14079,0.471510125
+19,18,4i,CVPFT.Miteinander.Für das Fricktal.,C,C1,2,0,10300,0.34495023
+19,19,5a,Grüne Partei,B,B2,13,1,257338,8.61833032
+19,20,5b,Junge Grüne,B,B2,13,0,34732,1.163185572
+19,21,6a,glp – Grünliberale Partei,C,C2,31,1,211302,7.076570244
+19,22,6b,jglp – Junge Grünliberale,C,C2,31,0,31050,1.039874237
+19,23,6c,glp-u – Grünliberale Unternehmer,C,C2,31,0,11618,0.389090463
+19,24,7a,BDP – Bürgerlich-Demokratische Partei,D,D1,32,0,74123,2.482402515
+19,25,7b,JBDP – Junge Bürgerlich-Demokratische Partei,D,D1,32,0,11300,0.378440544
+19,26,7c,BDP3 – Bürgerlich-Demokratische Partei: die Dritte,D,D1,32,0,6188,0.207238061
+19,27,8a,EVP – Evangelische Volkspartei,D,D2,7,1,89736,3.005286781
+19,28,8b,*jevp – Junge Evangelische Volkspartei,D,D2,7,0,12033,0.402988944
+19,29,8c,EVP+ – EVPplus,D,D2,7,0,7025,0.235269453
+19,30,9,EDU – Eidgenössisch-Demokratische Union,A,,16,0,29768,0.996939655
+19,31,10,PPAG – Piratenpartei,B,,35,0,10090,0.337917264
+19,32,11,LOVB – Lösungs-Orientierte Volks-Bewegung,E,,35,0,4094,0.137109344
+19,33,12,FW AG – Freie Wähler Aargau,E,,35,0,6954,0.232891641
+19,34,13,LS – Luzi Stamm,E,,35,0,6541,0.219060141
+19,35,14,TEAM65+ – Die Aargauer Seniorenliste,A,,35,0,41127,1.377356127
+19,36,15,DU – Die Unabhängigen,,,35,0,7651,0.256234389
+20,1,1,Bürgerlich-Demokratische Partei – Best Agers / BDP Best Agers,C,C1,32,0,3632,0.842478352
+20,2,2,Junge Schweizerische Volkspartei / JSVP,B,B2,4,0,5707,1.323795142
+20,3,3,Eidgenössisch-Demokratische Union / EDU,B,,16,0,12283,2.849163437
+20,4,4,FDP.Die Liberalen – Stammliste / FDP Stammliste,B,B1,1,0,40071,9.294865104
+20,5,5,Schweizerische Volkspartei / SVP,B,B2,4,3,152401,35.350920533
+20,6,6,Junge Bürgerlich-Demokratische Partei / JBDP,C,C1,32,0,1027,0.238222816
+20,7,7,Evangelische Volkspartei / EVP,C,C2,7,0,9312,2.160010577
+20,8,8,Bürgerlich-Demokratische Partei – Hauptliste / BDP Hauptliste,C,C1,32,0,5148,1.194129559
+20,9,9,JungsozialistInnen und Gewerkschaftsjugend / JUSO,A,A3,3,0,2836,0.657838273
+20,10,10,FDP.Die Liberalen – Frauenliste / FDP Frauenliste,B,B1,1,0,6949,1.611889337
+20,11,11,Christlichdemokratische Volkspartei – Newcomer / CVP Newcomer,C,C3,2,0,5737,1.330753939
+20,12,12,Christlichdemokratische Volkspartei / CVP,C,C3,2,1,45122,10.466494552
+20,13,13,Junge Grüne Thurgau / JGTG,A,A2,13,0,9153,2.123128953
+20,14,14,Grüne Partei Thurgau / GPTG,A,A2,13,1,31762,7.367510305
+20,15,15,Grüne Panther Thurgau / GPTG Panther,A,A2,13,0,4779,1.108536356
+20,16,16,Junge Christlichdemokratische Volkspartei / JCVP,C,C3,2,0,3856,0.89443737
+20,17,17,Sozialdemokratische Partei und Gewerkschaften / SP/Gew.,A,A3,3,1,47973,11.127812224
+20,18,18,Grünliberale – Stammliste / glp Stammliste,A,A1,31,0,26123,6.059488436
+20,19,19,Grünliberale – Engagiert / glp Engagiert,A,A1,31,0,4100,0.951035585
+20,20,20,Jungfreisinnige Thurgau / JFTG,B,B1,1,0,2356,0.546497522
+20,21,21,Junge Grünliberale / jglp,A,A1,31,0,4903,1.137299384
+20,22,22,Junge Evangelische Volkspartei / jevp,C,C2,7,0,2187,0.507296299
+20,23,23,Sozialdemokratische Partei Liste 60+ / SP Liste 60+,A,A3,3,0,3692,0.856395946
+21,1,1,PPD Partito Popolare Democratico,A,A1,2,2,136812,16.33462996
+21,2,2,Lista civica: per la proibizione assoluta d'internare minorenni da parte dei Cantoni svizzeri,D,,35,0,684,0.081665986
+21,3,3,PPD – Generazione Giovani Sottoceneri,A,A1,2,0,6568,0.784184498
+21,4,4,PS – Gioventù Socialista (GISO),B,B1,3,0,7142,0.852717066
+21,5,5,Verdi e Sinistra alternativa – Partito Operaio Popolare Ticino POP,B,B2,9,0,6951,0.829912675
+21,6,6,UDC – UDF,C,C1,16,0,8835,1.054852321
+21,7,7,UDC – Agrari,C,C1,4,0,7632,0.911220477
+21,8,8,Lega dei Ticinesi,C,,18,1,141777,16.927424728
+21,9,9,PLR Partito liberale radicale ticinese,A,,1,2,171936,20.528249984
+21,10,10,UDC – Giovani UDC,C,C1,4,0,4222,0.504084493
+21,11,11,Verdi e Sinistra alternativa – Giovani Verdi,B,B2,13,0,7896,0.942740682
+21,12,12,Verdi e Sinistra alternativa,B,B2,13,1,93552,11.169614522
+21,13,13,PPD – Generazione Giovani Sopraceneri,A,A1,2,0,6623,0.790751208
+21,14,14,Verdi e Sinistra alternativa – Donne,B,B2,35,0,8025,0.9581426
+21,15,15,PS Partito Socialista,B,B1,3,1,107569,12.843170264
+21,16,16,PS – PS60+,B,B1,3,0,3117,0.372153331
+21,17,17,PPD – Ticinesi nel mondo,A,A1,2,0,2404,0.287024899
+21,18,18,UDC,C,C1,4,1,85792,10.243111522
+21,19,19,MontagnaViva,,,35,0,5741,0.685445068
+21,20,20,Lega Verde,D,,35,0,5452,0.650939995
+21,21,21,Bello Sognare,,,35,0,3463,0.413463903
+21,22,22,pvl partito verde liberale,A,,31,0,8287,0.989424016
+21,23,23,Più Donne,,,35,0,7078,0.845075804
+22,1,1,Parti socialiste vaudois,A,A1,3,5,655047,19.307366249
+22,2,2,Jeunesse socialiste vaudoise - JSV,A,A1,3,0,36653,1.080339113
+22,3,3,Jeunes UDC Vaud,B,,4,0,50813,1.497701999
+22,4,4,PDC ouVERTure,C,C1,2,0,21391,0.63049502
+22,5,5,Liste Transition Citoyenne Vaud,,,35,0,11143,0.328437474
+22,6,6,PVL - les vert'libéraux,D,D1,31,2,225239,6.638869984
+22,7,7,EP. Parti Ouvrier et Populaire (POP),A,A2,9,0,62889,1.853639443
+22,8,8,Urgence Écologique,A,,35,0,12502,0.3684937
+22,9,9,AdC / - Parti Evangélique (PEV),C,C2,7,0,44108,1.300073599
+22,10,10,PLR.Innovation,E,,1,0,70876,2.089054511
+22,11,11,"Démocratie Directe, SpiritualitéS et Nature",,,35,0,16664,0.491167735
+22,12,12,Action Nationale-Démocrates Suisses/VD,,,14,0,2435,0.071771089
+22,13,13,UDC Vaud,B,,4,3,538799,15.880982017
+22,14,14,Les Vert·e·s. Mouvement écologiste vaudois,A,A3,13,4,556250,16.395346404
+22,15,15,AdC / - UDF - Union Démocratique Fédérale,C,C2,16,0,11268,0.332121822
+22,16,16,Jeunes Vert-e-s vaudois-es JVVD,A,A3,13,0,111358,3.282252557
+22,17,17,PLR.Les Libéraux-Radicaux,E,,1,5,692664,20.41611905
+22,18,18,PDC,C,C1,2,0,60886,1.794601458
+22,19,19,PVL - les jeunes vert'libéraux,D,D1,31,0,58826,1.733883411
+22,20,20,Parti Pirate Vaudois,D,,35,0,27054,0.7974107
+22,21,21,Jeunes Libéraux-Radicaux vaudois,E,,1,0,28315,0.834578397
+22,22,22,AdC / - PBD Le juste milieu,C,C2,32,0,12758,0.376039244
+22,23,23,PNS - Parti Nationaliste Suisse,,,35,0,9651,0.284461102
+22,24,24,EP. Ensemble à Gauche,A,A2,9,0,75142,2.214793923
+23,1,1,Parti Socialiste du Valais Romand (PSVR),A,A1,3,1,102677,11.004518544
+23,2,2,C-Parteien Christlichsoziale Volkspartei Oberwallis (CSPO),B,B1,2,0,62697,6.719618796
+23,3,3,C-Parteien Junge Christlichsoziale Volkspartei Oberwallis (JCSPO),B,B1,2,0,5605,0.600721938
+23,4,4,Jeunes Démocrates-Chrétiens du Valais Romand Sierre - Sion - Hérens,B,B2,2,0,6672,0.715078817
+23,5,5,Jeunes Démocrates-Chrétiens du Valais Romand Conthey - Martigny - Entremont,B,B2,2,0,5771,0.618513168
+23,6,6,Jeunes Démocrates-Chrétiens du Valais Romand St-Maurice - Monthey,B,B2,2,0,12520,1.341844543
+23,7,7,Parti Socialiste du Valais Romand PS 60+,A,A1,3,0,5779,0.619370576
+23,8,8,Parti Démocrate-Chrétien du Valais Romand (PDCVR),B,B2,2,2,142635,15.287060417
+23,9,9,Jeunesse Socialiste du Chablais,A,A1,3,0,3238,0.347036153
+23,10,10,Jeunesse Socialiste Sierre Région,A,A1,3,0,1559,0.167087511
+23,11,11,Jeunesse Socialiste du Coude du Rhône,A,A1,3,0,1999,0.214244987
+23,12,12,Jeunesse Socialiste Sion-Hérens-Conthey,A,A1,3,0,5201,0.557422801
+23,13,13,UDC du Valais Romand,C,C1,4,1,78723,8.437222682
+23,14,14,UDC Seniors du Valais Romand,C,C1,4,0,6434,0.68957091
+23,15,15,UDC Jeunes du Valais Central,C,,4,0,5037,0.539845924
+23,16,16,UDC Jeunes du Bas-Valais,C,,4,0,7178,0.769309915
+23,17,17,Schweizerische Volkspartei Oberwallis (SVPO),C,C2,4,1,78024,8.362306601
+23,18,18,"Schweizerische Volkspartei Oberwallis (SVPO) - Wirtschaft, Gewerbe und Tourismus",C,C2,4,0,3858,0.413485323
+23,19,19,Schweizerische Volkspartei Oberwallis (SVPO) - Frauen,C,C2,4,0,2600,0.278657812
+23,20,20,Junge schweizerische Volkspartei Oberwallis (JSVPO),C,C2,4,0,2664,0.285517082
+23,21,21,C-Parteien Christlichdemokratische Volkspartei Oberwallis (CVPO),B,B1,2,1,83221,8.919300698
+23,22,22,C-Parteien Junge CVPO,B,B1,2,0,5433,0.582287652
+23,23,23,Sozialdemokratische Partei Oberwallis (SPO),A,A1,3,0,17723,1.899481696
+23,24,24,Jungsozialist*innen Oberwallis (JUSO),A,A1,3,0,2403,0.257544124
+23,25,25,Les Verts,A,A2,13,1,69281,7.425266118
+23,26,26,Grüne Oberwallis,A,A2,13,0,14162,1.517827669
+23,27,27,Jeunes Vert-e-s // Junge Grüne,A,A2,13,0,10454,1.120418758
+23,28,28,Les Verts - Ainé.e.s pour le climat,A,A2,13,0,4897,0.524841272
+23,29,29,Centre Gauche - PCS Centre Solidaire,A,A3,8,0,5010,0.536952169
+23,30,30,Centre Gauche - PCS Gauche Humaniste,A,A3,8,0,4605,0.493545856
+23,31,31,Rassemblement Citoyen Valais - Bürgervereinigung Wallis,,,35,0,13780,1.476886406
+23,32,32,PLR.Les Libéraux Radicaux Valais,D,D1,1,1,123223,13.206558319
+23,33,33,Jeunes libéraux-radicaux Valais central,D,D1,1,0,2176,0.233215154
+23,34,34,Jeunes libéraux-radicaux Martigny-Entremont,D,D1,1,0,2877,0.308345587
+23,35,35,Jeunes libéraux-radicaux région sierroise,D,D1,1,0,3060,0.32795881
+23,36,36,Jeunes libéraux-radicaux Chablais,D,D1,1,0,4022,0.431062201
+23,37,37,FDP die Liberalen,D,D1,1,0,4945,0.529985724
+23,38,38,Avenir Ecologie Citoyenne // Zukunft und Nachhaltigkeit Bürgerliste,D,D2,1,0,4715,0.505335225
+23,39,39,Avenir Ecologie Libérale-Radicale // Zukunft und Nachhaltigkeit Freisinnig Liberale,D,D2,1,0,8757,0.938540948
+23,40,40,Avenir Ecologie - Les vert'libéraux // Zukunft und Nachhaltigkeit - die Grünliberalen,D,D2,31,0,7429,0.796211111
+24,1,31,Parti Libéral-Radical neuchâtelois (PLRN),A,,1,1,34875,19.959937044
+24,2,32,"Parti Libéral-Radical neuchâtelois (PLRN), Jeunes Libéraux-Radicaux",A,,1,0,4174,2.388896838
+24,3,33A,Parti socialiste neuchâtelois (PSN),B,B1,3,1,25148,14.392903133
+24,4,33B,"Parti socialiste neuchâtelois (PSN), Jeunes socialistes neuchâtelois (JSN)",B,B1,3,0,3916,2.241236228
+24,5,34A,"PopVertSol, Parti Ouvrier et Populaire (POP)",B,B2,9,1,21070,12.058949778
+24,6,34B,"PopVertSol, Les Verts, Écologie et Liberté",B,B2,13,1,36357,20.808127057
+24,7,34C,"PopVertSol, solidaritéS",B,B2,9,0,3608,2.064959222
+24,8,35,Union Démocratique du Centre (UDC),C,,4,0,18202,10.417513235
+24,9,36,"Union Démocratique du Centre (UDC), Relève",C,,4,0,3916,2.241236228
+24,10,37,Parti Démocrate-Chrétien (PDC),D,,2,0,7291,4.172843039
+24,11,38A,Vert'libéraux (PVL),D,D1,31,0,11134,6.372299328
+24,12,38B,"Vert'libéraux (PVL), Jeunes Vert'libéraux (JVL)",D,D1,31,0,4709,2.695092288
+24,13,39,Parti Fédéraliste Européen (PFE),,,35,0,325,0.186006582
+25,1,1,UDC Genève,B,B1,4,2,151064,12.867538392
+25,2,2,Les Socialistes,D,D2,3,2,159153,13.556554426
+25,3,3,Les Vert.e.s,D,D1,13,3,245157,20.882322126
+25,4,4,Jeunesse Socialiste Genevoise,D,D2,3,0,9796,0.834417241
+25,5,5,PLR. Les Libéraux-Radicaux Genève,A,A1,1,2,202306,17.232300363
+25,6,6,JLR. Les Jeunes Libéraux-Radicaux,A,A1,1,0,8167,0.695660025
+25,7,7,PDC Genève,A,A2,2,1,85380,7.272615765
+25,8,8,Jeunes Vert-e-s,D,D1,13,0,38302,3.262540748
+25,9,9,JDC Genève,A,A2,2,0,4585,0.390547473
+25,10,10,Ensemble à Gauche · solidaritéS - DAL,D,D3,9,1,26696,2.273948823
+25,11,11,Ensemble à Gauche : Égalité pour toutes* et tous*,D,D3,9,0,13433,1.144214659
+25,12,12,Les Verts.e.s transfrontalier.ère.s,D,D1,13,0,5479,0.466697842
+25,13,13,UDC Jeunes,B,B1,4,0,6535,0.556647271
+25,14,14,Ensemble à Gauche : Pour une écologie anticapitaliste,D,D3,9,0,21095,1.796859095
+25,15,15,Ensemble à Gauche : Solidarités sans frontières,D,D3,9,0,12283,1.046258368
+25,16,16,Planète Bleue,E,,35,0,10309,0.878114265
+25,17,17,PEV,E,,7,0,8246,0.702389197
+25,18,18,UDC - International,B,B1,4,0,2662,0.226747519
+25,19,19,MCG - Mouvement Citoyens Genevois,B,,33,0,63100,5.3748191
+25,20,20,Prophète Eco - «Santé!»,,,35,0,2262,0.192675766
+25,21,21,U.D.F. (Union Démocratique Fédérale),B,,16,0,1312,0.111755351
+25,22,22,Les Socialistes - Suisses et Suissesses de l'étranger,D,D2,3,0,3983,0.339269485
+25,23,23,Vert'Libéraux,E,E1,31,1,52478,4.470043689
+25,24,24,PBD/PCD Parti Citoyen Démocratique Suisse d'abord,C,,32,0,4371,0.372319085
+25,25,25,PBD/PCD Parti Citoyen Démocratique Genève d'abord,C,,35,0,7633,0.650174234
+25,26,26,Fédéraction,E,,35,0,3128,0.266441112
+25,27,27,Vert'Libéraux - Jeunes,E,E1,31,0,11444,0.974792865
+25,28,28,Ensemble à Gauche - Parti du Travail,D,D3,9,0,13634,1.161335715
+26,1,1,Parti socialiste jurassien,A,,3,1,10302,22.961196425
+26,2,2,Jeunesse socialiste jurassienne,A,,3,0,1816,4.047518221
+26,3,3,Parti libéral-radical jurassien – innovation,B,,1,0,2699,6.015557091
+26,4,4,Parti libéral-radical jurassien - Jeunes,B,,1,0,844,1.881115296
+26,5,5,Parti libéral-radical jurassien – environnement,B,,1,0,528,1.176811465
+26,6,6,Parti chrétien social indépendant - Femmes,C,,8,0,1529,3.407849867
+26,7,7,Parti chrétien social indépendant - Jeunes,C,,8,0,496,1.105489558
+26,8,8,Parti chrétien social indépendant - Hommes,C,,8,0,2295,5.115118015
+26,9,9,Parti démocrate-chrétien du Jura,D,,2,1,7982,17.79035817
+26,10,10,Jeunes démocrates-chrétiens du Jura 1,D,,2,0,1602,3.570552968
+26,11,11,Jeunes démocrates-chrétiens du Jura 2,D,,2,0,627,1.397463615
+26,12,12,Union Démocratique du Centre,E,,4,0,2467,5.498473265
+26,13,13,Union Démocratique du Centre Agricole,E,,4,0,3434,7.653732142
+26,14,14,Union Démocratique du Centre Jeunes,E,,4,0,592,1.319455279
+26,15,15,Les Vert-e-s Jurassien-ne-s,F,,13,0,5475,12.202732521
+26,16,16,Les Jeunes Vert-e-s Jurassien-ne-s,F,,13,0,1535,3.421222725
+26,17,17,PEV Jura,,,7,0,644,1.435353378

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-bauchbinde",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Bauchbinde",
+  "description": "Bauchbinde unten links ab Bildrand: Zeile 1 (Name) weiss auf Rot, Zeile 2 (Funktion) dunkel auf Hellgrau, optional. Die Boxen passen sich der Textbreite an. playAction blendet ein, ein weiterer playAction oder stopAction blendet aus. updateAction tauscht den Text auch auf Sendung.",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": 1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": { "width": 1920, "height": 1080 }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": { "width": { "ideal": 1920 }, "height": { "ideal": 1080 } },
+      "frameRate": { "ideal": 50 }
+    }
+  ],
+  "actionDurations": [
+    { "type": "playAction", "duration": 520 },
+    { "type": "stopAction", "duration": 130 },
+    { "type": "updateAction", "duration": 420 }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "zeile1": {
+        "type": "string",
+        "label": "Zeile 1 (Name)",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Lukas Golder"
+      },
+      "zeile2": {
+        "type": "string",
+        "label": "Zeile 2 (Funktion)",
+        "description": "Leer: nur Zeile 1, auf der Grundlinie der zweiten Zeile.",
+        "gddType": "single-line",
+        "order": 2,
+        "default": "Politikwissenschafter GFS Bern"
+      },
+      "farbe": {
+        "type": "string",
+        "label": "Farbe Namensbox",
+        "description": "Standard SRF-Rot #a80a18. Kleinbuchstaben.",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$",
+        "order": 3,
+        "default": "#a80a18"
+      }
+    }
+  }
+}

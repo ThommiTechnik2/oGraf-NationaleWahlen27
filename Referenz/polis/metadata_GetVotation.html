@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />	
+    <title>Polis API</title>
+    <style type="text/css">
+        body  {
+            background-color:white;
+            color:#000000;
+            font-family: "Helvetica Neue", Helvetica, Verdana, Arial;
+            margin: 0;
+            font-size: 13px;
+        }
+        a#logo {
+            position: absolute;
+            top: 4px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background-size: 42px 42px;
+            background-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3E .path%7B%7D %3C/style%3E %3Cg id='servicestack-svg'%3E%3Cpath fill='%23dddddd' class='path' stroke='null' d='m16.564516,43.33871c16.307057,2.035887 54.629638,20.41875 60.67742,46.306452l-78.241936,0c19.859879,-1.616734 36.825605,-27.344758 17.564516,-46.306452zm6.387097,-30.33871c6.446976,7.105645 9.520766,16.74617 9.26129,26.666129c16.546573,6.726411 41.376412,24.690121 46.625807,49.979033l19.161291,0c-8.123589,-43.132863 -54.529839,-73.551412 -75.048388,-76.645162z' /%3E%3C/g%3E%3C/svg%3E");
+        }
+        .icons {
+            display: block;
+            float: right;
+        }
+        .auth {
+            display: block;
+            width: 17px;
+            height: 17px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAIAAAC0D9CtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAADsSURBVDhPY/hPOsCr58Pi/w9s/t/k+X9P5//zjP+/X0OEcet5lvL/BgMKui3z/+d9oAwOPR9Xo6h+VfP/cQCI8dABKIlDD0QFBN0zAIn8eg7l/riNQ88dBYSeGyz/37T/f5YA5X5cjUMP0OkIPajo22lsel4UoKuDo1si//9+x9AD1IBHDzBs0MMAogEt0CDopsD/j8shqpD0IDSwIJS+bgbF7LfTQCdBlSH0oGl4VQ9CMIPRAFgPsgZgSgEGK17AgK4BmMAIAbCj33RDnUTIBggA2wPxLtCSr4ehwngB2D/A1ApEsKROAPz/DwCLE/At7aBI3gAAAABJRU5ErkJggg==);
+        }
+        h1 {
+            color: #FFF;
+            font-size: 26px;
+            font-weight: normal;
+            margin: 0;
+            padding: 0 0 0 15px;
+            line-height: 48px;
+            min-height: 48px;
+            border-radius: 0px;
+            border-bottom: 1px solid #191e23;
+            background: #2c3742; /* Old browsers */
+            background: -moz-linear-gradient(top,  #2c3742 0%, #28303a 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2c3742), color-stop(100%,#28303a)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #2c3742 0%,#28303a 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #2c3742 0%,#28303a 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #2c3742 0%,#28303a 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #2c3742 0%,#28303a 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c3742', endColorstr='#28303a',GradientType=0 ); /* IE6-9 */
+        }
+        h2 {
+            margin: 25px 0 20px 0;
+            color: #29323D;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px;
+        }
+        h3 {
+            color: #29323D;
+            font-size: 18px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        a {
+            color: #428bca;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover, a:focus {
+            color: #2a6496;
+            text-decoration: underline;
+        }
+        ul {
+            margin: 10px 0 0 10px;
+            padding: 0 0 0 10px;
+        }
+        li {
+            clear: left;
+            margin-top: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0 0 20px 0;
+        }
+        table, tr, th, td {
+            border: none;
+        }
+        .operations, .operation {
+            padding: 0 0 0 15px;
+        }
+        /* All Operations */
+        .operations table {
+            margin-left: 1.5em;
+        }
+        .operations th {
+            text-align: left;
+            font-weight: normal;
+            line-height: 18px;
+            min-width: 27em;
+            white-space: nowrap;
+        }
+        /* Single Operation */
+        .operations td {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: bold;
+            color: #CCC;
+            padding-left: 1.5em;
+            vertical-align: top;
+        }
+        .operation caption {
+            text-align: left;
+            font-size: 14px;
+            padding: 10px 0;
+            white-space: nowrap;
+        }
+        .operation tbody th {
+            text-align: left;
+        }
+        .operation thead th {
+            text-align: left;
+            text-transform: uppercase;
+        }
+        .operation th, .operation td {
+            padding: 5px 15px;
+            vertical-align: top;
+        }
+        .operation h4 {
+            margin: 10px 0;
+            padding: 0;
+        }
+        .operation li {
+            margin: 0;
+        }
+        .example {
+            padding-left: 15px;
+        }
+        .example h3 { 
+            color:#000000;
+            margin: 10px 0 0 -15px;
+        }
+        .example pre {
+            background-color: #E5E5CC;
+            border: 1px solid #F0F0E0;
+            font-family: Courier New;
+            font-size: 15px;
+            padding: 5px;
+            margin-right: 15px;
+            white-space: pre-wrap;
+            overflow:auto;
+        }
+        .example .value {
+            color: blue;
+        }    
+        .call-info {
+            margin: 0 0 20px 0;
+        }
+        #desc{
+            margin: 0;
+            padding: 0 0 15px 15px;
+            font-size: 16px;
+        }
+        #desc P {
+            margin: 5px 0;
+            padding: 0;
+            line-height: 20px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <a id="logo" href="https://servicestack.net" title="ServiceStack"></a>
+    <h1>Polis API</h1>
+    
+    <div class="operation">
+    <div>
+        <p><a href="https://polisapi.media.int/v2/metadata">&lt;back to all web services</a></p>
+        <h2>GetVotation</h2>
+
+		<table class='routes'><caption>The following routes are available for this service:</caption><tbody><tr><th>GET</th><th>/Polis.Votations</th><td></td><td><i></i></td></tr><tbody></tbody></table><table class='params'><caption><b>GetVotation</b> Parameters:</caption><thead><tr><th>Name</th><th>Parameter</th><th>Data Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>CaseId</td><td>query</td><td>int?</td><td>No</td><td></td></tr><tr><td>VotationId</td><td>query</td><td>int?</td><td>No</td><td></td></tr><tr><td>LocationId</td><td>query</td><td>int?</td><td>No</td><td></td></tr><tr><td>LocationTypeId</td><td>query</td><td>Values[]</td><td>No</td><td></td></tr><tr><td>VoteLocationId</td><td>query</td><td>int?</td><td>No</td><td></td></tr><tr><td>VoteLocationTypeId</td><td>query</td><td>Values?</td><td>No</td><td></td></tr><tr><td>DataConditionId</td><td>query</td><td>Values?</td><td>No</td><td></td></tr><tr><td>Timestamp</td><td>query</td><td>DateTime?</td><td>No</td><td></td></tr></tbody></table><table class='params'><caption><b>PolisBaseRequest</b> Parameters:</caption><thead><tr><th>Name</th><th>Parameter</th><th>Data Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>AuthKey</td><td>form</td><td>string</td><td>No</td><td></td></tr></tbody></table><table class='enum'><caption><b>Values</b> Enum:</caption><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody><tr><td>Land</td><td>1</td></tr><tr><td>Kanton</td><td>2</td></tr><tr><td>Bezirk</td><td>3</td></tr><tr><td>Gemeinde</td><td>4</td></tr><tr><td>AuslandCh</td><td>5</td></tr><tr><td>Stadtkreis</td><td>6</td></tr></tbody></table><table class='enum'><caption><b>Values</b> Enum:</caption><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody><tr><td>Resultat</td><td>3</td></tr><tr><td>Hochrechnung1</td><td>4</td></tr><tr><td>Web</td><td>5</td></tr><tr><td>Trend</td><td>6</td></tr><tr><td>Zwischenresultat</td><td>7</td></tr><tr><td>Hochrechnung2</td><td>8</td></tr><tr><td>Hochrechnung3</td><td>9</td></tr><tr><td>FremdeHochrechnung</td><td>10</td></tr></tbody></table><div class="call-info"><p>To override the Content-type in your clients, use the HTTP <b>Accept</b> Header, append  the <b>.json</b> suffix or  <b>?format=json</b></p><p>To embed the response in a <b>jsonp</b> callback, append <b>?callback=myCallback</b></p></div>
+
+		<div class="example">
+        <!-- REST Examples -->
+
+        <h3>HTTP + JSON</h3>
+        <p> The following are sample HTTP requests and responses. 
+            The placeholders shown need to be replaced with actual values.</p>
+
+<div class="request">
+<pre>
+GET /Polis.Votations HTTP/1.1 
+Host: polisapi.media.int 
+Accept: application/json
+</pre>
+</div>
+
+
+<div class="response">
+<pre>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: length
+
+{}
+</pre>
+</div>
+
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>

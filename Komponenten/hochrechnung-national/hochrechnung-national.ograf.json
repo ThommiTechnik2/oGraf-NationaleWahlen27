@@ -1,0 +1,159 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-hochrechnung-national",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Hochrechnung National (Videowand)",
+  "description": "Vollbild-Grafik für die Studio-Videowand: Parteistärken Schweiz als Balken, Partei für Partei. Jeder playAction lässt den nächsten Balken wachsen (neueste Partei hervorgehoben); ist eine Seite voll, beginnt der nächste Schritt eine neue Seite. Alle Balken im selben Massstab. Nach der letzten Partei blendet die Grafik aus. playAction mit goto springt zu einer Partei (z. B. Fortsetzen nach dem Ausblenden).",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": -1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": -1
+    },
+    {
+      "type": "stopAction",
+      "duration": 250
+    },
+    {
+      "type": "updateAction",
+      "duration": 400
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "titel": {
+        "type": "string",
+        "label": "Titel",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Hochrechnung Nationalrat"
+      },
+      "flagge": {
+        "type": "boolean",
+        "label": "Schweizer Kreuz hinter dem Titel",
+        "order": 2,
+        "default": true
+      },
+      "nachkommastellen": {
+        "type": "integer",
+        "label": "Nachkommastellen",
+        "minimum": 0,
+        "maximum": 1,
+        "order": 3,
+        "default": 1
+      },
+      "pro_seite": {
+        "type": "integer",
+        "label": "Parteien pro Seite",
+        "minimum": 1,
+        "maximum": 6,
+        "order": 4,
+        "default": 6
+      },
+      "seiten": {
+        "type": "array",
+        "label": "Parteien je Seite",
+        "description": "Optional, z. B. [6, 5]. Rest in Seiten zu «Parteien pro Seite».",
+        "order": 5,
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "default": []
+      },
+      "parteien": {
+        "type": "array",
+        "label": "Parteien",
+        "description": "In Anzeige-Reihenfolge (SRF: nach Stärke der letzten Wahl, Übrige am Schluss).",
+        "order": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kurz": {
+              "type": "string",
+              "label": "Partei",
+              "gddType": "single-line"
+            },
+            "farbe": {
+              "type": "string",
+              "label": "Farbe",
+              "gddType": "color-rrggbb",
+              "pattern": "^#[0-9a-f]{6}$"
+            },
+            "staerke": {
+              "type": "number",
+              "label": "Wähleranteil %"
+            },
+            "staerke_diff": {
+              "type": "number",
+              "label": "± Prozentpunkte zur letzten Wahl"
+            },
+            "staerke_diff_unsicher": {
+              "type": "boolean",
+              "label": "Veränderung im Fehlerbereich",
+              "description": "Ja: «±» statt Vorzeichen."
+            }
+          },
+          "required": [
+            "kurz",
+            "farbe"
+          ]
+        },
+        "default": [
+          {
+            "kurz": "SVP",
+            "farbe": "#4b8a3e",
+            "staerke": 29.0,
+            "staerke_diff": 3.4
+          },
+          {
+            "kurz": "SP",
+            "farbe": "#f0554d",
+            "staerke": 17.2,
+            "staerke_diff": 0.4,
+            "staerke_diff_unsicher": true
+          },
+          {
+            "kurz": "FDP",
+            "farbe": "#3872b5",
+            "staerke": 14.6,
+            "staerke_diff": -0.5
+          }
+        ]
+      }
+    }
+  }
+}

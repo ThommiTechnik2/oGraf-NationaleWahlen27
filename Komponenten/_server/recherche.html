@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recherche – Wahlen 2027</title>
+<style>
+  :root { --bg: #15181c; --panel: #1f2328; --taste: #2b3037; --text: #e8eaed; --leise: #9aa0a6; --akzent: #d0213c;
+          --zeile: #1a1d21; --hell: #3a2a2f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  header { display: flex; align-items: center; gap: 14px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid #000;
+           position: sticky; top: 0; z-index: 2; }
+  header a.menu { color: var(--text); background: var(--taste); padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 700; }
+  header h1 { font-size: 18px; margin: 0 12px 0 0; font-weight: 600; }
+  .reiter { display: flex; gap: 6px; }
+  .reiter button { border: 0; border-radius: 8px; padding: 10px 18px; font-size: 16px; font-weight: 700; background: var(--taste); color: var(--leise); cursor: pointer; }
+  .reiter button.aktiv { background: var(--akzent); color: #fff; }
+  .filter { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end; padding: 16px 20px; background: #191c20; border-bottom: 1px solid #000; }
+  .filter label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--leise); text-transform: uppercase; letter-spacing: .05em; }
+  .filter input, .filter select { font-size: 17px; padding: 9px 10px; border-radius: 8px; border: 1px solid #3a4048; background: var(--taste); color: var(--text); min-width: 90px; }
+  .filter input[type=text] { min-width: 220px; }
+  .filter input[type=number] { width: 100px; min-width: 0; }
+  .filter label.haken { flex-direction: row; align-items: center; gap: 8px; text-transform: none; letter-spacing: 0; font-size: 15px; color: var(--text); padding-bottom: 10px; }
+  .filter label.haken input { width: 22px; height: 22px; min-width: 0; }
+  .filter button.zurueck { border: 0; border-radius: 8px; padding: 10px 14px; background: var(--taste); color: var(--leise); font-size: 15px; cursor: pointer; }
+  .info { padding: 10px 20px; color: var(--leise); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap; }
+  .info b { color: var(--text); }
+  .info .hinweis { color: #f6d39a; }
+  main { padding: 0 20px 30px; }
+  table { width: 100%; border-collapse: collapse; font-size: 17px; }
+  th { position: sticky; top: 62px; background: var(--panel); text-align: left; font-size: 13px; color: var(--leise); text-transform: uppercase;
+       letter-spacing: .04em; padding: 10px 10px; cursor: pointer; user-select: none; white-space: nowrap; }
+  th.sortiert { color: #fff; }
+  th.sortiert::after { content: " ▼"; } th.sortiert.auf::after { content: " ▲"; }
+  th.fix { cursor: default; }
+  td { padding: 9px 10px; border-bottom: 1px solid #262a30; white-space: nowrap; }
+  tr:nth-child(even) td { background: var(--zeile); }
+  tr.laufend td { background: var(--hell); }
+  td.zahl, th.zahl { text-align: right; font-variant-numeric: tabular-nums; }
+  td.name { font-weight: 700; white-space: normal; }
+  td .leise { color: var(--leise); font-size: 14px; }
+  .marke { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 13px; font-weight: 700; background: var(--taste); }
+  .marke.rekord { background: var(--akzent); color: #fff; }
+  .marke.laufend { background: #7a5a12; color: #fff; }
+  .leer { padding: 40px 0; text-align: center; color: var(--leise); font-size: 18px; }
+  .ansicht[hidden] { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <a class="menu" href="/">MENU</a>
+  <h1>Recherche</h1>
+  <div class="reiter">
+    <button data-ansicht="mitglieder" class="aktiv">Ratsmitglieder seit 1848</button>
+    <button data-ansicht="staerke">Parteistärke seit 1971</button>
+  </div>
+</header>
+
+<section class="ansicht" id="mitglieder">
+  <div class="filter">
+    <label>Name<input type="text" id="m-name" placeholder="z. B. Bühlmann" autocomplete="off"></label>
+    <label>Partei<select id="m-partei"><option value="">alle</option></select></label>
+    <label>Kanton<select id="m-kanton"><option value="">alle</option></select></label>
+    <label>Rat<select id="m-rat"><option value="">beide</option><option value="NR">Nationalrat</option><option value="SR">Ständerat</option></select></label>
+    <label>Geschlecht<select id="m-geschlecht"><option value="">alle</option><option value="f">Frauen</option><option value="m">Männer</option></select></label>
+    <label>im Amt von<input type="number" id="m-von" min="1848" max="2100" placeholder="Jahr"></label>
+    <label>bis<input type="number" id="m-bis" min="1848" max="2100" placeholder="Jahr"></label>
+    <label class="haken"><input type="checkbox" id="m-imamt"> nur heute im Amt</label>
+    <button class="zurueck" data-zurueck="m">Filter leeren</button>
+  </div>
+  <div class="info" id="m-info"></div>
+  <main><table><thead><tr>
+    <th data-sort="name">Name</th><th data-sort="partei">Partei</th><th data-sort="kanton">Kanton</th><th class="fix">Rat</th>
+    <th data-sort="eintritt" class="zahl">Eintritt</th><th data-sort="austritt" class="zahl">Austritt</th>
+    <th data-sort="dauer" class="zahl">Jahre</th><th data-sort="alter" class="zahl">Alter bei Eintritt</th>
+  </tr></thead><tbody id="m-zeilen"></tbody></table></main>
+</section>
+
+<section class="ansicht" id="staerke" hidden>
+  <div class="filter">
+    <label>Partei<select id="s-partei"><option value="">alle</option></select></label>
+    <label>Gebiet<select id="s-kanton"></select></label>
+    <label>von<input type="number" id="s-von" min="1971" max="2100" placeholder="Jahr"></label>
+    <label>bis<input type="number" id="s-bis" min="1971" max="2100" placeholder="Jahr"></label>
+    <label class="haken"><input type="checkbox" id="s-familie" checked> Vorgängerparteien zusammenzählen (z. B. CVP + BDP = Mitte)</label>
+    <button class="zurueck" data-zurueck="s">Filter leeren</button>
+  </div>
+  <div class="info" id="s-info"></div>
+  <main><table><thead><tr>
+    <th data-sort="jahr" class="zahl">Jahr</th><th data-sort="kanton">Gebiet</th><th data-sort="partei">Partei</th>
+    <th data-sort="staerke" class="zahl">Stärke</th><th class="fix">Einordnung</th><th class="fix">Quelle</th>
+  </tr></thead><tbody id="s-zeilen"></tbody></table></main>
+</section>
+
+<script>
+const API = '/recherche/api/'
+const $ = id => document.getElementById(id)
+const sortierung = { m: { sort: 'eintritt', richtung: 'ab' }, s: { sort: 'jahr', richtung: 'ab' } }
+const KANTON_NAMEN = { CH: 'Schweiz', ZH: 'Zürich', BE: 'Bern', LU: 'Luzern', UR: 'Uri', SZ: 'Schwyz', OW: 'Obwalden', NW: 'Nidwalden',
+  GL: 'Glarus', ZG: 'Zug', FR: 'Freiburg', SO: 'Solothurn', BS: 'Basel-Stadt', BL: 'Basel-Landschaft', SH: 'Schaffhausen',
+  AR: 'Appenzell A.Rh.', AI: 'Appenzell I.Rh.', SG: 'St. Gallen', GR: 'Graubünden', AG: 'Aargau', TG: 'Thurgau', TI: 'Tessin',
+  VD: 'Waadt', VS: 'Wallis', NE: 'Neuenburg', GE: 'Genf', JU: 'Jura' }
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+const datum = d => d ? d.split('-').reverse().join('.') : ''
+const zahl = (v, n = 1) => v == null ? '' : Number(v).toFixed(n)
+
+async function holen (pfad, q) {
+  const p = new URLSearchParams(Object.entries(q).filter(([, v]) => v !== '' && v != null && v !== false))
+  const r = await fetch(API + pfad + '?' + p)
+  const d = await r.json()
+  if (!r.ok) throw new Error(d.title || d.fehler || ('Fehler ' + r.status))
+  return d
+}
+
+// ---------- Ratsmitglieder ----------
+let mZaehler = 0
+async function mitgliederLaden () {
+  const nr = ++mZaehler
+  const q = { name: $('m-name').value.trim(), partei: $('m-partei').value, kanton: $('m-kanton').value, rat: $('m-rat').value,
+    geschlecht: $('m-geschlecht').value, von: $('m-von').value, bis: $('m-bis').value, im_amt: $('m-imamt').checked ? '1' : '',
+    ...sortierung.m, limit: 500 }
+  try {
+    const d = await holen('mitglieder', q)
+    if (nr !== mZaehler) return
+    $('m-info').innerHTML = d.hinweis ? `<span class="hinweis">${esc(d.hinweis)}</span>`
+      : `<span><b>${d.total}</b> Amtszeiten${d.total > d.anzahl ? ` (erste ${d.anzahl} gezeigt)` : ''}</span>` +
+        (d.daten.length ? `<span>Oberste Zeile: <b>${esc(d.daten[0].vorname)} ${esc(d.daten[0].nachname)}</b></span>` : '')
+    $('m-zeilen').innerHTML = d.daten.length ? d.daten.map(z => `<tr>
+      <td class="name">${esc(z.vorname)} ${esc(z.nachname)} ${z.geschlecht === 'f' ? '<span class="leise">(F)</span>' : ''}</td>
+      <td>${esc(z.partei || '')}${z.familie && z.partei && z.familie !== z.partei ? ` <span class="leise">→ ${esc(z.familie)}</span>` : ''}</td>
+      <td>${esc(z.kanton || '')}</td><td>${esc(z.rat || '')}</td>
+      <td class="zahl">${datum(z.eintritt)}</td><td class="zahl">${z.austritt ? datum(z.austritt) : '<span class="marke laufend">im Amt</span>'}</td>
+      <td class="zahl">${zahl(z.dauer)}</td><td class="zahl">${z.alter_eintritt ?? ''}</td></tr>`).join('')
+      : '<tr><td colspan="8" class="leer">Keine Treffer</td></tr>'
+  } catch (e) { $('m-info').innerHTML = `<span class="hinweis">${esc(e.message)}</span>` }
+}
+
+// ---------- Parteistärke ----------
+let sZaehler = 0
+function einordnung (z, nurEineReihe) {
+  if (z.rang_tief == null || z.wahlen_in_reihe < 2) return ''
+  const n = z.wahlen_in_reihe
+  if (z.rang_tief === 1) return `<span class="marke rekord">tiefster Wert</span> <span class="leise">von ${n} Wahlen</span>`
+  if (z.rang_hoch === 1) return `<span class="marke rekord">höchster Wert</span> <span class="leise">von ${n} Wahlen</span>`
+  return z.rang_tief <= z.rang_hoch ? `${z.rang_tief}.-tiefster <span class="leise">von ${n}</span>`
+    : `${z.rang_hoch}.-höchster <span class="leise">von ${n}</span>`
+}
+function quelle (q) {
+  if (!q) return ''
+  if (q === 'resultat') return '<span class="marke laufend">laufende Wahl</span>'
+  if (q.startsWith('hochrechnung')) return `<span class="marke laufend">${esc(q.replace('hochrechnung', 'Hochrechnung'))}</span>`
+  return '<span class="leise">BFS</span>'
+}
+async function staerkeLaden () {
+  const nr = ++sZaehler
+  const q = { partei: $('s-partei').value, kanton: $('s-kanton').value, von: $('s-von').value, bis: $('s-bis').value,
+    gruppiert: $('s-familie').checked ? 'familie' : 'partei', ...sortierung.s, limit: 1000 }
+  try {
+    const d = await holen('parteistaerke', q)
+    if (nr !== sZaehler) return
+    let info = `<span><b>${d.total}</b> Werte${d.total > d.anzahl ? ` (erste ${d.anzahl} gezeigt)` : ''}</span>`
+    const lauf = d.daten.find(z => z.quelle && z.quelle !== 'bfs' && z.quelle !== 'bfs-zeitreihe')
+    if (lauf && q.partei && q.kanton !== 'alle' && lauf.wahlen_in_reihe > 1) {
+      info += `<span>Laufende Wahl: <b>${esc(lauf.partei)} ${zahl(lauf.staerke)} %</b> – ${einordnung(lauf).replace(/<[^>]+>/g, '')}</span>`
+    }
+    if (d.hinweis) info += `<span class="hinweis">${esc(d.hinweis)}</span>`
+    $('s-info').innerHTML = info
+    $('s-zeilen').innerHTML = d.daten.length ? d.daten.map(z => `<tr class="${z.quelle && !z.quelle.startsWith('bfs') ? 'laufend' : ''}">
+      <td class="zahl"><b>${z.wahl_jahr}</b></td><td>${esc(KANTON_NAMEN[z.kanton] || z.kanton || '')}</td>
+      <td class="name">${esc(z.partei)}${z.enthaelt ? ` <span class="leise">(${esc(z.enthaelt.split(',').join(' + '))})</span>` : ''}</td>
+      <td class="zahl"><b>${zahl(z.staerke)} %</b></td><td>${einordnung(z)}</td><td>${quelle(z.quelle)}</td></tr>`).join('')
+      : '<tr><td colspan="6" class="leer">Keine Werte</td></tr>'
+  } catch (e) { $('s-info').innerHTML = `<span class="hinweis">${esc(e.message)}</span>` }
+}
+
+// ---------- Bedienung ----------
+function verzoegert (fn, ms = 250) { let t; return () => { clearTimeout(t); t = setTimeout(fn, ms) } }
+const mNeu = verzoegert(mitgliederLaden), sNeu = verzoegert(staerkeLaden)
+document.querySelectorAll('#mitglieder .filter input, #mitglieder .filter select').forEach(el => el.addEventListener(el.type === 'text' || el.type === 'number' ? 'input' : 'change', mNeu))
+document.querySelectorAll('#staerke .filter input, #staerke .filter select').forEach(el => el.addEventListener(el.type === 'number' ? 'input' : 'change', sNeu))
+
+function kopfSetzen (bereich) {
+  const s = sortierung[bereich]
+  document.querySelectorAll(`#${bereich === 'm' ? 'mitglieder' : 'staerke'} th[data-sort]`).forEach(th => {
+    th.classList.toggle('sortiert', th.dataset.sort === s.sort)
+    th.classList.toggle('auf', th.dataset.sort === s.sort && s.richtung === 'auf')
+  })
+}
+document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
+  const bereich = th.closest('#mitglieder') ? 'm' : 's'
+  const s = sortierung[bereich]
+  if (s.sort === th.dataset.sort) s.richtung = s.richtung === 'ab' ? 'auf' : 'ab'
+  else { s.sort = th.dataset.sort; s.richtung = ['name', 'partei', 'kanton'].includes(s.sort) ? 'auf' : 'ab' }
+  kopfSetzen(bereich)
+  bereich === 'm' ? mitgliederLaden() : staerkeLaden()
+}))
+document.querySelectorAll('[data-zurueck]').forEach(b => b.addEventListener('click', () => {
+  const bereich = b.dataset.zurueck
+  document.querySelectorAll(`#${bereich === 'm' ? 'mitglieder' : 'staerke'} .filter input, #${bereich === 'm' ? 'mitglieder' : 'staerke'} .filter select`).forEach(el => {
+    if (el.type === 'checkbox') el.checked = el.id === 's-familie'
+    else if (el.id === 's-kanton') el.value = 'CH'
+    else el.value = ''
+  })
+  bereich === 'm' ? mitgliederLaden() : staerkeLaden()
+}))
+document.querySelectorAll('.reiter button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.reiter button').forEach(x => x.classList.toggle('aktiv', x === b))
+  document.querySelectorAll('.ansicht').forEach(a => { a.hidden = a.id !== b.dataset.ansicht })
+}))
+
+async function start () {
+  try {
+    const o = await holen('optionen', {})
+    for (const id of ['m-partei', 's-partei']) $(id).insertAdjacentHTML('beforeend', o.familien.map(f => `<option>${esc(f)}</option>`).join(''))
+    $('m-kanton').insertAdjacentHTML('beforeend', o.kantone.filter(k => k !== 'CH').map(k => `<option value="${k}">${k} – ${esc(KANTON_NAMEN[k])}</option>`).join(''))
+    $('s-kanton').innerHTML = `<option value="CH">Schweiz</option><option value="alle">alle Kantone</option>` +
+      o.kantone.filter(k => k !== 'CH').map(k => `<option value="${k}">${k} – ${esc(KANTON_NAMEN[k])}</option>`).join('')
+  } catch (e) { $('m-info').innerHTML = `<span class="hinweis">${esc(e.message)}</span>` }
+  kopfSetzen('m'); kopfSetzen('s')
+  mitgliederLaden(); staerkeLaden()
+}
+start()
+</script>
+</body>
+</html>

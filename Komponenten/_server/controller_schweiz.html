@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controller – Hochrechnung Schweiz</title>
+<style>
+  :root { --bg: #15181c; --panel: #1f2328; --taste: #2b3037; --taste-hover: #353b43; --text: #e8eaed; --leise: #9aa0a6;
+          --gewaehlt: #2a78be; --onair: #d0213c; --ok: #3a9d5d; --naechste: #8a5a12; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid #000; flex-wrap: wrap; }
+  header a.menu { color: var(--text); background: var(--taste); padding: 4px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
+  header a.menu:hover { background: var(--taste-hover); }
+  header h1 { font-size: 17px; margin: 0; font-weight: 600; }
+  header a { color: var(--leise); font-size: 13px; }
+  .badge { padding: 3px 10px; border-radius: 4px; font-size: 13px; font-weight: 600; background: var(--taste); }
+  .badge.onair { background: var(--onair); } .badge.ok { background: var(--ok); } .badge.warn { background: #b7791f; }
+  main { display: grid; grid-template-columns: minmax(640px, 820px) 1fr; gap: 20px; padding: 20px; }
+  .deck { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; background: #0b0c0e; padding: 14px; border-radius: 14px; }
+  .taste { aspect-ratio: 1; border: 0; border-radius: 10px; background: var(--taste); color: var(--text); cursor: pointer;
+           display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px;
+           user-select: none; transition: background .1s, transform .05s; overflow: hidden; text-align: center;
+           font-size: 13px; font-weight: 700; letter-spacing: .03em; }
+  .taste:hover { background: var(--taste-hover); }
+  .taste:active { transform: scale(0.96); }
+  .taste small { font-size: 10px; font-weight: 500; color: var(--leise); letter-spacing: 0; line-height: 1.2; }
+  .taste.leer { background: #191c20; cursor: default; }
+  .taste.ein { background: #2f5d3e; } .taste.aus { background: #6b2430; } .taste.leeren { background: #3d3d3d; color: #ccc; }
+  .taste.onair { background: var(--onair); } .taste.onair small { color: #ffd9de; }
+  .taste.naechste { background: var(--naechste); } .taste.naechste small { color: #ffe6bf; }
+  .taste.anzeige { background: #101215; cursor: default; font-size: 12px; }
+  .taste:disabled { opacity: .35; cursor: default; }
+  section { background: var(--panel); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
+  section h2 { margin: 0 0 10px; font-size: 14px; color: var(--leise); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .titel1 { font-size: 22px; font-weight: 600; } .titel2 { color: var(--leise); margin-bottom: 10px; }
+  .start { padding: 10px 12px; border-radius: 8px; background: #2a2216; color: #f6d39a; margin-bottom: 12px; }
+  .start.onair { background: #3a1820; color: #ffc9d2; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 5px 6px; border-bottom: 1px solid #2c3137; }
+  th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+  th { color: var(--leise); font-weight: 500; font-size: 13px; }
+  td .farbe { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
+  tr.seitenstart td { border-top: 2px solid #3a4048; }
+  tr.onair td { background: rgba(208,33,60,.22); }
+  tr.naechste td { background: rgba(138,90,18,.30); }
+  .plus { color: #6fb1ea; } .minus { color: #f0788a; }
+  .zeile { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  input[type=text] { background: #121417; color: var(--text); border: 1px solid #3a4048; border-radius: 6px; padding: 6px 8px; font: inherit; width: 140px; }
+  button.klein { background: var(--taste); color: var(--text); border: 0; border-radius: 6px; padding: 7px 12px; font: inherit; cursor: pointer; }
+  .meldung { margin-top: 10px; color: #f6c26b; min-height: 1.4em; }
+  .hilfe { color: var(--leise); font-size: 12px; margin-top: 12px; }
+  kbd { background: var(--taste); border-radius: 3px; padding: 0 5px; font-size: 11px; }
+  .vorschau { margin-top: 16px; position: relative; width: 100%; aspect-ratio: 16/9; background: #3a4a55; border-radius: 8px; overflow: hidden; }
+  .vorschau iframe { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; border: 0; transform-origin: 0 0; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="menu" title="Zurück zum Menü">☰ Menü</a>
+  <h1>Hochrechnung Schweiz</h1>
+  <span id="b-sendung" class="badge">aus</span>
+  <span id="b-modus" class="badge" hidden></span>
+  <span id="b-renderer" class="badge">Renderer?</span>
+  <span style="flex:1"></span>
+  <a href="/controller">→ Hochrechnung Kanton</a>
+  <a href="/controller/bauchbinden">→ Bauchbinden</a>
+  <span id="b-jahr" class="badge"></span>
+</header>
+<main>
+  <div>
+    <div class="deck" id="deck"></div>
+    <div class="hilfe">Die Tasten entsprechen 1:1 dem Stream Deck XL (8×4). Reihe 2 springt direkt zu einer Seite
+      (auf Sendung sofort, sonst als nächster Start). <b>Ausblenden mitten im Ablauf</b>: Die nächste Einblendung setzt mit
+      der Seite fort, die als Nächstes gekommen wäre (orange markiert). Nach der letzten Seite – oder bei einer neuen
+      Hochrechnung – beginnt sie wieder mit der stärksten Partei. <b>VON VORNE</b> setzt von Hand zurück.<br>
+      Gleicher Platz wie die Kantons-Hochrechnung: wird die eine eingeblendet, blendet die andere vorher aus.<br>
+      Tastatur: <kbd>Enter</kbd> Ein · <kbd>Leertaste</kbd> Weiter · <kbd>←</kbd> Zurück · <kbd>Esc</kbd> Aus · <kbd>Home</kbd> Von vorne.</div>
+    <label class="hilfe" style="display:block"><input type="checkbox" id="mit-vorschau"> Live-Vorschau des Renderers anzeigen</label>
+    <div class="vorschau" id="vorschau" hidden></div>
+  </div>
+  <div>
+    <section>
+      <h2>Vorschau Daten</h2>
+      <div class="titel1" id="t1">–</div>
+      <div class="titel2" id="t2"></div>
+      <div class="start" id="start"></div>
+      <table><thead><tr><th>Seite</th><th>Partei</th><th>Anteil</th><th>±</th><th>Sitze</th><th>±</th></tr></thead><tbody id="tabelle"></tbody></table>
+      <div class="zeile">
+        <label>Parteien je Seite <input type="text" id="seiten" placeholder="3,3,3,…"></label>
+        <button class="klein" id="seiten-ok">Übernehmen</button>
+        <label>Institut <input type="text" id="institut" placeholder="neueste"></label>
+        <button class="klein" id="institut-ok">Übernehmen</button>
+      </div>
+      <div class="meldung" id="meldung"></div>
+    </section>
+  </div>
+</main>
+<script>
+const REIHE1 = [['ein','EIN'],['weiter','WEITER'],['zurueck','ZURÜCK'],['aus','AUS'],['vonvorne','VON VORNE'],['neu','DATEN NEU'],['leeren','LEEREN']]
+const MODUS = { hochrechnung: ['Hochrechnung', 'ok'], resultat: ['Resultat', 'ok'] }
+const deck = document.getElementById('deck')
+let z = null
+REIHE1.forEach(([cmd, text]) => {
+  const b = document.createElement('button')
+  b.className = `taste ${cmd}`; b.dataset.befehl = cmd; b.innerHTML = `${text}<small></small>`
+  b.onclick = () => befehl(cmd)
+  deck.appendChild(b)
+})
+const anzeige = document.createElement('div'); anzeige.className = 'taste anzeige'; anzeige.id = 'anzeige'; deck.appendChild(anzeige)
+for (let i = 1; i <= 8; i++) {
+  const b = document.createElement('button')
+  b.className = 'taste seite leer'; b.dataset.seite = i; b.innerHTML = `SEITE ${i}<small></small>`
+  b.onclick = () => { if (!b.classList.contains('leer')) befehl(`seite/${i}`) }
+  deck.appendChild(b)
+}
+for (let i = 0; i < 16; i++) {
+  const link = i === 8 ? ['/controller', '◀ KANTON'] : i === 15 ? ['/', 'MENU'] : null
+  const d = document.createElement(link ? 'button' : 'div')
+  d.className = link ? 'taste' : 'taste leer'
+  if (link) { d.textContent = link[1]; d.onclick = () => { location.href = link[0] } }
+  deck.appendChild(d)
+}
+
+async function befehl (cmd, body) {
+  try {
+    const r = await fetch(`/controller/api/ch/${cmd}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })
+    const d = await r.json()
+    if (!r.ok) { meldung(d.title || 'Fehler'); await laden(); return }
+    zeigen(d)
+  } catch (e) { meldung(String(e)) }
+}
+function meldung (t) { document.getElementById('meldung').textContent = t || '' }
+function fmtDiff (v, stellen) {
+  if (typeof v !== 'number') return ''
+  const g = Number(v.toFixed(stellen))
+  if (g === 0) return `±${(0).toFixed(stellen)}`
+  return `${g > 0 ? '+' : '-'}${Math.abs(g).toFixed(stellen)}`
+}
+
+function zeigen (d) {
+  z = d
+  const naechsteSeite = d.naechster_start ? d.naechster_start.seite : null
+  document.querySelectorAll('.taste.seite').forEach(b => {
+    const n = Number(b.dataset.seite)
+    const s = d.seiten[n - 1]
+    b.classList.toggle('leer', !s)
+    b.querySelector('small').textContent = s ? s.parteien.join(' · ') : ''
+    b.classList.toggle('onair', d.auf_sendung && d.seite_aktuell === n)
+    b.classList.toggle('naechste', !d.auf_sendung && naechsteSeite === n)
+  })
+  document.querySelector('[data-befehl=ein]').disabled = d.auf_sendung
+  document.querySelector('[data-befehl=ein] small').textContent = !d.auf_sendung && naechsteSeite ? `ab Seite ${naechsteSeite}` : ''
+  document.querySelector('[data-befehl=weiter]').disabled = !d.auf_sendung
+  document.querySelector('[data-befehl=zurueck]').disabled = !d.auf_sendung || !d.schritt
+  document.querySelector('[data-befehl=aus]').disabled = !d.auf_sendung
+  document.getElementById('anzeige').innerHTML = d.auf_sendung ? `ON AIR<small>Seite ${d.seite_aktuell}/${d.seiten.length}</small>`
+    : (naechsteSeite ? `BEREIT<small>ab Seite ${naechsteSeite}</small>` : 'BEREIT')
+
+  const bs = document.getElementById('b-sendung')
+  bs.textContent = d.auf_sendung ? `ON AIR Seite ${d.seite_aktuell}` : 'aus'
+  bs.className = `badge ${d.auf_sendung ? 'onair' : ''}`
+  const bm = document.getElementById('b-modus'), m = d.meta || {}, mo = MODUS[m.modus]
+  bm.hidden = !mo
+  if (mo) {
+    bm.textContent = m.modus === 'hochrechnung' ? `${mo[0]} Nr. ${m.hochrechnung_nr ?? '?'} · ${m.institut || ''}` : mo[0]
+    bm.className = `badge ${mo[1]}`
+  }
+  const br = document.getElementById('b-renderer')
+  br.textContent = d.renderer_verbunden ? 'Renderer verbunden' : 'kein Renderer'
+  br.className = `badge ${d.renderer_verbunden ? 'ok' : 'warn'}`
+  document.getElementById('b-jahr').textContent = `Wahljahr ${d.jahr} · ${d.sprache.toUpperCase()} · Layer ${d.layer}`
+
+  const da = d.daten
+  document.getElementById('t1').textContent = da ? da.titel : 'Noch keine Daten'
+  document.getElementById('t2').textContent = da ? da.untertitel : ''
+  const st = document.getElementById('start')
+  st.className = `start ${d.auf_sendung ? 'onair' : ''}`
+  st.textContent = d.auf_sendung ? `Auf Sendung: Seite ${d.seite_aktuell} von ${d.seiten.length}`
+    : d.naechster_start ? `Nächste Einblendung beginnt mit Seite ${d.naechster_start.seite}: ${d.naechster_start.parteien.join(', ')}`
+      + (d.naechster_start.seite > 1 ? ' (fortsetzen)' : '') : 'Keine Daten'
+  const tb = document.getElementById('tabelle'); tb.innerHTML = ''
+  if (da) {
+    const stellen = da.nachkommastellen
+    let idx = 0
+    d.seiten.forEach(s => s.parteien.forEach((_, j) => {
+      const p = da.parteien[idx++]
+      const tr = document.createElement('tr')
+      tr.className = [j === 0 ? 'seitenstart' : '', d.auf_sendung && d.seite_aktuell === s.seite ? 'onair' : '',
+        !d.auf_sendung && naechsteSeite === s.seite ? 'naechste' : ''].join(' ')
+      tr.innerHTML = `<td>${j === 0 ? s.seite : ''}</td><td><span class="farbe" style="background:${p.farbe}"></span>${p.kurz}</td>
+        <td>${typeof p.staerke === 'number' ? p.staerke.toFixed(stellen) + '%' : '–'}</td>
+        <td class="${p.staerke_diff > 0 ? 'plus' : p.staerke_diff < 0 ? 'minus' : ''}">${(p.staerke_diff_unsicher && typeof p.staerke_diff === 'number' ? '±' + Math.abs(p.staerke_diff).toFixed(stellen) : fmtDiff(p.staerke_diff, stellen))}</td>
+        <td>${p.sitze ?? ''}</td><td class="${p.sitze_diff > 0 ? 'plus' : p.sitze_diff < 0 ? 'minus' : ''}">${fmtDiff(p.sitze_diff, 0)}</td>`
+      tb.appendChild(tr)
+    }))
+  }
+  const se = document.getElementById('seiten'); if (document.activeElement !== se) se.value = d.seiten_einstellung
+  const ins = document.getElementById('institut'); if (document.activeElement !== ins) ins.value = d.institut
+  meldung(d.meldung)
+}
+
+async function laden () {
+  try { zeigen(await (await fetch('/controller/api/ch/zustand')).json()) } catch (e) { meldung('Grafik-Server nicht erreichbar') }
+}
+setInterval(laden, 1500)
+laden()
+document.getElementById('seiten-ok').onclick = () => befehl('seiten', { wert: document.getElementById('seiten').value })
+document.getElementById('institut-ok').onclick = () => befehl('institut', { institut: document.getElementById('institut').value })
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return
+  if (e.key === 'Enter') befehl('ein')
+  else if (e.key === ' ') { e.preventDefault(); befehl('weiter') }
+  else if (e.key === 'ArrowLeft') befehl('zurueck')
+  else if (e.key === 'Escape') befehl('aus')
+  else if (e.key === 'Home') befehl('vonvorne')
+})
+const vorschau = document.getElementById('vorschau')
+document.getElementById('mit-vorschau').onchange = e => {
+  vorschau.hidden = !e.target.checked
+  vorschau.innerHTML = e.target.checked ? '<iframe src="/renderer?hintergrund=%233a4a55"></iframe>' : ''
+  skalieren()
+}
+function skalieren () { const f = vorschau.querySelector('iframe'); if (f) f.style.transform = `scale(${vorschau.clientWidth / 1920})` }
+window.addEventListener('resize', skalieren)
+</script>
+</body>
+</html>

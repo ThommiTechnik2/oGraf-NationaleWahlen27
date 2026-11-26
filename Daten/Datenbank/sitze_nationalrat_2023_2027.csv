@@ -1,0 +1,27 @@
+kanton_nummer,kanton,kuerzel,nr_sitze_2023,nr_sitze_2027,veraenderung,wahlverfahren_2027
+1,Zürich,ZH,36,36,0,Proporz
+2,Bern,BE,24,23,-1,Proporz
+3,Luzern,LU,9,10,1,Proporz
+4,Uri,UR,1,1,0,Majorz
+5,Schwyz,SZ,4,4,0,Proporz
+6,Obwalden,OW,1,1,0,Majorz
+7,Nidwalden,NW,1,1,0,Majorz
+8,Glarus,GL,1,1,0,Majorz
+9,Zug,ZG,3,3,0,Proporz
+10,Freiburg,FR,7,8,1,Proporz
+11,Solothurn,SO,6,6,0,Proporz
+12,Basel-Stadt,BS,4,4,0,Proporz
+13,Basel-Landschaft,BL,7,7,0,Proporz
+14,Schaffhausen,SH,2,2,0,Proporz
+15,Appenzell Ausserrhoden,AR,1,1,0,Majorz
+16,Appenzell Innerrhoden,AI,1,1,0,Majorz
+17,St. Gallen,SG,12,12,0,Proporz
+18,Graubünden,GR,5,4,-1,Proporz
+19,Aargau,AG,16,16,0,Proporz
+20,Thurgau,TG,6,6,0,Proporz
+21,Tessin,TI,8,8,0,Proporz
+22,Waadt,VD,19,19,0,Proporz
+23,Wallis,VS,8,8,0,Proporz
+24,Neuenburg,NE,4,4,0,Proporz
+25,Genf,GE,12,12,0,Proporz
+26,Jura,JU,2,2,0,Proporz

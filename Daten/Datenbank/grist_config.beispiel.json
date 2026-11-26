@@ -1,0 +1,8 @@
+{
+  "api_url": "https://grist.EURE-DOMAIN.ch/api",
+  "doc_id": "DOKUMENT-ID-AUS-DER-GRIST-URL",
+  "api_key_datei": "~/.grist_api_key",
+  "db": "wahlen.sqlite",
+  "wahl_jahr": 2027,
+  "push_resultate": true
+}

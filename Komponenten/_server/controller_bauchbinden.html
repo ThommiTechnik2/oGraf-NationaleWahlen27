@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controller – Bauchbinden</title>
+<style>
+  :root { --bg: #15181c; --panel: #1f2328; --taste: #2b3037; --taste-hover: #353b43; --text: #e8eaed; --leise: #9aa0a6;
+          --gewaehlt: #2a78be; --onair: #d0213c; --ok: #3a9d5d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid #000; }
+  header a.menu { color: var(--text); background: var(--taste); padding: 4px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
+  header a.menu:hover { background: var(--taste-hover); }
+  header h1 { font-size: 17px; margin: 0; font-weight: 600; }
+  header a { color: var(--leise); font-size: 13px; }
+  .badge { padding: 3px 10px; border-radius: 4px; font-size: 13px; font-weight: 600; background: var(--taste); }
+  .badge.onair { background: var(--onair); } .badge.ok { background: var(--ok); } .badge.warn { background: #b7791f; }
+  main { display: grid; grid-template-columns: minmax(640px, 820px) 1fr; gap: 20px; padding: 20px; }
+  .deck { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; background: #0b0c0e; padding: 14px; border-radius: 14px; }
+  .taste { aspect-ratio: 1; border: 0; border-radius: 10px; background: var(--taste); color: var(--text); cursor: pointer;
+           display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px;
+           user-select: none; transition: background .1s, transform .05s; overflow: hidden; text-align: center; }
+  .taste:hover { background: var(--taste-hover); }
+  .taste:active { transform: scale(0.96); }
+  .taste .z1 { font-size: 13px; font-weight: 700; line-height: 1.15; hyphens: auto; overflow-wrap: anywhere; }
+  .taste .z2 { font-size: 9.5px; color: var(--leise); line-height: 1.15; max-height: 3.5em; overflow: hidden; }
+  .taste.leer { background: #191c20; cursor: default; }
+  .taste.gewaehlt { background: var(--gewaehlt); } .taste.gewaehlt .z2 { color: #dbe8f5; }
+  .taste.onair { background: var(--onair); } .taste.onair .z2 { color: #ffd9de; }
+  .taste.befehl { font-size: 13px; font-weight: 700; letter-spacing: .03em; }
+  .taste.befehl small { font-size: 10px; font-weight: 500; color: var(--leise); }
+  .taste.ein { background: #2f5d3e; } .taste.aus { background: #6b2430; } .taste.leeren { background: #3d3d3d; color: #ccc; }
+  .taste.auto.an { background: #8a5a12; }
+  .taste:disabled { opacity: .35; cursor: default; }
+  section { background: var(--panel); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
+  section h2 { margin: 0 0 10px; font-size: 14px; color: var(--leise); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .zeile { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+  select, input[type=text] { background: #121417; color: var(--text); border: 1px solid #3a4048; border-radius: 6px; padding: 6px 8px; font: inherit; }
+  input[type=text] { flex: 1; min-width: 200px; }
+  button.klein { background: var(--taste); color: var(--text); border: 0; border-radius: 6px; padding: 7px 12px; font: inherit; cursor: pointer; }
+  button.klein:hover { background: var(--taste-hover); } button.klein.ein { background: #2f5d3e; }
+  .reiter { display: flex; gap: 4px; }
+  .reiter button { background: var(--taste); color: var(--leise); border: 0; padding: 6px 12px; border-radius: 6px; font: inherit; cursor: pointer; }
+  .reiter button.aktiv { background: var(--gewaehlt); color: #fff; }
+  .liste { max-height: 380px; overflow: auto; border-radius: 6px; background: #181b1f; }
+  .eintrag { display: grid; grid-template-columns: 34px 1fr auto; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #2c3137; cursor: pointer; }
+  .eintrag:hover { background: #242a31; }
+  .eintrag.gewaehlt { background: rgba(42,120,190,.30); }
+  .eintrag.onair { background: rgba(208,33,60,.35); }
+  .eintrag .nr { color: var(--leise); font-variant-numeric: tabular-nums; }
+  .eintrag .z2 { color: var(--leise); font-size: 13px; }
+  .eintrag .kat { color: var(--leise); font-size: 12px; }
+  .bb { position: relative; width: 100%; aspect-ratio: 16/9; background: #3a4a55; border-radius: 8px; overflow: hidden; }
+  .bb .muster { position: absolute; left: 0; bottom: 4%; font-family: "SRG SSR Type Text", "Helvetica Neue", Arial, sans-serif; }
+  .bb .n { display: block; width: fit-content; background: #a80a18; color: #fff; padding: 0 1.5% 0 4.5%; white-space: nowrap; }
+  .bb .f { display: block; width: fit-content; background: #e0e0e0; color: #212121; padding: 0 1.3% 0 4.5%; white-space: nowrap; }
+  .vorschau iframe { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; border: 0; transform-origin: 0 0; }
+  .meldung { margin-top: 10px; color: #f6c26b; min-height: 1.4em; }
+  .hilfe { color: var(--leise); font-size: 12px; margin-top: 12px; }
+  kbd { background: var(--taste); border-radius: 3px; padding: 0 5px; font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="menu" title="Zurück zum Menü">☰ Menü</a>
+  <h1>Bauchbinden</h1>
+  <span id="b-sendung" class="badge">aus</span>
+  <span id="b-auto" class="badge" hidden></span>
+  <span id="b-renderer" class="badge">Renderer?</span>
+  <span style="flex:1"></span>
+  <a href="/controller">→ Hochrechnung Kanton</a>
+  <a href="/controller/schweiz">→ Hochrechnung Schweiz</a>
+  <span id="b-jahr" class="badge"></span>
+</header>
+<main>
+  <div>
+    <div class="deck" id="deck"></div>
+    <div class="hilfe">Die Tasten entsprechen 1:1 dem Stream Deck XL (8×4): Reihen 1–3 sind 24 Einträge der Liste (Seite
+      <span id="seite-info">1/1</span>), Reihe 4 die Befehle. Eintrag antippen wählt ihn aus; ist eine Bauchbinde auf Sendung,
+      wird direkt gewechselt.<br>
+      Tastatur: <kbd>Enter</kbd> Ein · <kbd>Esc</kbd> Aus · <kbd>↑</kbd><kbd>↓</kbd> Auswahl · <kbd>Leertaste</kbd> Ein und nächste wählen.</div>
+    <section style="margin-top:16px">
+      <h2>Vorschau Auswahl</h2>
+      <div class="bb" id="muster"><div class="muster"><span class="n" id="m1"></span><span class="f" id="m2"></span></div></div>
+      <label class="hilfe"><input type="checkbox" id="mit-vorschau"> Stattdessen Live-Vorschau des Renderers
+        (zweite Renderer-Seite, die dieselben Befehle ausführt)</label>
+    </section>
+  </div>
+  <div>
+    <section>
+      <h2>Quelle</h2>
+      <div class="zeile">
+        <div class="reiter" id="reiter">
+          <button data-quelle="grist">Grist</button>
+          <button data-quelle="nr">Gewählte Nationalrat</button>
+          <button data-quelle="sr">Gewählte Ständerat</button>
+        </div>
+      </div>
+      <div class="zeile">
+        <label id="l-kategorie">Kategorie <select id="kategorie">
+          <option value="">alle</option><option>Gast</option><option>Politik</option><option>Expertise</option>
+          <option>Moderation</option><option>Reporter</option><option>Ort</option></select></label>
+        <label id="l-kanton" hidden>Kanton <select id="kanton"></select></label>
+        <button class="klein" id="neu-laden">Liste neu laden</button>
+      </div>
+      <div class="liste" id="liste"></div>
+      <div class="meldung" id="meldung"></div>
+    </section>
+    <section>
+      <h2>Freitext</h2>
+      <div class="zeile"><input type="text" id="f1" placeholder="Zeile 1 (Name)"></div>
+      <div class="zeile"><input type="text" id="f2" placeholder="Zeile 2 (Funktion, optional)"></div>
+      <div class="zeile">
+        <button class="klein" id="f-waehlen">Auswählen</button>
+        <button class="klein ein" id="f-ein">Direkt EIN</button>
+        <span class="hilfe" style="margin:0">Für Spontanes, das nicht in Grist steht.</span>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+const KANTONE = ['ZH','BE','LU','UR','SZ','OW','NW','GL','ZG','FR','SO','BS','BL','SH','AR','AI','SG','GR','AG','TG','TI','VD','VS','NE','GE','JU']
+const BEFEHLE = [
+  ['seite/vor', 'SEITE ▶'], ['vorherige', '▲ VORH.'], ['naechste', '▼ NÄCHSTE'],
+  ['ein', 'EIN'], ['aus', 'AUS'], ['auto/zyklus', 'AUTO-AUS'], ['link:/', 'MENU'], ['leeren', 'LEEREN']]
+const deck = document.getElementById('deck')
+let z = null
+
+for (let i = 1; i <= 24; i++) {
+  const b = document.createElement('button')
+  b.className = 'taste slot leer'; b.dataset.slot = i
+  b.innerHTML = '<span class="z1"></span><span class="z2"></span>'
+  b.onclick = () => { if (!b.classList.contains('leer')) befehl(`slot/${i}`) }
+  deck.appendChild(b)
+}
+BEFEHLE.forEach(([cmd, text]) => {
+  const b = document.createElement('button')
+  b.className = `taste befehl ${cmd.split('/')[0]}`; b.dataset.befehl = cmd
+  b.innerHTML = `${text}<small></small>`
+  b.onclick = () => cmd.startsWith('link:') ? (location.href = cmd.slice(5)) : befehl(cmd)
+  deck.appendChild(b)
+})
+document.getElementById('kanton').innerHTML = '<option value="">–</option>' + KANTONE.map(k => `<option>${k}</option>`).join('')
+
+async function befehl (cmd, body) {
+  try {
+    const r = await fetch(`/controller/api/bb/${cmd}`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body || {}) })
+    const d = await r.json()
+    if (!r.ok) { meldung(d.title || 'Fehler'); await laden(); return }
+    zeigen(d)
+  } catch (e) { meldung(String(e)) }
+}
+function meldung (t) { document.getElementById('meldung').textContent = t || '' }
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+
+function zeigen (d) {
+  z = d
+  const onairId = d.auf_sendung && d.eintrag_auf_sendung ? d.eintrag_auf_sendung.id : null
+  // Deck
+  document.querySelectorAll('.taste.slot').forEach(b => {
+    const s = d.slots[Number(b.dataset.slot) - 1]
+    b.classList.toggle('leer', !s)
+    b.querySelector('.z1').textContent = s ? s.zeile1 : ''
+    b.querySelector('.z2').textContent = s ? s.zeile2 : ''
+    const e = s ? d.liste[s.position] : null
+    b.classList.toggle('onair', !!e && e.id === onairId)
+    b.classList.toggle('gewaehlt', !!s && !d.frei && d.index === s.position && !(e && e.id === onairId))
+  })
+  const auto = document.querySelector('[data-befehl="auto/zyklus"]')
+  auto.classList.toggle('an', d.auto_aus > 0)
+  auto.querySelector('small').textContent = d.auto_aus ? `${d.auto_aus} s` : 'aus'
+  document.querySelector('[data-befehl="seite/vor"] small').textContent = `${d.seite + 1}/${d.seiten}`
+  document.querySelector('[data-befehl=aus]').disabled = !d.auf_sendung
+  document.querySelector('[data-befehl=ein]').disabled = !d.auswahl
+  document.getElementById('seite-info').textContent = `${d.seite + 1}/${d.seiten}`
+  // Kopf
+  const bs = document.getElementById('b-sendung')
+  bs.textContent = d.auf_sendung ? `ON AIR ${d.eintrag_auf_sendung.zeile1}` : 'aus'
+  bs.className = `badge ${d.auf_sendung ? 'onair' : ''}`
+  const ba = document.getElementById('b-auto')
+  ba.hidden = !(d.auf_sendung && d.auto_aus_rest !== null)
+  ba.textContent = `Auto-Aus ${Math.ceil(d.auto_aus_rest || 0)} s`; ba.className = 'badge warn'
+  const br = document.getElementById('b-renderer')
+  br.textContent = d.renderer_verbunden ? 'Renderer verbunden' : 'kein Renderer'
+  br.className = `badge ${d.renderer_verbunden ? 'ok' : 'warn'}`
+  document.getElementById('b-jahr').textContent = `Wahljahr ${d.jahr} · ${d.sprache.toUpperCase()} · Layer ${d.layer}`
+  // Quelle
+  document.querySelectorAll('#reiter button').forEach(b => b.classList.toggle('aktiv', b.dataset.quelle === d.quelle))
+  document.getElementById('l-kategorie').hidden = d.quelle !== 'grist'
+  document.getElementById('l-kanton').hidden = d.quelle === 'grist'
+  if (document.activeElement.id !== 'kategorie') document.getElementById('kategorie').value = d.kategorie || ''
+  if (document.activeElement.id !== 'kanton') document.getElementById('kanton').value = d.kanton || ''
+  // Liste
+  const liste = document.getElementById('liste')
+  const html = d.liste.map((e, i) => `<div class="eintrag ${e.id === onairId ? 'onair' : (!d.frei && d.index === i ? 'gewaehlt' : '')}" data-i="${i}">
+      <span class="nr">${i + 1}</span><span><div>${esc(e.zeile1)}</div><div class="z2">${esc(e.zeile2)}</div></span>
+      <span class="kat">${esc(e.kategorie)}</span></div>`).join('')
+  if (liste.dataset.html !== html) { liste.innerHTML = html; liste.dataset.html = html }
+  // Vorschau
+  const a = d.auswahl
+  document.getElementById('m1').textContent = a ? a.zeile1 : ''
+  document.getElementById('m2').textContent = a ? a.zeile2 : ''
+  document.getElementById('m2').style.display = a && a.zeile2 ? '' : 'none'
+  musterSkalieren()
+  meldung(d.meldung)
+}
+
+document.getElementById('liste').addEventListener('click', e => {
+  const el = e.target.closest('.eintrag'); if (el) befehl(`waehle/${el.dataset.i}`)
+})
+document.getElementById('liste').addEventListener('dblclick', e => {
+  const el = e.target.closest('.eintrag'); if (el) befehl(`waehle/${el.dataset.i}?ein=1`)
+})
+document.querySelectorAll('#reiter button').forEach(b => {
+  b.onclick = () => befehl(`quelle/${b.dataset.quelle}`, b.dataset.quelle !== 'grist' && z && z.kanton ? { kanton: z.kanton } : {})
+})
+document.getElementById('kategorie').onchange = e => befehl('kategorie', { kategorie: e.target.value })
+document.getElementById('kanton').onchange = e => { if (e.target.value) befehl(`quelle/${z.quelle === 'grist' ? 'nr' : z.quelle}`, { kanton: e.target.value }) }
+document.getElementById('neu-laden').onclick = () => befehl('liste')
+const frei = ein => befehl('frei', { zeile1: document.getElementById('f1').value, zeile2: document.getElementById('f2').value, ein: ein ? '1' : '0' })
+document.getElementById('f-waehlen').onclick = () => frei(false)
+document.getElementById('f-ein').onclick = () => frei(true)
+
+async function laden () {
+  try { zeigen(await (await fetch('/controller/api/bb/zustand')).json()) } catch (e) { meldung('Grafik-Server nicht erreichbar') }
+}
+setInterval(laden, 1000)
+laden()
+
+document.addEventListener('keydown', e => {
+  if (['INPUT', 'SELECT'].includes(e.target.tagName)) return
+  if (e.key === 'Enter') befehl('ein')
+  else if (e.key === 'Escape') befehl('aus')
+  else if (e.key === 'ArrowDown') { e.preventDefault(); befehl('naechste') }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); befehl('vorherige') }
+  else if (e.key === ' ') { e.preventDefault(); befehl('ein-weiter') }
+})
+
+// Vorschau: Muster der Auswahl (massstäblich) oder Live-Renderer
+const muster = document.getElementById('muster')
+function musterSkalieren () {
+  const s = muster.clientWidth / 1920
+  const m = muster.querySelector('.muster')
+  if (!m) return
+  m.style.bottom = `${(1080 - 1037) * s}px`
+  const n = document.getElementById('m1'), f = document.getElementById('m2')
+  n.style.fontSize = `${76 * s}px`; n.style.lineHeight = `${102 * s}px`
+  f.style.fontSize = `${44 * s}px`; f.style.lineHeight = `${59 * s}px`
+  const fr = muster.querySelector('iframe'); if (fr) fr.style.transform = `scale(${s})`
+}
+document.getElementById('mit-vorschau').onchange = e => {
+  muster.classList.toggle('vorschau', e.target.checked)
+  muster.querySelector('.muster').hidden = e.target.checked
+  const alt = muster.querySelector('iframe'); if (alt) alt.remove()
+  if (e.target.checked) muster.insertAdjacentHTML('beforeend', '<iframe src="/renderer?hintergrund=%233a4a55"></iframe>')
+  musterSkalieren()
+}
+window.addEventListener('resize', musterSkalieren)
+</script>
+</body>
+</html>

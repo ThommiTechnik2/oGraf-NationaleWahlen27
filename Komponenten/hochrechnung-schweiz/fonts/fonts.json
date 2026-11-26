@@ -1,0 +1,12 @@
+{
+  "hinweis": "SRG SSR Type (Web, WOFF2). Zentral gepflegt in Komponenten/_gemeinsam/fonts und beim Start in jede Grafik kopiert. Fehlende Dateien werden übersprungen (Rückfall: Systemschrift).",
+  "schriften": [
+    { "datei": "SRGSSRType_W_Lt.woff2",   "gewicht": 300 },
+    { "datei": "SRGSSRType_W_Rg.woff2",   "gewicht": 400 },
+    { "datei": "SRGSSRType_W_It.woff2",   "gewicht": 400, "stil": "italic" },
+    { "datei": "SRGSSRType_W_Md.woff2",   "gewicht": 500 },
+    { "datei": "SRGSSRType_W_Bd.woff2",   "gewicht": 700 },
+    { "datei": "SRGSSRType_W_BdIt.woff2", "gewicht": 700, "stil": "italic" },
+    { "datei": "SRGSSRType_W_He.woff2",   "gewicht": 900 }
+  ]
+}

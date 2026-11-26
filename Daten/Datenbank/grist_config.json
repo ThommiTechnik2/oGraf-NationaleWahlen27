@@ -1,0 +1,8 @@
+{
+  "api_url": "http://localhost:8484/o/docs/api",
+  "doc_id": "1TdW69aortD6",
+  "api_key_datei": "~/.grist_api_key",
+  "db": "wahlen.sqlite",
+  "wahl_jahr": 2027,
+  "push_resultate": true
+}

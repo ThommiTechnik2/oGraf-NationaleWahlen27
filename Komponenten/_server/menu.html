@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wahlen 2027 – Grafik</title>
+<style>
+  :root { --bg: #15181c; --panel: #1f2328; --taste: #2b3037; --taste-hover: #353b43; --text: #e8eaed; --leise: #9aa0a6;
+          --onair: #d0213c; --ok: #3a9d5d; --warn: #b7791f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 14px 24px; background: var(--panel); border-bottom: 1px solid #000; }
+  header h1 { font-size: 19px; margin: 0; font-weight: 600; }
+  .badge { padding: 3px 10px; border-radius: 4px; font-size: 13px; font-weight: 600; background: var(--taste); }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+  h2 { font-size: 14px; color: var(--leise); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin: 26px 0 12px; }
+  .kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  a.kachel { display: block; background: var(--panel); border-radius: 14px; padding: 20px; color: var(--text); text-decoration: none;
+             border: 2px solid transparent; transition: background .1s, border-color .1s; position: relative; min-height: 132px; }
+  a.kachel:hover { background: #262b31; border-color: #3a4048; }
+  a.kachel.onair { border-color: var(--onair); }
+  .kachel .titel { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .kachel .text { color: var(--leise); font-size: 13px; }
+  .kachel .status { display: inline-block; margin-bottom: 10px; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; background: var(--taste); color: var(--leise); }
+  .kachel.onair .status { background: var(--onair); color: #fff; }
+  .kachel .url { margin-top: 10px; font: 12px ui-monospace, Menlo, monospace; color: #7f8790; }
+  .zustand { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .punkt { background: var(--panel); border-radius: 10px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .lampe { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; flex: none; background: #555; }
+  .lampe.ok { background: var(--ok); box-shadow: 0 0 8px rgba(58,157,93,.7); }
+  .lampe.warn { background: var(--warn); } .lampe.fehler { background: var(--onair); }
+  .punkt b { display: block; } .punkt span { color: var(--leise); font-size: 13px; }
+  .hilfe { color: var(--leise); font-size: 13px; margin-top: 24px; }
+  code { font: 12px ui-monospace, Menlo, monospace; background: var(--taste); padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Wahlen 2027 · Grafik</h1>
+  <span class="badge" id="b-jahr">…</span>
+  <span style="flex:1"></span>
+  <span class="badge" id="b-zeit"></span>
+</header>
+<main>
+  <h2>Zustand</h2>
+  <div class="zustand">
+    <div class="punkt"><div class="lampe" id="l-renderer"></div><div><b>Renderer (OBS)</b><span id="t-renderer">…</span></div></div>
+    <div class="punkt"><div class="lampe" id="l-wand"></div><div><b>Renderer Videowand</b><span id="t-wand">…</span></div></div>
+    <div class="punkt"><div class="lampe" id="l-api"></div><div><b>Daten-API</b><span id="t-api">…</span></div></div>
+    <div class="punkt"><div class="lampe" id="l-grist"></div><div><b>Grist-Abgleich</b><span id="t-grist">…</span></div></div>
+    <div class="punkt"><div class="lampe" id="l-grafiken"></div><div><b>Grafiken</b><span id="t-grafiken">…</span></div></div>
+  </div>
+
+  <h2>Controller</h2>
+  <div class="kacheln">
+    <a class="kachel" href="/controller" id="k-kanton"><span class="status">aus</span>
+      <div class="titel">Hochrechnung Kanton</div>
+      <div class="text">26 Kantone, Sitze und Wähleranteil. Insert unten rechts, Layer 1.</div>
+      <div class="url">/controller · Stream Deck /sd/…</div></a>
+    <a class="kachel" href="/controller/schweiz" id="k-schweiz"><span class="status">aus</span>
+      <div class="titel">Hochrechnung Schweiz</div>
+      <div class="text">Parteistärke, stärkste Partei zuerst, setzt nach Ausblenden fort. Layer 1.</div>
+      <div class="url">/controller/schweiz · Stream Deck /sd/ch/…</div></a>
+    <a class="kachel" href="/controller/bauchbinden" id="k-bauchbinde"><span class="status">aus</span>
+      <div class="titel">Bauchbinden</div>
+      <div class="text">Aus Grist, Gewählte National-/Ständerat oder Freitext. Layer 2.</div>
+      <div class="url">/controller/bauchbinden · Stream Deck /sd/bb/…</div></a>
+    <a class="kachel" href="/controller/national" id="k-national"><span class="status">aus</span>
+      <div class="titel">Videowand National</div>
+      <div class="text">Parteistärken als Balken, Partei für Partei, Vollbild für die Studio-Videowand. Renderer «wand».</div>
+      <div class="url">/controller/national · Stream Deck /sd/nat/…</div></a>
+    <a class="kachel" href="/controller/beteiligung" id="k-beteiligung"><span class="status">aus</span>
+      <div class="titel">Wahlbeteiligung</div>
+      <div class="text">Ring mit der Beteiligung Schweiz, Vollbild für die Videowand. Renderer «wand».</div>
+      <div class="url">/controller/beteiligung · Stream Deck /sd/wb/…</div></a>
+    <a class="kachel" href="/controller/auszaehlung" id="k-auszaehlung"><span class="status">aus</span>
+      <div class="titel">Auszählungsstand</div>
+      <div class="text">Schweizer Karte mit Kantonsgrenzen: Resultat, Hochrechnung, kein Resultat. Renderer «wand».</div>
+      <div class="url">/controller/auszaehlung · Stream Deck /sd/az/…</div></a>
+    <a class="kachel" href="/recherche" id="k-recherche"><span class="status">Moderation</span>
+      <div class="titel">Recherche</div>
+      <div class="text">Freie Suche: Ratsmitglieder seit 1848 und Parteistärke seit 1971, mit der laufenden Wahl. Nichts geht on air.</div>
+      <div class="url">/recherche</div></a>
+  </div>
+
+  <h2>Ausgabe und Technik</h2>
+  <div class="kacheln">
+    <a class="kachel" href="/renderer" target="_blank"><div class="titel">Renderer</div>
+      <div class="text">Als Browserquelle in OBS, 1920×1080, transparent. Hier nur zum Anschauen öffnen –
+        jede geöffnete Renderer-Seite zeigt die Grafiken.</div><div class="url">/renderer</div></a>
+    <a class="kachel" href="/renderer/wand" target="_blank"><div class="titel">Renderer Videowand</div>
+      <div class="text">Vollbild für die Videowand (eigener Ausgang: zweite Browserquelle, Vollbild-Projektor oder eigener Rechner).</div>
+      <div class="url">/renderer/wand</div></a>
+    <a class="kachel" href="/renderer?test=1&hintergrund=%23345" target="_blank"><div class="titel">Renderer mit Raster</div>
+      <div class="text">Zum Ausrichten und Prüfen ohne OBS.</div><div class="url">/renderer?test=1</div></a>
+    <a class="kachel" href="/ograf/v1/" target="_blank"><div class="titel">oGraf-Server-API</div>
+      <div class="text">Für andere oGraf-Controller (EBU OGraf Server API v1).</div><div class="url">/ograf/v1/</div></a>
+  </div>
+
+  <div class="hilfe">Jeder Controller hat oben links einen Link zurück zu diesem Menü. Start, Stream-Deck-Belegung und Ablauf:
+    <code>README.md</code> im Projektordner «Wahlen 2027».</div>
+</main>
+<script>
+function lampe (id, klasse, text) {
+  document.getElementById(`l-${id}`).className = `lampe ${klasse}`
+  document.getElementById(`t-${id}`).textContent = text
+}
+function alter (iso) {
+  if (!iso) return null
+  const t = new Date(iso.endsWith('Z') || iso.includes('+') ? iso : iso + 'Z')
+  return Math.round((Date.now() - t.getTime()) / 1000)
+}
+async function laden () {
+  let z
+  try { z = await (await fetch('/controller/api/system')).json() } catch (e) {
+    ['renderer', 'wand', 'api', 'grist', 'grafiken'].forEach(i => lampe(i, 'fehler', 'Grafik-Server nicht erreichbar'))
+    return
+  }
+  document.getElementById('b-jahr').textContent = `Wahljahr ${z.jahr} · ${z.sprache.toUpperCase()}`
+  document.getElementById('b-zeit').textContent = z.zeit
+  lampe('wand', z.renderer_wand.verbunden ? 'ok' : 'warn',
+    z.renderer_wand.verbunden ? `${z.renderer_wand.anzahl} Seite(n) verbunden` : 'nicht verbunden – /renderer/wand öffnen')
+  lampe('renderer', z.renderer.verbunden ? 'ok' : 'warn',
+    z.renderer.verbunden ? `${z.renderer.anzahl} Seite(n) verbunden` : 'kein Renderer – OBS-Browserquelle aktualisieren')
+  const a = z.wahlen_api
+  lampe('api', a.erreichbar ? 'ok' : 'fehler', a.erreichbar
+    ? (a.stand && a.stand.vorhanden ? `Daten ${z.jahr}: ${a.stand.kantone_abgeschlossen}/${a.stand.kantone_total} Kantone abgeschlossen` : `läuft, noch keine Resultate ${z.jahr}`)
+    : 'nicht erreichbar – wahlen_api.py starten')
+  const s = alter(a.letzter_grist_abgleich)
+  lampe('grist', !a.erreichbar ? '' : s === null ? 'warn' : s < 120 ? 'ok' : 'warn',
+    !a.erreichbar ? '–' : s === null ? 'noch nie' : s < 120 ? `vor ${s} s` : `vor ${Math.round(s / 60)} min – läuft grist_sync.py loop?`)
+  lampe('grafiken', z.grafiken.length ? 'ok' : 'fehler', z.grafiken.length ? `${z.grafiken.length}: ${z.grafiken.map(g => g.replace('wahlen2027-', '')).join(', ')}` : 'keine gefunden')
+  for (const [k, v] of Object.entries(z.auf_sendung)) {
+    const el = document.getElementById(`k-${k}`)
+    el.classList.toggle('onair', v.an)
+    el.querySelector('.status').textContent = v.an ? `ON AIR${v.text ? ' · ' + v.text : ''}` : 'aus'
+  }
+}
+laden()
+setInterval(laden, 2000)
+</script>
+</body>
+</html>

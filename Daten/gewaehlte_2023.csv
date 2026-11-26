@@ -1,0 +1,247 @@
+rat,vorname,nachname,partei,kanton,stimmen,neu,geschlecht,geburtsjahr,beruf
+NR,Jacqueline,Badran,SP,ZH,150529,0,w,1961,"Unternehmerin, Biologin und Staatswissenschafterin HSG"
+NR,Gregor,Rutz,SVP,ZH,139650,0,m,1972,"lic.iur, Unternehmer"
+NR,Alfred 'Fredi',Heer,SVP,ZH,131951,0,m,1961,Unternehmer
+NR,Thomas 'Tommy',Matter,SVP,ZH,129707,0,m,1966,Unternehmer
+NR,Mauro,Tuena,SVP,ZH,124244,0,m,1972,"Kleinunternehmer, Computer-Techniker"
+NR,Barbara,Steinemann,SVP,ZH,123919,0,w,1976,"Treuhänderin, lic. iur."
+NR,Benjamin 'Beni',Fischer,SVP,ZH,122426,0,m,1991,Betriebsökonom FH
+NR,Werner,Salzmann,SVP,BE,122105,1,m,1962,Ing. Agr. FH/Chefexperte Landwirtschaft Steuerverwaltung
+NR,Mattea,Meyer,SP,ZH,121837,0,w,1987,Co-Präsidentin SP Schweiz
+NR,Lars,Guggisberg,SVP,BE,121468,0,m,1977,"Direktor Berner KMU, Rechtsanwalt"
+NR,Martin,Haab,SVP,ZH,121446,0,m,1962,eidg. dipl. Landwirt
+NR,Nina,Fehr Düsel,SVP,ZH,121213,1,w,1980,"Unternehmensjuristin, Dr. iur."
+NR,Bruno,Walliser,SVP,ZH,120698,0,m,1966,eidg. dipl. Kaminfegermeister
+NR,Martin,Hübscher,SVP,ZH,120588,1,m,1969,Landwirt. Ing Agr FH
+NR,Flavia,Wasserfallen,SP,BE,119677,0,w,1979,"Politologin, Verwaltungsrätin"
+NR,Priska,Seiler Graf,SP,ZH,109073,0,w,1968,"Nationalrätin, Sekundarlehrerin"
+NR,Erich,Hess,SVP,BE,108776,0,m,1981,Unternehmer/Lastwagenführer
+NR,Min Li,Marti,SP,ZH,106300,0,w,1974,Verlegerin
+NR,Manfred,Bühler,SVP,BE,105240,0,m,1979,Rechtsanwalt/Avocat
+NR,Fabian,Molina,SP,ZH,104860,0,m,1990,Co-Präsident SWISSAID
+NR,Nadja,Umbricht Pieren,SVP,BE,101447,0,w,1980,Führungsfachfrau eidg. FA/dipl Kleinkinderzieherin
+NR,Katja,Riem,SVP,BE,101345,1,w,1996,"Winzerin EFZ, Landwirtin EFZ, Agronomin FH"
+NR,Thomas,Knutti,SVP,BE,100585,1,m,1973,"Landwirt, Unternehmer"
+NR,Céline,Widmer,SP,ZH,98563,0,w,1978,Projektleiterin Präsidialdepartement Stadt Zürich
+NR,Ernst,Wandfluh,SVP,BE,95684,1,m,1976,Bergbauer
+NR,Islam,Alijaj,SP,ZH,95054,1,m,1986,"Politikberater, Handicap-Lobbyist, Körperbehinderter"
+NR,Benjamin,Giezendanner,SVP,AG,93141,0,m,1982,
+NR,Anna,Rosenwasser,SP,ZH,92462,1,w,1990,Journalistin und Autorin
+NR,Tiana Angelina,Moser,GLP,ZH,83281,0,w,1979,"Umwelt- und Politikwissenschafterin, Nationalrätin, Fraktionspräsidentin"
+NR,Nadine,Masshardt,SP,BE,80947,0,w,1984,"Nationalrätin, Historikerin"
+NR,Andri,Silberschmidt,FDP,ZH,80724,0,m,1994,"Logistiker, Start-Up-Unternehmer"
+NR,Jürg,Grossen,GLP,BE,78289,0,m,1969,"Elektroplaner, Unternehmer, Nationalrat"
+NR,Martina,Bircher,SVP,AG,77305,0,w,1984,Bertriebsökonomin FH
+NR,Regine,Sauter,FDP,ZH,76445,0,w,1966,Direktorin Zürcher Handelskammer
+NR,Thomas,Burgherr,SVP,AG,74396,0,m,1962,"Eidg. dipl. Zimmermeister, Holzbau-Unternehmer"
+NR,Matthias,Aebischer,SP,BE,74358,0,m,1967,Journalist und Lehrer
+NR,Martin,Bäumle,GLP,ZH,74301,0,m,1964,"dipl. chem. ETH, Atomsphärenwissenschaft, Nationalrat"
+NR,Pierre-Yves,Maillard,SP,VD,73626,0,m,1968,"Conseiller national, Président de l'Union syndicale suisse"
+NR,Christoph,Riner,SVP,AG,72918,1,m,1977,"Kaufmann, Präsident Einbürg-Komm. Grosser Rat 2016"
+NR,Tamara,Funiciello,SP,BE,71811,0,w,1990,"Politikerin, politische Aktivistin und Beraterin"
+NR,Andreas,Glarner,SVP,AG,71355,0,m,1962,Unternehmer
+NR,Stefanie,Heimgartner,SVP,AG,70950,0,w,1987,Transportunternehmerin
+NR,Mike,Egger,SVP,SG,70471,0,m,1992,"Fleischfachmann, Leiter Business Development, Executive MBA FH GR, Betriebswirtschafter NDS HF"
+NR,Hans-Peter,Portmann,FDP,ZH,70345,0,m,1963,Bankkaufmann
+NR,Beat,Walti,FDP,ZH,70331,0,m,1968,Rechtsanwalt
+NR,Balthasar,Glättli,Grüne,ZH,68354,0,m,1972,"Präsident GRÜNE Schweiz, Nationalrat"
+NR,Alois,Huber,SVP,AG,67952,0,m,1962,Meisterlandwirt
+NR,Marionna,Schlatter,Grüne,ZH,66965,0,w,1980,"Soziologin, Pilzkontrolleurin"
+NR,Bastien,Girod,Grüne,ZH,66127,0,m,1980,"Nationalrat, Umweltnaturwissenschafter, ETH-Privatdozent, Geschäftsführer"
+NR,Bettina,Balmer,FDP,ZH,62504,1,w,1966,Kinderchirurgin FMH
+NR,Philipp,Kutter,Mitte,ZH,62270,0,m,1975,"lic. phil., Stadtpärisident, PR-Berater"
+NR,Kilian,Baumann,Grüne,BE,61393,0,m,1980,"Biobauer, Nationalrat, Hausmann."
+NR,Christian,Wasserfallen,FDP,BE,61214,0,m,1981,Dipl. Masch.Ing. FH
+NR,Aline,Trede,Grüne,BE,60809,0,w,1983,"Nationalrätin, Umweltnaturwissenschaftlerin"
+NR,Lukas,Reimann,SVP,SG,60643,0,m,1982,"Jurist, lic. iur."
+NR,Corina,Gredig,GLP,ZH,58579,0,w,1987,Sozialwissenschafterin MA UZH
+NR,Kathrin,Bertschy,GLP,BE,57821,0,w,1979,"Ökonomin, Geschäftsleitende Co-Präsidentin alliance F"
+NR,Roland Rino,Büchel,SVP,SG,56077,0,m,1965,"Sportmanager, Kleinunternehmer"
+NR,Roger,Nordmann,SP,VD,55530,0,m,1973,Conseiller national
+NR,Samuel,Bendahan,SP,VD,55404,0,m,1980,"Economiste, Maître d'Enseignement et de Recherche"
+NR,Michael,Götte,SVP,SG,55346,0,m,1979,"Gemeindepräsident Tübach, Leiter kantonale Politik IHK St.Gallen-Appenzell, Executive MBA FHO"
+NR,Barbara,Schaffner,GLP,ZH,55193,0,w,1968,"Dr. sc. nat. ETH, Physikerin Energietechnik, Nationalrätin, Gemeindepräsidentin"
+NR,Katharina,Prelicz-Huber,Grüne,ZH,54063,0,w,1959,"Nationalrätin, Präsidentin VPOD Schweiz, Professorin für Soziale Arbeit"
+NR,Christine,Badertscher,Grüne,BE,52719,0,w,1982,Agronomin
+NR,Lorenz,Hess,Mitte,BE,52334,0,m,1961,Eidg.dipl. PR-Berater
+NR,Jacqueline,de Quattro,FDP,VD,51513,0,w,1960,Avocate conseil
+NR,Brigitte,Crottaz,SP,VD,51241,0,w,1957,"Médecin, spécialiste en Endocrinologie-Diabétologie"
+NR,Gabriela,Suter,SP,AG,50463,0,w,1972,"lic. phil. I, Nationalrätin, Historikerin, Gymnasiallehrerin"
+NR,Pascal,Broulis,FDP,VD,49806,1,m,1965,Président de Y-Parc
+NR,Ursula,Zybach,SP,BE,47458,1,w,1967,"dipl. Lebensmittel Ing. ETH, Grossrätin"
+NR,Walter,Gartmann,SVP,SG,47280,1,m,1969,"Unternehmer & Winzer, Kantonsrat, Kantonalpräsident SVP & St. Gallischer Kantonal Schützenverband"
+NR,Franz,Grüter,SVP,LU,47054,0,m,1963,VR Präsident green.ch AG
+NR,Olivier,Feller,FDP,VD,46717,0,m,1974,Directeur de la CVI
+NR,Cédric,Wermuth,SP,AG,44260,0,m,1986,"lic. phil. I, Co-Präsident SP Schweiz"
+NR,Melanie,Mettler,GLP,BE,43133,0,w,1977,"Nachhaltigkeitsberaterin, Nationalrätin"
+NR,Diana,Gutjahr,SVP,TG,42993,0,w,1984,Unternehmerin
+NR,Jean,Tschopp,SP,VD,42363,1,m,1982,Responsable du service juridique (Responsable conseil)
+NR,Reto,Nause,Mitte,BE,42022,1,m,1971,Gemeinderat
+NR,Maja,Riniker,FDP,AG,41939,0,w,1978,Betriebsökonomin FH
+NR,Jessica,Jaccoud,SP,VD,41475,1,w,1983,Avocate
+NR,Manuel,Strupler,SVP,TG,41463,0,m,1980,Gartenbauunternehmer und Landwirt
+NR,Laurent,Wehrli,FDP,VD,41340,0,m,1965,"Conseiller national, Entrepreneur, Président des pompiers suisses"
+NR,Leo,Müller,Mitte,LU,40222,0,m,1958,Rechtsanwalt und Notar
+NR,Marianne,Binder-Keller,Mitte,AG,40107,0,w,1958,"Kommunikationsberaterin, Publizistin, Präsidentin Die Mitte AG"
+NR,Nicole,Barandun,Mitte,ZH,39976,1,w,1968,Rechtsanwältin
+NR,Vroni,Thalmann-Bieri,SVP,LU,39287,1,w,1969,"Kaufm. Bankangestellte jetzt Sozialvorsteherin Flühli-Sörenberg, Kantonsrätin, Bäuerin"
+NR,Priska,Wismer-Felder,Mitte,LU,38336,0,w,1970,"Familienfrau, Bäuerin und Nationalrätin"
+NR,Pascal,Schmid,SVP,TG,37401,1,m,1976,selbständiger Rechtsanwalt
+NR,Sophie,Michaud Gigon,Grüne,VD,35694,0,w,1975,Secrétaire générale de la FRC
+NR,Yvonne,Bürgin,Mitte,ZH,35169,1,w,1970,"Disponentin/Sachbearbeiterin, Gemeindepräsidentin, Kantonsrätin"
+NR,Pius,Kaufmann,Mitte,LU,34839,1,m,1971,"Gemeindeammann, Kantonsrat, Meisterlandwirt, Betriebswirtschafter HF"
+NR,Jacques,Nicolet,SVP,VD,34453,0,m,1965,"Conseiller national, Président ASSAF, Agriculteur"
+NR,Markus,Ritter,Mitte,SG,34285,0,m,1967,"Meisterlandwirt, Präsident Schweizer Bauernverband, Wirtschaftsingenieur FH, Nationalrat"
+NR,Eric,Nussbaumer,SP,BL,33859,0,m,1960,"Elektroingenieur HTL, Nationalrat"
+NR,Franziska,Ryser,Grüne,SG,33799,0,w,1991,Maschineningenieurin
+NR,Samira,Marti,SP,BL,32885,0,w,1994,Ökonomin (M.A. UZH)
+NR,Raphaël,Mahaim,Grüne,VD,32608,0,m,1983,Avocat
+NR,Barbara,Gysi,SP,SG,32477,0,w,1964,Sozialpädagogin FH
+NR,Simone,de Montmollin,FDP,GE,32414,0,w,1968,Ingénieure Oenologue
+NR,Marcel,Dobler,FDP,SG,32222,0,m,1980,Unternehmer und Nationalrat
+NR,Matthias Samuel,Jauslin,FDP,AG,32143,0,m,1962,"Eidg. dipl. Elektroinstallateur, Unternehmer"
+NR,Léonore,Porchet,Grüne,VD,31516,0,w,1989,Co-directrice du festival de bande dessinée lausannoise BDFIL
+NR,Irène,Kälin,Grüne,AG,31436,0,w,1987,Nationalrätin und Mutter
+NR,Sidney,Kamerzin,Mitte,VS,31398,0,m,1975,"avocat et notaire, docteur en droit"
+NR,Andreas,Gafner,EDU,BE,31176,0,m,1971,Betriebsleiter Landwirtschaft
+NR,Pierre-André,Page,SVP,FR,31145,0,m,1960,Conseiller national / agriculteur
+NR,Marcel,Dettling,SVP,SZ,30922,0,m,1981,Landwirt
+NR,Michaël,Buffat,SVP,VD,30883,0,m,1979,"Conseiller national, Diplôme fédéral d’expert en économie bancaire"
+NR,Cyril,Aellen,FDP,GE,30881,1,m,1972,Avocat
+NR,Yvan,Pahud,SVP,VD,30615,1,m,1980,Entrepreneur forestier et responsable des ventes en Suisse romande pour Schilliger Holz AG
+NR,Susanne,Vincenz-Stauffacher,FDP,SG,30119,0,w,1967,"lic. iur. HSG, selbstständige Rechtsanwältin, Ombudsfrau, Nationalrätin (bisher)"
+NR,Christian,Imark,SVP,SO,29625,0,m,1982,Unternehmer
+NR,Thomas,de Courten,SVP,BL,29610,0,m,1966,"eidg. dipl. Betriebsökonom, Unternehmer"
+NR,Marc,Jost,EVP,BE,29406,0,m,1974,Beauftragter Public Affairs
+NR,Sandra,Sollberger,SVP,BL,28960,0,w,1973,"Eidg. dipl. Malermeisterin, Geschäftsführerin"
+NR,Philipp Matthias,Bregy,Mitte,VS,28872,0,m,1978,Rechtsanwalt
+NR,Simona,Brizzi,SP,AG,28814,1,w,1973,"lic. phil., Hochschuldozentin, Grossrätin"
+NR,Benjamin,Roduit,Mitte,VS,28575,0,m,1962,Conseiller national
+NR,Sylvain,Freymond,SVP,VD,28505,1,m,1984,Agriculteur
+NR,Martin,Candinas,Mitte,GR,28400,0,m,1980,"Nationalrat,  Fachspezialist Vertrieb"
+NR,Alex,Farinelli,FDP,TI,27868,0,m,1981,Vicedirettore SSIC
+NR,Nik,Gugger,EVP,ZH,26781,0,m,1970,"Sozialunternehmer, Unternehmensberater, Nationalrat"
+NR,Andreas,Meier,Mitte,AG,25276,0,m,1962,Weinbau Ing. HTL/Geschäftsführer
+NR,Valérie,Piller Carrard,SP,FR,24923,0,w,1978,Conseillère nationale/Employée de commerce
+NR,Fabio,Regazzi,Mitte,TI,24651,0,m,1962,Imprenditore
+NR,Philippe,Nantermod,FDP,VS,24443,0,m,1984,Avocat
+NR,Nicolas,Kolly,SVP,FR,23307,1,m,1986,Avocat
+NR,Beat,Flach,GLP,AG,23259,0,m,1965,"Jurist MLaw/SIA, Nationalrat"
+NR,Christian,Dandrès,SP,GE,22700,0,m,1981,"juriste, avocat"
+NR,Claudia,Friedl,SP,SG,22546,0,w,1960,"Dr. sc. nat. ETH, Umweltnaturwissenschaftlerin, Präsidentin Casafair, Vorstand WWF SG"
+NR,Sarah,Wyss,SP,BS,22032,0,w,1988,"Nationalrätin, Co-Leiterin Direktion für Medizin und Pflege der psychiatrischen Dienste Bern"
+NR,Magdalena,Martullo-Blocher,SVP,GR,21795,0,w,1969,Unternehmerin EMS-Chemie
+NR,Nicolò,Paganini,Mitte,SG,21340,0,m,1966,"lic.rer.pol., lic.iur.HSG, Präsident Schweizer Tourismus-Verband, Nationalrat"
+NR,Jon,Pult,SP,GR,21290,0,m,1984,"lic. phil., Strategie- und Kommunikationsberater"
+NR,Rémy,Wyssmann,SVP,SO,21264,1,m,1967,Rechtsanwalt und Notar
+NR,Christine,Bulliard-Marbach,Mitte,FR,21186,0,w,1959,"Responsable d’une exploitation agricole, institutrice d’école primaire de formation"
+NR,Piero,Marchesi,SVP,TI,20977,0,m,1981,Imprenditore
+NR,Simone,Gianini,FDP,TI,20800,1,m,1976,Avvocato e notaio
+NR,Jean-Luc,Addor,SVP,VS,20740,0,m,1964,Avocat
+NR,Mauro,Poggia,MCG,GE,20385,1,m,1959,Avocat
+NR,Christian,Lohr,Mitte,TG,20248,0,m,1962,"Nationalrat, Dozent, Publizist"
+NR,Peter,Schilliger,FDP,LU,20140,0,m,1959,Unternehmer in der Gebäudetechnik
+NR,Daniela,Schneeberger,FDP,BL,19834,0,w,1967,"Treuhänderin, Nationalrätin"
+NR,Bruno,Storni,SP,TI,19780,0,m,1954,Consigliere nazionale
+NR,Céline,Amaudruz,SVP,GE,19618,0,w,1979,Gestionnaire de fortune
+NR,David,Roth,SP,LU,19593,1,m,1985,Zentralsekretär Syndicom
+NR,Michael,Graber,SVP,VS,19509,0,m,1981,Nationalrat und Stadtrat / Rechtsanwalt und Notar
+NR,Estelle,Revaz,SP,GE,19131,1,w,1989,"Violoncelliste, artiste 100% indépendante, auto-entrepreneuse"
+NR,Marie-France,Roth Pasquier,Mitte,FR,19118,0,w,1968,Conseillère communale
+NR,Laurence,Fehlmann Rielle,SP,GE,19033,0,w,1955,"Lic. en sciences politique, diplôme IDHEAP, diplôme en santé publique"
+NR,Florence,Brenzikofer,Grüne,BL,18893,0,w,1975,"Nationalrätin, Sekundarlehrerin phil.-hist."
+NR,Gerhard,Andrey,Grüne,FR,18759,0,m,1976,"Conseiller national, entrepreneur / Nationalrat, Unternehmer"
+NR,Elisabeth,Schneider-Schneiter,Mitte,BL,18747,0,w,1964,Juristin
+NR,Roman,Bürgi,SVP,SZ,18549,1,m,1969,Unternehmer
+NR,Franziska,Roth,SP,SO,18174,0,w,1966,Heilpädagogin
+NR,Lorenzo,Quadri,Lega,TI,17983,0,m,1974,
+NR,Christophe,Clivaz,Grüne,VS,17868,0,m,1969,Professeur UNIL
+NR,Nadine,Gobet,FDP,FR,17208,1,w,1969,Directrice Fédération Patronale et Economique
+NR,Michael,Töngi,Grüne,LU,16611,0,m,1967,Nationalrat / Historiker
+NR,Roman,Hug,SVP,GR,16595,1,m,1980,"Architekt, Gemeindepräsident"
+NR,Gerhard,Pfister,Mitte,ZG,16522,0,m,1962,Dr. phil.
+NR,Petra,Gössi,FDP,SZ,16398,0,w,1976,lic.iur. Unternehmensberaterin
+NR,Anna,Giacometti,FDP,GR,16184,0,w,1961,Nationalrätin
+NR,Hasan,Candan,SP,LU,16129,1,m,1985,Projektleiter Biodiversitätspolitik Pro Natura Schweiz/ Kantonsrat
+NR,Charles,Poncet,SVP,GE,15834,1,m,1946,Avocat
+NR,Delphine,Klopfenstein Broggini,Grüne,GE,15549,0,w,1976,"Conseillère nationale, Sociologue"
+NR,Emmanuel,Amoos,SP,VS,15400,0,m,1980,Conseiller national
+NR,Nicolas,Walder,Grüne,GE,15271,0,m,1966,"Sociologue, entrepreneur social"
+NR,Thomas,Aeschi,SVP,ZG,15196,0,m,1979,"lic.oec.HSG, Harvard MPA, Unternehmensberater"
+NR,Paolo,Pamini,SVP,TI,14347,1,m,1977,Consulente fiscale e docente universitario
+NR,Sibel,Arslan,Basta,BS,14239,0,w,1980,"Juristin, Unternehmerin"
+NR,Greta,Gysin,Grüne,TI,14165,0,w,1983,Politologue et syndacaliste
+NR,Baptiste,Hurni,SP,NE,14025,0,m,1986,Avocat
+NR,Céline,Weber,GLP,VD,13754,0,w,1974,"Ingénieure en énergie, Conseillère nationale"
+NR,Nina,Schläfli,SP,TG,13237,1,w,1990,Historikerin
+NR,Vincent,Maitre,Mitte,GE,12659,0,m,1981,Avocat
+NR,Thomas,Hurter,SVP,SH,12649,0,m,1963,Linienpilot
+NR,Simon,Michel,FDP,SO,12221,1,m,1977,CEO
+NR,Kristiane,Vietze,FDP,TG,11715,1,w,1968,"Unternehmerin, dipl. Wirtschaftsprüferin"
+NR,Damien,Cottier,FDP,NE,11603,0,m,1975,Conseiller national
+NR,Stefan,Müller-Altermatt,Mitte,SO,10855,0,m,1976,Biologe
+NR,Fabien,Fivaz,Grüne,NE,10197,0,m,1978,"Conseiller national, biologiste"
+NR,Roger,Golay,MCG,GE,10182,1,m,1959,Administrateur
+NR,Patricia,von Falkenstein,LDP,BS,9792,0,w,1961,Juristin und Politikerin
+NR,Erich,Vontobel,EDU,ZH,9390,1,m,1959,Informatik-Projektleiter
+NR,Felix,Wettstein,Grüne,SO,8710,0,m,1958,"A) Nationalrat, B) bis Jan. 2023 Dozent Fachhochschule"
+NR,Dominik,Blunschy,Mitte,SZ,8707,1,m,1987,MSc ETH Inf.-Ing.
+NR,Martina,Munz,SP,SH,8686,0,w,1955,"Agronomin ETH, Berufsschullehrerin"
+NR,David,Zuberbühler,SVP,AR,8502,0,m,1979,Unternehmer
+NR,Didier,Calame,SVP,NE,8436,1,m,1972,Indépendant
+NR,Simon,Stadler,Mitte,UR,8283,0,m,1988,
+NR,Monika,Rüegger,SVP,OW,8224,0,w,1968,"Metallbauplanerin, Kantonsrätin"
+NR,Regina,Durrer-Knobel,Mitte,NW,8026,1,w,1971,Prorektorin und Wirtschaftslehrerin
+NR,Isabelle,Chappuis,Mitte,VD,7616,1,w,1971,"économiste, experte en futurs du travail"
+NR,Manuela,Weichelt,ALG,ZG,7609,0,w,1967,Nationalrätin
+NR,Pierre-Alain,Fridez,SP,JU,6665,0,m,1957,Médecin généraliste
+NR,Katja,Christ,GLP,BS,6655,0,w,1972,"lic.iur., Advokatin"
+NR,Markus,Schnyder,SVP,GL,5388,1,m,1988,Immobilienbewerter
+NR,Thomas,Stettler,SVP,JU,4380,1,m,1969,Agriculteur
+NR,Thomas,Rechsteiner,Mitte,AI,2423,0,m,1971,Unternehmer Generalagent die Mobiliar GA Appenzell
+SR,Daniel,Jositsch,SP,ZH,236775,0,m,1965,Professor für Strafrecht
+SR,Tiana Angelina,Moser,GLP,ZH,206493,1,w,1979,"Umwelt- und Politikwissenschafterin, Nationalrätin, Fraktionspräsidentin"
+SR,Flavia,Wasserfallen,SP,BE,158843,1,w,1979,"Politologin, Verwaltungsrätin"
+SR,Werner,Salzmann,SVP,BE,157944,0,m,1962,Ing. Agr. FH/Chefexperte Landwirtschaft Steuerverwaltung
+SR,Thierry,Burkart,FDP,AG,105897,0,m,1975,Rechtsanwalt
+SR,Pierre-Yves,Maillard,SP,VD,101880,1,m,1968,"Conseiller national, Président de l'Union syndicale suisse"
+SR,Pascal,Broulis,FDP,VD,89058,1,m,1965,Président de Y-Parc
+SR,Benedikt,Würth,Mitte,SG,88888,0,m,1968,"Ständerat, Konsulent bei SwissLegal asg.advocati"
+SR,Esther,Friedli,SVP,SG,88134,0,w,1977,"Politologin, Gastronomin"
+SR,Marianne,Binder-Keller,Mitte,AG,84431,1,w,1958,"Kommunikationsberaterin, Publizistin, Präsidentin Die Mitte AG"
+SR,Damian,Müller,FDP,LU,72978,0,m,1984,Senior Berater PA - Die Mobiliar - 40%
+SR,Andrea,Gmür,Mitte,LU,69578,0,w,1964,
+SR,Beat,Rieder,Mitte,VS,56306,0,m,1963,"Jurist, Ständerat,"
+SR,Mauro,Poggia,MCG,GE,55317,1,m,1959,Avocat
+SR,Marianne,Maret,Mitte,VS,54273,0,w,1958,"Députée, anc. Présidente de commune"
+SR,Brigitte,Häberli-Koller,Mitte,TG,51209,0,w,1958,Kauffrau
+SR,Carlo,Sommaruga,SP,GE,46423,0,m,1959,Avocat
+SR,Jakob,Stark,SVP,TG,46126,0,m,1958,Dr. phil. I
+SR,Pirmin,Bischof,Mitte,SO,46086,0,m,1959,Rechtsanwalt
+SR,Maya,Graf,Grüne,BL,45554,0,w,1962,"dipl. Sozialarbeiterin HFS, Biobäuerin"
+SR,Franziska,Roth,SP,SO,43668,1,w,1966,Heilpädagogin
+SR,Eva,Herzog,SP,BS,42677,0,w,1961,Ständerätin
+SR,Marco,Chiesa,SVP,TI,40549,0,m,1974,
+SR,Stefan,Engler,Mitte,GR,38316,0,m,1960,
+SR,Isabelle,Chassot,Mitte,FR,38161,0,w,1965,Conseillère aux Etats / Ständerätin
+SR,Martin,Schmid,FDP,GR,33611,0,m,1969,Rechtsanwalt
+SR,Petra,Gössi,FDP,SZ,33342,1,w,1976,lic.iur. Unternehmensberaterin
+SR,Fabio,Regazzi,Mitte,TI,31962,1,m,1962,Imprenditore
+SR,Johanna,Gapany,FDP,FR,30538,0,w,1988,Economiste d'entreprise
+SR,Pirmin,Schwander,SVP,SZ,30112,1,m,1961,Unternehmer
+SR,Peter,Hegglin,Mitte,ZG,23077,0,m,1960,Landwirt
+SR,Matthias,Michel,FDP,ZG,22673,0,m,1963,Ständerat
+SR,Simon,Stocker,SP,SH,15769,1,m,1981,"Altersexperte, Leiter Fachstelle Alterspolitik"
+SR,Hannes,Germann,SVP,SH,15490,0,m,1956,"Ständerat, VR- und Verbandsmandate"
+SR,Andrea,Caroni,FDP,AR,14705,0,m,1980,Rechtsanwalt (Dr. iur.)
+SR,Baptiste,Hurni,SP,NE,13914,1,m,1986,Avocat
+SR,Céline,Vara,Grüne,NE,12167,0,w,1984,Avocate
+SR,Hans,Wicki,FDP,NW,10817,0,m,1964,Unternehmer
+SR,Benjamin,Mühlemann,FDP,GL,8704,1,m,1979,Regierungsrat
+SR,Heidi,Z'graggen,Mitte,UR,8581,0,w,1966,"Ständerätin, Geschäftsführerin Urimpuls"
+SR,Josef,Dittli,FDP,UR,8399,0,m,1957,Unabhängiger Stiftungs- und Verwaltungsrat
+SR,Charles,Juillard,Mitte,JU,8247,0,m,1962,Administrateur et directeur
+SR,Mathilde,Crevoisier Crelier,SP,JU,7447,0,w,1980,Traductrice
+SR,Mathias,Zopfi,Grüne,GL,7286,0,m,1983,Rechtsanwalt und Notar
+SR,Erich,Ettlin,Mitte,OW,,0,m,1962,
+SR,Daniel,Fässler,Mitte,AI,,0,m,1960,

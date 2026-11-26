@@ -1,0 +1,479 @@
+kanton_nummer,liste_verbindung,liste_unterlistenverbindung,liste_nummer_kanton,liste_bezeichnung,partei_id
+1,A,,31,EDU Eidgenössisch-Demokratische Union,16
+1,A,A1,32,"SVP Schweizerische Volkspartei, Junge",4
+1,A,A1,1,SVP Schweizerische Volkspartei,4
+1,A,A1,28,"SVP Schweizerische Volkspartei, 55plus",4
+1,B,,11,Piratenpartei – humanistisch liberal progressiv,35
+1,B,,17,die Guten,35
+1,B,B1,14,"Sozialdemokratische Partei (SP), JUSO",3
+1,B,B1,2,Sozialdemokratische Partei (SP),3
+1,B,B2,9,"Grüne, Junge Grüne – Klima vor Profit",13
+1,B,B2,6,Grüne,13
+1,B,B2,30,"Grüne, Migrant*innen und Second@s",13
+1,B,B3,24,"Linke Alternative, Partei der Arbeit",9
+1,B,B3,25,"Linke Alternative, AL – Alternative Liste",12
+1,C,,10,Jungfreisinnige Kanton Zürich,1
+1,C,,3,FDP.Die Liberalen,1
+1,D,,7,BDP Bürgerlich-Demokratische Partei,32
+1,D,D1,29,"Grünliberale, Junge Grünliberale",31
+1,D,D1,4,Grünliberale,31
+1,D,D1,19,"Grünliberale, UnternehmerInnen",31
+1,D,D1,23,"Grünliberale, senior GLP",31
+1,D,D2,18,"CVP, Junge",2
+1,D,D2,5,CVP,2
+1,D,D2,13,"CVP, Frauen",2
+1,D,D2,20,"CVP, Christlichsoziale Vereinigung (CSV)",2
+1,D,D3,27,"Evangelische Volkspartei (EVP), Junge EVP",7
+1,D,D3,8,Evangelische Volkspartei (EVP),7
+1,D,D3,21,"Evangelische Volkspartei (EVP), Frauen EVP",7
+2,A,,9,FDP.Die Liberalen // PLR.Les Libéraux-Radicaux,1
+2,A,A1,10,Jungfreisinnige Stadt,1
+2,A,A1,11,Jungfreisinnige Land,1
+2,B,,23,Piraten // Pirates,35
+2,B,B1,8,Junge BDP // Les Jeunes PBD,32
+2,B,B1,7,Bürgerlich-Demokratische Partei Kanton Bern // Parti Bourgeois-Démocratique Canton de Berne,32
+2,B,B2,16,Junge Grünliberale // Jeunes Vert'libéraux,31
+2,B,B2,15,Grünliberale // Vert'libéraux,31
+2,B,B2,17,Grünliberale KMU // Vert'libéraux PME,31
+2,B,B3,19,Junge Evangelische Volkspartei // Jeune Parti Evangélique,7
+2,B,B3,18,Evangelische Volkspartei // Parti Evangélique,7
+2,B,B4,21,Christlichdemokratische Volkspartei // Parti démocrate-chrétien,2
+2,B,B4,22,PDC liste romande,2
+2,C,,24,Partei der Arbeit // Parti Ouvrier et Populaire,9
+2,C,C1,6,Jungsozialist*innen // Jeunesse Socialiste,3
+2,C,C1,5,Sozialdemokratische Partei – Internationale Liste // Parti socialiste – liste internationale,3
+2,C,C1,3,Sozialdemokratische Partei und Gewerkschaften – Frauen // Parti socialiste et syndicats – femmes,3
+2,C,C1,4,Sozialdemokratische Partei und Gewerkschaften – Männer // Parti socialiste et syndicats – hommes,3
+2,C,C2,14,Grüne - Junge Alternative JA!,35
+2,C,C2,13,Junge Grüne // Jeunes vert-e-s,13
+2,C,C2,12,Grüne // Les Verts,13
+2,D,,29,Gesundheit-Energie-Natur,35
+2,D,D1,2,SVP (Junge SVP) // UDC (Jeune UDC),4
+2,D,D1,1,SVP Kanton Bern (Frauen und Männer) // UDC canton de Berne (femmes et hommes),4
+2,E,,25,Schweizer Demokraten // Démocrates Suisses,15
+2,E,,20,Eidgenössisch-Demokratische Union // Union Démocratique Fédérale,16
+2,E,,26,JutziPhilipp.com,35
+2,E,,27,Die Musketiere // Les Mousquetaires,35
+2,E,,31,Menschen mit Zukunft sagen 5G ade!,35
+2,E,,32,Partei der unbegrenzten Möglichkeiten,35
+2,E,,33,Landliste // Liste du Terroir,35
+3,A,,14,Integrale Politik (IP),35
+3,A,A1,8,Junge Grüne,13
+3,A,A1,1,Grüne,13
+3,A,A1,32,Unternehmer*innen für eine grüne Wirtschaft (Grüne),13
+3,A,A2,12a,JungsozialistInnen und Junge Linke (JUSOplus)-Stadt Luzern,3
+3,A,A2,12b,JungsozialistInnen und Junge Linke (JUSOplus)-Land und Agglomeration,3
+3,A,A2,35,SP International (Auslandschweizer*innen),3
+3,A,A2,3,Sozialdemokratische Partei (SP) und Gewerkschaften,3
+3,A,A2,11,SP – Second@s Plus und MigrantInnen,3
+3,A,A2,17,SP 60+,3
+3,A,A3,15,Junge Grünliberale Partei (jglp),31
+3,A,A3,33,glp international,31
+3,A,A3,4,Grünliberale Partei (glp),31
+3,B,,20,Junge Schweizerische Volkspartei (JSVP),4
+3,B,,28,SVP-Frauen für Stadt und Land,4
+3,B,,31,SVP International,4
+3,B,,2,Schweizerische Volkspartei (SVP),4
+3,B,,29,Büezer und Bauern JSVP,4
+3,B,,30,LU-Biker SVP,4
+3,B,,7,Aktive Senioren Luzern (SVP),4
+3,C,C1,9a,Junge Christlichdemokratische Volkspartei (JCVP) a,2
+3,C,C1,9b,Junge Christlichdemokratische Volkspartei (JCVP) b,2
+3,C,C1,26,CVP Frauen,2
+3,C,C1,5,Christlichdemokratische Volkspartei (CVP),2
+3,C,C1,23,AWG Arbeitsgemeinschaft Wirtschaft und Gesellschaft (CVP),2
+3,C,C1,24,Klimaschutz (CVP),2
+3,C,C1,25,CSV Christlichsoziale Vereinigung (CVP),2
+3,C,C1,27,Luzerner Bauernliste (CVP),2
+3,C,C2,13,Jungfreisinnige (JFLU),1
+3,C,C2,22,FDP-Frauen Kanton Luzern,1
+3,C,C2,6,FDP.Die Liberalen Luzern,1
+5,A,,3,Junge CVP,2
+5,A,,10,Junge Grünliberale – jglp Kanton Schwyz,31
+5,A,,1,CVP – Bürgerlich mit sozialer Verantwortung,2
+5,A,,2,CVP – Bauern und Gewerbe,2
+5,A,,18,EVP Evangelische Volkspartei,7
+5,A,,9,Grünliberale – GLP Kanton Schwyz,31
+5,A,,4,CVP 60 plus,2
+5,B,,12,Gewerkschaftsbund Kanton Schwyz,3
+5,B,,13,Liste für Kultur,3
+5,B,,17,Schwyz für alle,3
+5,B,,15,Generation 60plus,3
+5,B,,20,Grüne Schwyz – Für eine langfristige Zukunft,13
+5,B,B1,11,JUSOplus,3
+5,B,B1,5,Sozialdemokratische Partei (SP),3
+5,C,,14,Jungfreisinnige Kanton Schwyz,1
+5,C,,6,FDP.Die Liberalen Kanton Schwyz,1
+5,C,,7,Gemeinsam fürs Schwyzer Gewerbe,1
+5,C,,19,Umwelt.Die Liberalen,1
+5,C,,21,Vorwärts Schwyz! Mobilität mit Zukunft.,1
+5,D,,8,Junge Schweizerische Volkspartei Kanton Schwyz (JSVP),4
+5,D,,16,Schweizerische Volkspartei Kanton Schwyz,4
+9,A,,10,Evangelische Volkspartei (EVP),7
+9,A,A1,5,Alternative – die Grünen und CSP – Junge Alternative,13
+9,A,A1,4,Alternative – die Grünen und CSP – Frauenpower,13
+9,A,A1,1,Alternative – die Grünen und CSP,13
+9,A,A1,2,Alternative – die Grünen und CSP – Urban,13
+9,A,A1,3,Alternative – die Grünen und CSP – Landschaft,13
+9,A,A2,22,SP Kanton Zug – SP JUSO,3
+9,A,A2,20,SP Kanton Zug – SP Frauen,3
+9,A,A2,21,SP Kanton Zug – SP Männer,3
+9,A,A2,16,SP Kanton Zug,3
+9,A,A2,17,SP Kanton Zug – SP Zug für Bern,3
+9,A,A2,19,SP Kanton Zug – SP Klimaschutz,3
+9,A,A2,18,SP Kanton Zug – SP 60+,3
+9,B,B1,8,Christlichdemokratische Volkspartei Kanton Zug (CVP) – Junge Liste (JCVP),2
+9,B,B1,7,Christlichdemokratische Volkspartei Kanton Zug (CVP) – CVP Frauen Kanton Zug,2
+9,B,B1,6,Christlichdemokratische Volkspartei Kanton Zug (CVP),2
+9,B,B1,9,Christlichdemokratische Volkspartei Kanton Zug (CVP) – Gemeinderatsliste,2
+9,B,B2,11,FDP Zug – A,1
+9,B,B2,12,FDP Zug – B,1
+9,B,B2,13,FDP Zug – C,1
+9,C,,15,Grünliberale Partei (GLP) – Junge Grünliberale (JGLP),31
+9,C,,14,Grünliberale Partei (GLP),31
+9,D,,23,SVP Schweizerische Volkspartei,4
+9,D,,24,SVP – Wirtschaft und Gewerbe,4
+9,D,,25,SVP – Zukunft,4
+10,A,,20,Parti Evangélique PEV // Evangelische Volkspartei EVP,7
+10,A,,19,PBD-Centre droit // BDP-Mitte Rechts,32
+10,A,A1,10,Jeunes PDC Grand-Fribourg // Junge CVP Grossfreiburg,2
+10,A,A1,11,Jeunes PDC Sud fribourgeois // Junge CVP Südfreiburg,2
+10,A,A1,12,Junge CVP Deutschfreiburg // Jeunes PDC Fribourg alémanique,2
+10,A,A1,13,Jeunes PDC Sarine-Campagne et Broye // Junge CVP Saane Land und Broye,2
+10,A,A1,1,Parti démocrate-chrétien fribourgeois // Christlichdemokratische Volkspartei des Kantons Freiburg,2
+10,A,A2,9,Jeunes vert'libéraux (jvl) // Junge Grünliberale (jglp),31
+10,A,A2,6,Parti vert'libéral (pvl) // Grünliberale Partei (glp),31
+10,B,,8,Union Démocratique Fédérale // Eidgenössisch-Demokratische Union,16
+10,B,B1,21,Jeunes UDC Fribourg // Junge SVP Freiburg,4
+10,B,B1,5,Union Démocratique du Centre // Schweizerische Volkspartei,4
+10,C,,23,Objectif 2030 // Ziel 2030,35
+10,C,C1,15,Parti socialiste 60+ // Sozialdemokratische Partei 60+,3
+10,C,C1,18,Jeunesse socialiste fribourgeoise // Jungsozialiste-innen Kanton Freiburg,3
+10,C,C1,17,Parti socialiste international // Sozialdemokratische Partei International,3
+10,C,C1,2,Parti socialiste fribourgeois // Sozialdemokratische Partei Freiburg,3
+10,C,C1,16,Parti socialiste Intégration // Sozialdemokratische Partei Integration,3
+10,C,C2,4,Verts – CG-PCS : Centre Gauche-PCS // ML-CSP – Grüne : Mitte Links-CSP,8
+10,C,C2,7,Verts – CG-PCS : les Verts // ML-CSP – Grüne : Grüne,13
+10,D,,14,Jeunes libéraux-radicaux fribourgeois // Jungfreisinnige Freiburg,1
+10,D,,3,PLR.Les Libéraux-Radicaux du canton de Fribourg // FDP.Die Liberalen des Kantons Freiburg,1
+11,A,,13,Jungfreisinnige Liste Digitalisierung,1
+11,A,,14,Jungfreisinnige Liste Gesellschaftsliberalismus,1
+11,A,,15,FDP.Die Liberalen Kanton Solothurn - Freiheit,1
+11,A,,16,FDP.Die Liberalen Kanton Solothurn - Verantwortung,1
+11,B,,27,Evangelische Volkspartei,7
+11,B,B1,4,"Junge CVP Nord (Thal-Gäu, Dorneck-Thierstein)",2
+11,B,B1,5,"Junge CVP Süd (Solothurn-Lebern, Bucheggberg-Wasseramt, Olten-Gösgen)",2
+11,B,B1,2,"CVP Nord-Ost (Thal-Gäu, Olten-Gösgen, Dorneck-Thierstein)",2
+11,B,B1,3,"CVP Süd-West (Solothurn-Lebern, Bucheggberg-Wasseramt)",2
+11,B,B2,22,Junge Grünliberale,31
+11,B,B2,20,Grünliberale,31
+11,B,B2,21,Grünliberale Unternehmer,31
+11,B,B3,26,Junge Bürgerlich Demokratische Partei,32
+11,B,B3,24,Bürgerlich Demokratische Partei Liste eins,32
+11,B,B3,25,Bürgerlich Demokratische Partei Liste zwei,32
+11,C,C1,6,Junge SP Region Olten,3
+11,C,C1,7,JUSO Kanton Solothurn,3
+11,C,C1,9,"Sozialdemokratische Partei (SP) Region Süd-West (Solothurn-Lebern, Bucheggberg-Wasseramt)",3
+11,C,C1,10,"Sozialdemokratische Partei (SP) Region Nord-Ost (Thal-Gäu, Olten-Gösgen, Dorneck-Thierstein)",3
+11,C,C1,18,Sozialdemokratische Partei 60+,3
+11,C,C2,23,Junge Grüne Solothurn,13
+11,C,C2,11,Liste Grüne,13
+11,C,C2,12,Liste Grüne Plus,13
+11,D,,19,Junge SVP Kanton Solothurn,4
+11,D,,1,SVP Kanton Solothurn,4
+11,D,,8,SVP Unternehmer und Bauern,4
+11,D,,17,"SVP Bürger, Büezer, International",4
+12,A,A1,6,Jungfreisinnige Basel-Stadt,1
+12,A,A1,1,FDP.Die Liberalen Basel-Stadt,1
+12,A,A1,32,FDP.Die Liberalen Frauen Basel-Stadt,1
+12,A,A2,25,Mitte – Junge Grünliberale jglp,31
+12,A,A2,4,Mitte – Evangelische Volkspartei Basel-Stadt (EVP),7
+12,A,A2,10,Mitte – Grünliberale GLP,31
+12,A,A2,11,Mitte – Bürgerlich-Demokratische Partei (BDP),32
+12,A,A3,22,Junge CVP Basel-Stadt,2
+12,A,A3,7,CVP Basel-Stadt,2
+12,A,A3,36,CVP 60+ Basel-Stadt,2
+12,A,A4,23,Jungliberale Basel JLB,5
+12,A,A4,3,LDP Liberal-Demokratische Partei Basel-Stadt,5
+12,A,A4,34,Gewerbe LDP,5
+12,B,,2,Piratenpartei,35
+12,B,B1,38,"JUSO Basel-Stadt, Frauen*",3
+12,B,B1,39,"JUSO Basel-Stadt, Männer*",3
+12,B,B1,5,Sozialdemokratische Partei Basel-Stadt (SP),3
+12,B,B2,21,Bündnis: Junge Grüne (jgb),13
+12,B,B2,8,Bündnis Grüne BastA! jgb,13
+12,B,B2,40,Bündnis – Die Alternativen,13
+12,B,B2,42,Bündnis – Integrale Politik,35
+12,C,,9,Eidgenössisch-Demokratische Union Basel-Stadt (EDU),16
+12,C,C1,18,Junge SVP Basel-Stadt,4
+12,C,C1,12,SVP Basel-Stadt,4
+12,C,C1,31,SVP Frauen Basel-Stadt,4
+12,C,C1,37,Liste SVP – Neue Heimat Schweiz Basel-Stadt,4
+13,A,A1,6,Jungfreisinnige Baselland,1
+13,A,A1,1,FDP.Die Liberalen Baselland,1
+13,A,A2,33,Junge Schweizerische Volkspartei,4
+13,A,A2,3,Schweizerische Volkspartei Baselland,4
+13,A,A2,34,SVP International,4
+13,B,B1,22,Jungsozialist*innen Unterbaselbiet,3
+13,B,B1,23,Jungsozialist*innen Oberbaselbiet,3
+13,B,B1,2,Sozialdemokratische Partei und Gewerkschaften,3
+13,B,B2,77,Junge Grüne,13
+13,B,B2,7,Grüne Baselland,13
+13,B,B2,70,Grüne Panther,13
+13,C,,8,Bürgerlich-Demokratische Partei,32
+13,C,C1,4,Evangelische Volkspartei BL,7
+13,C,C1,44,Evangelische Volkspartei - Zukunft,7
+13,C,C2,55,Junge CVP,2
+13,C,C2,5,Christlichdemokratische Volkspartei,2
+13,C,C2,56,CVP Wirtschaft und Gesellschaft,2
+13,C,C3,12,Junge Grünliberale Partei,31
+13,C,C3,11,Grünliberale Partei,31
+14,A,,7,Eidgenössisch-Demokratische Union (EDU),16
+14,A,A1,1,Schweizerische Volkspartei (SVP),4
+14,A,A1,17,SVP Agro / KMU,4
+14,A,A1,11,Junge SVP,4
+14,B,,4,Alternative Liste Schaffhausen (AL),12
+14,B,B1,2,Sozialdemokratische Partei (SP),3
+14,B,B1,14,JUSO,3
+14,B,B2,6,Grüne Partei,13
+14,B,B2,18,Junge Grüne,13
+14,C,,3,FDP.Die Liberalen,1
+14,C,,13,Jungfreisinnige,1
+14,D,,8,Christlichdemokratische Volkspartei (CVP),2
+14,D,,9,Evangelische Volkspartei (EVP),7
+14,D,D1,16,Junge GLP,31
+14,D,D1,5,Grünliberale Partei (GLP),31
+17,A,,7,"EVP, Evangelische Volkspartei",7
+17,A,,12,BDP Bürgerlich-Demokratische Partei Kanton St.Gallen,32
+17,A,A1,2c,"CVP Kanton St.Gallen, Junge CVP – Liste Süd-Ost",2
+17,A,A1,2d,"CVP Kanton St.Gallen, Junge CVP – Liste Nord-West",2
+17,A,A1,2a,"CVP Kanton St.Gallen, Liste Süd-Ost",2
+17,A,A1,2b,"CVP Kanton St.Gallen, Liste Nord-West",2
+17,A,A2,5b,"Grünliberale (glp), Junge Grünliberale",31
+17,A,A2,5a,"Grünliberale (glp), Hauptliste",31
+17,B,,9,EDU – Eidgenössisch-Demokratische Union,16
+17,B,B1,1a,"SVP Schweizerische Volkspartei, Hauptliste",4
+17,B,B1,1b,"SVP Schweizerische Volkspartei, Unternehmerliste",4
+17,B,B1,1d,"SVP Schweizerische Volkspartei, Landliste",4
+17,B,B1,1c,"SVP Schweizerische Volkspartei, Seniorenliste",4
+17,C,C1,3b,"SP und Gewerkschaften, JUSO-Liste",3
+17,C,C1,3a,"SP und Gewerkschaften, Hauptliste",3
+17,C,C2,6b,"GRÜNE, Junge Grüne",13
+17,C,C2,6a,"GRÜNE, Hauptliste",13
+17,C,C2,6c,"GRÜNE, KlimaseniorInnen",13
+17,D,,4b,"FDP.Die Liberalen, Jungfreisinnige",1
+17,D,,4a,"FDP.Die Liberalen, Hauptliste",1
+17,D,,4c,"FDP.Die Liberalen, Umweltfreisinnige",1
+17,D,,4d,"FDP.Die Liberalen, FDP Frauen",1
+18,A,A1,11,Jungfreisinnige Graubünden - FDP-Futuro,1
+18,A,A1,2,FDP.Die Liberalen Graubünden - Hauptliste,1
+18,A,A1,17,FDP.Die Liberalen GR - Support Gemeindepolitik,1
+18,A,A1,18,FDP.Die Liberalen GR - Support Gewerbe,1
+18,A,A2,4,CVP - Die Jungen 1,2
+18,A,A2,5,CVP - Die Jungen A,2
+18,A,A2,10,CVP Graubünden,2
+18,A,A3,1,BDP Graubünden - Junge BDP Graubünden,32
+18,A,A3,12,BDP Graubünden,32
+18,B,,8,SVP Graubünden - Junge SVP Graubünden,4
+18,B,,19,SVP Graubünden - Liste SVP International,4
+18,B,,16,SVP Graubünden - Liste Brand,4
+18,B,,20,SVP Graubünden - Team 60+ für ein sicheres Rentenalter,4
+18,B,,14,SVP Graubünden - Liste Martullo,4
+18,C,,6,Verda - Grüne Graubünden,13
+18,C,C1,3,SP JUSO Männer*,3
+18,C,C1,15,SP JUSO Frauen*,3
+18,C,C1,9,SP Sozialdemokratische Partei,3
+18,C,C2,7,Grünliberale Partei - Junge Grünliberale Partei,31
+18,C,C2,13,Grünliberale Partei,31
+19,A,,9,EDU – Eidgenössisch-Demokratische Union,16
+19,A,,14,TEAM65+ – Die Aargauer Seniorenliste,35
+19,A,A1,1b,JSVP – Junge Schweizerische Volkspartei,4
+19,A,A1,1a,SVP – Schweizerische Volkspartei,4
+19,A,A2,3b,FDP.Die Liberalen – Jungfreisinnige,1
+19,A,A2,3a,FDP.Die Liberalen,1
+19,B,,10,PPAG – Piratenpartei,35
+19,B,B1,2b,SP und Gewerkschaften – JUSO (Jungsozialist*innen),3
+19,B,B1,2a,SP und Gewerkschaften,3
+19,B,B1,2d,SP und Gewerkschaften – queer*feministisch!,3
+19,B,B1,2e,SP und Gewerkschaften – SP Migrant*innen,3
+19,B,B1,2c,SP und Gewerkschaften – SP 60+,3
+19,B,B2,5b,Junge Grüne,13
+19,B,B2,5a,Grüne Partei,13
+19,C,C1,4a,CVP.Miteinander.Für den Aargau.,2
+19,C,C1,4b,CVPLA.Miteinander.Für Land- & Ernährungswirtschaft,2
+19,C,C1,4c,CVPCS.Miteinander.Für die Christlichsozialen.,2
+19,C,C1,4d,CVPE.Miteinander.Für die Städte und Gemeinden.,2
+19,C,C1,4e,CVPAZ.Miteinander.Für Aarau und Zofingen.,2
+19,C,C1,4f,CVPBZ.Miteinander.Für Baden und Zurzach.,2
+19,C,C1,4g,"CVP#1.Miteinander.Für Kulm, Lenzburg, Brugg.",2
+19,C,C1,4h,CVPFA.Miteinander.Für das Freiamt.,2
+19,C,C1,4i,CVPFT.Miteinander.Für das Fricktal.,2
+19,C,C2,6b,jglp – Junge Grünliberale,31
+19,C,C2,6a,glp – Grünliberale Partei,31
+19,C,C2,6c,glp-u – Grünliberale Unternehmer,31
+19,D,D1,7b,JBDP – Junge Bürgerlich-Demokratische Partei,32
+19,D,D1,7a,BDP – Bürgerlich-Demokratische Partei,32
+19,D,D1,7c,BDP3 – Bürgerlich-Demokratische Partei: die Dritte,32
+19,D,D2,8b,*jevp – Junge Evangelische Volkspartei,7
+19,D,D2,8a,EVP – Evangelische Volkspartei,7
+19,D,D2,8c,EVP+ – EVPplus,7
+19,E,,11,LOVB – Lösungs-Orientierte Volks-Bewegung,35
+19,E,,12,FW AG – Freie Wähler Aargau,35
+19,E,,13,LS – Luzi Stamm,35
+20,A,A1,21,Junge Grünliberale / jglp,31
+20,A,A1,18,Grünliberale – Stammliste / glp Stammliste,31
+20,A,A1,19,Grünliberale – Engagiert / glp Engagiert,31
+20,A,A2,13,Junge Grüne Thurgau / JGTG,13
+20,A,A2,14,Grüne Partei Thurgau / GPTG,13
+20,A,A2,15,Grüne Panther Thurgau / GPTG Panther,13
+20,A,A3,9,JungsozialistInnen und Gewerkschaftsjugend / JUSO,3
+20,A,A3,17,Sozialdemokratische Partei und Gewerkschaften / SP/Gew.,3
+20,A,A3,23,Sozialdemokratische Partei Liste 60+ / SP Liste 60+,3
+20,B,,3,Eidgenössisch-Demokratische Union / EDU,16
+20,B,B1,20,Jungfreisinnige Thurgau / JFTG,1
+20,B,B1,4,FDP.Die Liberalen – Stammliste / FDP Stammliste,1
+20,B,B1,10,FDP.Die Liberalen – Frauenliste / FDP Frauenliste,1
+20,B,B2,2,Junge Schweizerische Volkspartei / JSVP,4
+20,B,B2,5,Schweizerische Volkspartei / SVP,4
+20,C,C1,6,Junge Bürgerlich-Demokratische Partei / JBDP,32
+20,C,C1,8,Bürgerlich-Demokratische Partei – Hauptliste / BDP Hauptliste,32
+20,C,C1,1,Bürgerlich-Demokratische Partei – Best Agers / BDP Best Agers,32
+20,C,C2,22,Junge Evangelische Volkspartei / jevp,7
+20,C,C2,7,Evangelische Volkspartei / EVP,7
+20,C,C3,16,Junge Christlichdemokratische Volkspartei / JCVP,2
+20,C,C3,11,Christlichdemokratische Volkspartei – Newcomer / CVP Newcomer,2
+20,C,C3,12,Christlichdemokratische Volkspartei / CVP,2
+21,A,,9,PLR Partito liberale radicale ticinese,1
+21,A,,22,pvl partito verde liberale,31
+21,A,A1,3,PPD – Generazione Giovani Sottoceneri,2
+21,A,A1,13,PPD – Generazione Giovani Sopraceneri,2
+21,A,A1,17,PPD – Ticinesi nel mondo,2
+21,A,A1,1,PPD Partito Popolare Democratico,2
+21,B,B1,4,PS – Gioventù Socialista (GISO),3
+21,B,B1,15,PS Partito Socialista,3
+21,B,B1,16,PS – PS60+,3
+21,B,B2,11,Verdi e Sinistra alternativa – Giovani Verdi,13
+21,B,B2,5,Verdi e Sinistra alternativa – Partito Operaio Popolare Ticino POP,9
+21,B,B2,12,Verdi e Sinistra alternativa,13
+21,B,B2,14,Verdi e Sinistra alternativa – Donne,35
+21,C,,8,Lega dei Ticinesi,18
+21,C,C1,10,UDC – Giovani UDC,4
+21,C,C1,7,UDC – Agrari,4
+21,C,C1,18,UDC,4
+21,C,C1,6,UDC – UDF,16
+21,D,,2,Lista civica: per la proibizione assoluta d'internare minorenni da parte dei Cantoni svizzeri,35
+21,D,,20,Lega Verde,35
+22,A,,8,Urgence Écologique,35
+22,A,A1,2,Jeunesse socialiste vaudoise - JSV,3
+22,A,A1,1,Parti socialiste vaudois,3
+22,A,A2,7,EP. Parti Ouvrier et Populaire (POP),9
+22,A,A2,24,EP. Ensemble à Gauche,27
+22,A,A3,16,Jeunes Vert-e-s vaudois-es JVVD,13
+22,A,A3,14,Les Vert·e·s. Mouvement écologiste vaudois,13
+22,B,,3,Jeunes UDC Vaud,4
+22,B,,13,UDC Vaud,4
+22,C,C1,4,PDC ouVERTure,2
+22,C,C1,18,PDC,2
+22,C,C2,9,AdC / - Parti Evangélique (PEV),7
+22,C,C2,15,AdC / - UDF - Union Démocratique Fédérale,16
+22,C,C2,22,AdC / - PBD Le juste milieu,32
+22,D,,20,Parti Pirate Vaudois,35
+22,D,D1,19,PVL - les jeunes vert'libéraux,31
+22,D,D1,6,PVL - les vert'libéraux,31
+22,E,,21,Jeunes Libéraux-Radicaux vaudois,1
+22,E,,10,PLR.Innovation,1
+22,E,,17,PLR.Les Libéraux-Radicaux,1
+23,A,A1,9,Jeunesse Socialiste du Chablais,3
+23,A,A1,11,Jeunesse Socialiste du Coude du Rhône,3
+23,A,A1,10,Jeunesse Socialiste Sierre Région,3
+23,A,A1,12,Jeunesse Socialiste Sion-Hérens-Conthey,3
+23,A,A1,24,Jungsozialist*innen Oberwallis (JUSO),3
+23,A,A1,1,Parti Socialiste du Valais Romand (PSVR),3
+23,A,A1,7,Parti Socialiste du Valais Romand PS 60+,3
+23,A,A1,23,Sozialdemokratische Partei Oberwallis (SPO),3
+23,A,A2,26,Grüne Oberwallis,13
+23,A,A2,27,Jeunes Vert-e-s // Junge Grüne,13
+23,A,A2,25,Les Verts,13
+23,A,A2,28,Les Verts - Ainé.e.s pour le climat,13
+23,A,A3,29,Centre Gauche - PCS Centre Solidaire,8
+23,A,A3,30,Centre Gauche - PCS Gauche Humaniste,8
+23,B,B1,21,C-Parteien Christlichdemokratische Volkspartei Oberwallis (CVPO),2
+23,B,B1,2,C-Parteien Christlichsoziale Volkspartei Oberwallis (CSPO),2
+23,B,B1,3,C-Parteien Junge Christlichsoziale Volkspartei Oberwallis (JCSPO),2
+23,B,B1,22,C-Parteien Junge CVPO,2
+23,B,B2,5,Jeunes Démocrates-Chrétiens du Valais Romand Conthey - Martigny - Entremont,2
+23,B,B2,4,Jeunes Démocrates-Chrétiens du Valais Romand Sierre - Sion - Hérens,2
+23,B,B2,6,Jeunes Démocrates-Chrétiens du Valais Romand St-Maurice - Monthey,2
+23,B,B2,8,Parti Démocrate-Chrétien du Valais Romand (PDCVR),2
+23,C,,16,UDC Jeunes du Bas-Valais,4
+23,C,,15,UDC Jeunes du Valais Central,4
+23,C,C1,13,UDC du Valais Romand,4
+23,C,C1,14,UDC Seniors du Valais Romand,4
+23,C,C2,20,Junge schweizerische Volkspartei Oberwallis (JSVPO),4
+23,C,C2,17,Schweizerische Volkspartei Oberwallis (SVPO),4
+23,C,C2,19,Schweizerische Volkspartei Oberwallis (SVPO) - Frauen,4
+23,C,C2,18,"Schweizerische Volkspartei Oberwallis (SVPO) - Wirtschaft, Gewerbe und Tourismus",4
+23,D,D1,37,FDP die Liberalen,1
+23,D,D1,36,Jeunes libéraux-radicaux Chablais,1
+23,D,D1,34,Jeunes libéraux-radicaux Martigny-Entremont,1
+23,D,D1,35,Jeunes libéraux-radicaux région sierroise,1
+23,D,D1,33,Jeunes libéraux-radicaux Valais central,1
+23,D,D1,32,PLR.Les Libéraux Radicaux Valais,1
+23,D,D2,40,Avenir Ecologie - Les vert'libéraux // Zukunft und Nachhaltigkeit - die Grünliberalen,31
+23,D,D2,39,Avenir Ecologie Libérale-Radicale // Zukunft und Nachhaltigkeit Freisinnig Liberale,1
+23,D,D2,38,Avenir Ecologie Citoyenne // Zukunft und Nachhaltigkeit Bürgerliste,1
+24,A,,32,"Parti Libéral-Radical neuchâtelois (PLRN), Jeunes Libéraux-Radicaux",1
+24,A,,31,Parti Libéral-Radical neuchâtelois (PLRN),1
+24,B,B1,33B,"Parti socialiste neuchâtelois (PSN), Jeunes socialistes neuchâtelois (JSN)",3
+24,B,B1,33A,Parti socialiste neuchâtelois (PSN),3
+24,B,B2,34A,"PopVertSol, Parti Ouvrier et Populaire (POP)",9
+24,B,B2,34B,"PopVertSol, Les Verts, Écologie et Liberté",13
+24,B,B2,34C,"PopVertSol, solidaritéS",27
+24,C,,35,Union Démocratique du Centre (UDC),4
+24,C,,36,"Union Démocratique du Centre (UDC), Relève",4
+24,D,,37,Parti Démocrate-Chrétien (PDC),2
+24,D,D1,38B,"Vert'libéraux (PVL), Jeunes Vert'libéraux (JVL)",31
+24,D,D1,38A,Vert'libéraux (PVL),31
+25,A,A1,6,JLR. Les Jeunes Libéraux-Radicaux,1
+25,A,A1,5,PLR. Les Libéraux-Radicaux Genève,1
+25,A,A2,9,JDC Genève,2
+25,A,A2,7,PDC Genève,2
+25,B,,21,U.D.F. (Union Démocratique Fédérale),16
+25,B,,19,MCG - Mouvement Citoyens Genevois,33
+25,B,B1,13,UDC Jeunes,4
+25,B,B1,18,UDC - International,4
+25,B,B1,1,UDC Genève,4
+25,C,,24,PBD/PCD Parti Citoyen Démocratique Suisse d'abord,32
+25,C,,25,PBD/PCD Parti Citoyen Démocratique Genève d'abord,35
+25,D,D1,8,Jeunes Vert-e-s,13
+25,D,D1,12,Les Verts.e.s transfrontalier.ère.s,13
+25,D,D1,3,Les Vert.e.s,13
+25,D,D2,4,Jeunesse Socialiste Genevoise,3
+25,D,D2,22,Les Socialistes - Suisses et Suissesses de l'étranger,3
+25,D,D2,2,Les Socialistes,3
+25,D,D3,28,Ensemble à Gauche - Parti du Travail,9
+25,D,D3,14,Ensemble à Gauche : Pour une écologie anticapitaliste,27
+25,D,D3,15,Ensemble à Gauche : Solidarités sans frontières,27
+25,D,D3,11,Ensemble à Gauche : Égalité pour toutes* et tous*,27
+25,D,D3,10,Ensemble à Gauche · solidaritéS - DAL,27
+25,E,,17,PEV,7
+25,E,,16,Planète Bleue,35
+25,E,,26,Fédéraction,35
+25,E,E1,27,Vert'Libéraux - Jeunes,31
+25,E,E1,23,Vert'Libéraux,31
+26,A,,2,Jeunesse socialiste jurassienne,3
+26,A,,1,Parti socialiste jurassien,3
+26,B,,4,Parti libéral-radical jurassien - Jeunes,1
+26,B,,3,Parti libéral-radical jurassien – innovation,1
+26,B,,5,Parti libéral-radical jurassien – environnement,1
+26,C,,7,Parti chrétien social indépendant - Jeunes,8
+26,C,,6,Parti chrétien social indépendant - Femmes,8
+26,C,,8,Parti chrétien social indépendant - Hommes,8
+26,D,,10,Jeunes démocrates-chrétiens du Jura 1,2
+26,D,,11,Jeunes démocrates-chrétiens du Jura 2,2
+26,D,,9,Parti démocrate-chrétien du Jura,2
+26,E,,14,Union Démocratique du Centre Jeunes,4
+26,E,,12,Union Démocratique du Centre,4
+26,E,,13,Union Démocratique du Centre Agricole,4
+26,F,,16,Les Jeunes Vert-e-s Jurassien-ne-s,13
+26,F,,15,Les Vert-e-s Jurassien-ne-s,13

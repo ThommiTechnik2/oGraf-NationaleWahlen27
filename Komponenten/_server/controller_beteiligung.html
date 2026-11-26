@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controller – Wahlbeteiligung</title>
+<style>
+  :root { --bg: #15181c; --panel: #1f2328; --taste: #2b3037; --text: #e8eaed; --leise: #9aa0a6; --onair: #d0213c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.4 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid #000; }
+  header a.menu { color: var(--text); background: var(--taste); padding: 4px 10px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
+  header h1 { font-size: 17px; margin: 0; font-weight: 600; }
+  .badge { padding: 3px 10px; border-radius: 4px; font-size: 13px; font-weight: 600; background: var(--taste); }
+  .badge.onair { background: var(--onair); }
+  main { padding: 20px; max-width: 720px; }
+  .wert { font-size: 64px; font-weight: 700; margin: 6px 0; } .leise { color: var(--leise); }
+  .tasten { display: flex; gap: 10px; margin: 18px 0; }
+  button { border: 0; border-radius: 10px; background: var(--taste); color: var(--text); padding: 18px 26px; font-size: 16px; font-weight: 700; cursor: pointer; }
+  button.ein { background: #2f5d3e; } button.aus { background: #6b2430; } button:hover { filter: brightness(1.2); }
+  #meldung { color: #f6d39a; min-height: 1.4em; }
+</style>
+</head>
+<body>
+<header><a class="menu" href="/">MENU</a><h1>Wahlbeteiligung (Videowand)</h1><span class="badge" id="badge">…</span></header>
+<main>
+  <div class="leise" id="quelle">–</div>
+  <div class="wert" id="wert">–</div>
+  <div class="leise" id="diff"></div>
+  <div class="tasten">
+    <button class="ein" onclick="befehl('ein')">EIN</button>
+    <button class="aus" onclick="befehl('aus')">AUS</button>
+    <button onclick="befehl('neu')">NEU LADEN</button>
+    <button onclick="befehl('leeren')">LEEREN</button>
+  </div>
+  <div id="meldung"></div>
+</main>
+<script>
+const API = '/controller/api/wb/'
+const NAMEN = { hochrechnung: 'Hochrechnung', resultat: 'Resultat', zwischenstand: 'Zwischenstand (eingelegte Stimmen)' }
+function zeigen (z) {
+  const b = document.getElementById('badge')
+  b.textContent = z.auf_sendung ? 'ON AIR' : 'bereit'; b.className = 'badge' + (z.auf_sendung ? ' onair' : '')
+  const w = z.daten && z.daten.wert
+  document.getElementById('wert').textContent = w != null ? w.toFixed(1) + '%' : 'kein Wert'
+  const m = z.meta || {}
+  document.getElementById('quelle').textContent = (NAMEN[m.modus] || m.modus || '') + (m.institut ? ' · ' + m.institut : '') + (m.hochrechnung_nr ? ' Nr. ' + m.hochrechnung_nr : '')
+  document.getElementById('diff').textContent = m.vorwahl != null ? 'Vorwahl ' + m.vorwahl.toFixed(1) + '%' : ''
+  document.getElementById('meldung').textContent = z.renderer_verbunden ? (z.meldung || '') : 'Videowand-Renderer nicht verbunden'
+}
+async function befehl (c) {
+  try {
+    const r = await fetch(API + c, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    const d = await r.json()
+    if (!r.ok) document.getElementById('meldung').textContent = d.title || d.fehler || ('Fehler ' + r.status); else zeigen(d)
+  } catch (e) { document.getElementById('meldung').textContent = 'Grafik-Server nicht erreichbar' }
+}
+async function laden () { try { zeigen(await (await fetch(API + 'zustand')).json()) } catch (e) {} }
+laden(); setInterval(laden, 2000)
+</script>
+</body>
+</html>

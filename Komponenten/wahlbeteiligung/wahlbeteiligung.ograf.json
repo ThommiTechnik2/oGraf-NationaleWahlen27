@@ -1,0 +1,93 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "wahlen2027-wahlbeteiligung",
+  "version": "1.0.0",
+  "name": "Wahlen 2027 – Wahlbeteiligung (Videowand)",
+  "description": "Vollbild-Grafik für die Studio-Videowand: Wahlbeteiligung als Ring. Der rote Teil läuft ab 12 Uhr im Uhrzeigersinn, der Rest wird grau ergänzt. playAction blendet ein (Ring läuft), zweiter playAction oder stopAction blendet aus. updateAction lässt den Ring auf einen neuen Wert laufen.",
+  "author": {
+    "name": "Wahlen 2027"
+  },
+  "main": "graphic.mjs",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": 1,
+  "thumbnails": [
+    {
+      "file": "thumbnails/1920x1080.png",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1700
+    },
+    {
+      "type": "stopAction",
+      "duration": 250
+    },
+    {
+      "type": "updateAction",
+      "duration": 400
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "titel": {
+        "type": "string",
+        "label": "Titel",
+        "gddType": "single-line",
+        "order": 1,
+        "default": "Wahlbeteiligung"
+      },
+      "flagge": {
+        "type": "boolean",
+        "label": "Schweizer Kreuz hinter dem Titel",
+        "order": 2,
+        "default": true
+      },
+      "wert": {
+        "type": "number",
+        "label": "Wahlbeteiligung (%)",
+        "minimum": 0,
+        "maximum": 100,
+        "order": 3
+      },
+      "nachkommastellen": {
+        "type": "integer",
+        "label": "Nachkommastellen",
+        "minimum": 0,
+        "maximum": 1,
+        "order": 4,
+        "default": 1
+      },
+      "untertitel": {
+        "type": "string",
+        "label": "Zusatztext (z. B. Vorwahl)",
+        "gddType": "multi-line",
+        "order": 5,
+        "default": ""
+      }
+    }
+  }
+}

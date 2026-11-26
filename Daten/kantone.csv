@@ -1,0 +1,27 @@
+kuerzel,name,nr_sitze,sr_sitze
+AG,Aargau,16,2
+AR,Appenzell Ausserrhoden,1,1
+AI,Appenzell Innerrhoden,1,1
+BL,Basel-Landschaft,7,1
+BS,Basel-Stadt,4,1
+BE,Bern,24,2
+FR,Freiburg,7,2
+GE,Genf,12,2
+GL,Glarus,1,2
+GR,Graubünden,5,2
+JU,Jura,2,2
+LU,Luzern,9,2
+NE,Neuenburg,4,2
+NW,Nidwalden,1,1
+OW,Obwalden,1,1
+SH,Schaffhausen,2,2
+SZ,Schwyz,4,2
+SO,Solothurn,6,2
+SG,St. Gallen,12,2
+TI,Tessin,8,2
+TG,Thurgau,6,2
+UR,Uri,1,2
+VD,Waadt,19,2
+VS,Wallis,8,2
+ZG,Zug,3,2
+ZH,Zürich,36,2
