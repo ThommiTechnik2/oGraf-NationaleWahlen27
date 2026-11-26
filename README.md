@@ -310,7 +310,7 @@ starten und statt `127.0.0.1` die IP dieses Macs verwenden.
 
 ---
 
-## H. Betrieb auf Linux Mint
+## H. Betrieb auf Linux cachyOS
 
 Die ganze Anlage läuft auch unter Linux Mint (getestet mit dem Startskript unter Linux, Python 3.10 oder neuer).
 Für Linux gibt es `Wahlen 2027 starten.sh` und `Wahlen 2027 stoppen.sh`; sie tun dasselbe wie die Mac-Skripte.
