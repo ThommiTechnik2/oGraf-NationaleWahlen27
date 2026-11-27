@@ -29,6 +29,8 @@
   .lampe { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; flex: none; background: #555; }
   .lampe.ok { background: var(--ok); box-shadow: 0 0 8px rgba(58,157,93,.7); }
   .lampe.warn { background: var(--warn); } .lampe.fehler { background: var(--onair); }
+  #caspar-neu { margin-top: 6px; font: inherit; font-size: 12px; padding: 3px 9px; border-radius: 5px; border: 1px solid #555;
+                background: transparent; color: inherit; cursor: pointer; display: block; }
   .punkt b { display: block; } .punkt span { color: var(--leise); font-size: 13px; }
   .hilfe { color: var(--leise); font-size: 13px; margin-top: 24px; }
   code { font: 12px ui-monospace, Menlo, monospace; background: var(--taste); padding: 1px 5px; border-radius: 3px; }
@@ -44,8 +46,10 @@
 <main>
   <h2>Zustand</h2>
   <div class="zustand">
-    <div class="punkt"><div class="lampe" id="l-renderer"></div><div><b>Renderer (OBS)</b><span id="t-renderer">…</span></div></div>
+    <div class="punkt"><div class="lampe" id="l-renderer"></div><div><b>Renderer Hauptausgang</b><span id="t-renderer">…</span></div></div>
     <div class="punkt"><div class="lampe" id="l-wand"></div><div><b>Renderer Videowand</b><span id="t-wand">…</span></div></div>
+    <div class="punkt" id="p-caspar"><div class="lampe" id="l-caspar"></div><div><b>CasparCG (SDI)</b><span id="t-caspar">…</span>
+      <button id="caspar-neu" type="button" title="Renderer-Seiten in CasparCG neu laden (Stand wird wiederhergestellt)">neu laden</button></div></div>
     <div class="punkt"><div class="lampe" id="l-api"></div><div><b>Daten-API</b><span id="t-api">…</span></div></div>
     <div class="punkt"><div class="lampe" id="l-grist"></div><div><b>Grist-Abgleich</b><span id="t-grist">…</span></div></div>
     <div class="punkt"><div class="lampe" id="l-grafiken"></div><div><b>Grafiken</b><span id="t-grafiken">…</span></div></div>
@@ -113,7 +117,7 @@ function alter (iso) {
 async function laden () {
   let z
   try { z = await (await fetch('/controller/api/system')).json() } catch (e) {
-    ['renderer', 'wand', 'api', 'grist', 'grafiken'].forEach(i => lampe(i, 'fehler', 'Grafik-Server nicht erreichbar'))
+    ['renderer', 'wand', 'caspar', 'api', 'grist', 'grafiken'].forEach(i => lampe(i, 'fehler', 'Grafik-Server nicht erreichbar'))
     return
   }
   document.getElementById('b-jahr').textContent = `Wahljahr ${z.jahr} · ${z.sprache.toUpperCase()}`
@@ -122,6 +126,16 @@ async function laden () {
     z.renderer_wand.verbunden ? `${z.renderer_wand.anzahl} Seite(n) verbunden` : 'nicht verbunden – /renderer/wand öffnen')
   lampe('renderer', z.renderer.verbunden ? 'ok' : 'warn',
     z.renderer.verbunden ? `${z.renderer.anzahl} Seite(n) verbunden` : 'kein Renderer – OBS-Browserquelle aktualisieren')
+  const cg = z.casparcg || {}
+  document.getElementById('p-caspar').style.display = cg.aktiv ? '' : 'none'
+  if (cg.aktiv) {
+    const seiten = Object.entries(cg.kanaele || {})
+    const alleDa = seiten.every(([, k]) => k.seite_verbunden)
+    lampe('caspar', !cg.verbunden ? 'fehler' : alleDa ? 'ok' : 'warn', !cg.verbunden
+      ? (cg.meldung || 'nicht erreichbar') + ' – läuft CasparCG?'
+      : seiten.map(([rid, k]) => `Kanal ${k.kanal} ${rid === 'haupt' ? 'Haupt' : 'Wand'}: ${k.seite_verbunden ? 'ok' : 'lädt …'}`).join(' · ')
+        + (cg.version ? ` · v${cg.version}` : ''))
+  }
   const a = z.wahlen_api
   lampe('api', a.erreichbar ? 'ok' : 'fehler', a.erreichbar
     ? (a.stand && a.stand.vorhanden ? `Daten ${z.jahr}: ${a.stand.kantone_abgeschlossen}/${a.stand.kantone_total} Kantone abgeschlossen` : `läuft, noch keine Resultate ${z.jahr}`)
@@ -136,6 +150,10 @@ async function laden () {
     el.querySelector('.status').textContent = v.an ? `ON AIR${v.text ? ' · ' + v.text : ''}` : 'aus'
   }
 }
+document.getElementById('caspar-neu').addEventListener('click', async () => {
+  try { await fetch('/controller/api/caspar/neu', { method: 'POST' }) } catch (e) {}
+  laden()
+})
 laden()
 setInterval(laden, 2000)
 </script>

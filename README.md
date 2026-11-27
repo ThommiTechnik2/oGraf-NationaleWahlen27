@@ -301,7 +301,7 @@ starten und statt `127.0.0.1` die IP dieses Macs verwenden.
 | Ordner | Inhalt |
 |---|---|
 | `Wahlen 2027 starten.command`, `Wahlen 2027 stoppen.command` | Startskript und Notaus |
-| `Wahlen 2027 starten.sh`, `Wahlen 2027 stoppen.sh` | dasselbe für Linux Mint (siehe Abschnitt H) |
+| `Wahlen 2027 starten.sh`, `Wahlen 2027 stoppen.sh` | dasselbe für Linux Mint, inkl. CasparCG/SDI (siehe Abschnitt H) |
 | `Komponenten/` | oGraf-Grafiken und Grafik-Server – Details und Stream-Deck-Belegung in `Komponenten/README.md` |
 | `Komponenten/_gemeinsam/` | **Schriften und Wappen – nur hier pflegen.** Werden beim Start in alle Grafiken kopiert (`verteilen.py`, siehe `LIESMICH.md` dort) |
 | `Daten/Datenbank/` | Datenbank, Daten-API, Grist-Abgleich – Details in `README.md`, `API.md`, `GRIST_SYNC.md` |
@@ -340,7 +340,30 @@ Für Linux gibt es `Wahlen 2027 starten.sh` und `Wahlen 2027 stoppen.sh`; sie tu
 5. **Historie für die Recherche** wie in A9 (`python3 historie_laden.py`). Unter Linux kommt der
    Zertifikatsfehler normalerweise nicht vor.
 
+### SDI-Ausgabe über CasparCG (Key/Fill an den Kayenne, Videowand)
+
+Auf dem oGraf-Rechner kann CasparCG die Ausgabe übernehmen: Kanal 1 gibt Key + Fill an den Kayenne,
+Kanal 2 den Fill an die Videowand, beides über die **DeckLink Duo 2** in **1080i50**. CasparCG spielt nur die
+Renderer-Seiten ab; gesteuert wird alles wie bisher über Stream Deck und Controller.
+
+1. Blackmagic **Desktop Video** (Treiber) und **CasparCG Server** installieren, Duo 2 im *Desktop Video Setup*
+   auf das Profil mit Anschlusspaaren stellen, Studio-Referenz an REF.
+2. Mehr ist nicht nötig: Das Startskript findet CasparCG, startet es mit
+   `Komponenten/_server/casparcg/casparcg.config` und hält es am Laufen. Der Grafik-Server lädt die Seiten
+   selbst und nach jedem CasparCG-Neustart wieder. Im Menü zeigt die Lampe **CasparCG (SDI)** den Zustand.
+3. Belegung der Anschlüsse, Einstellungen am Kayenne (Key **Shaped**, 1080i50, Referenz) und Fehlersuche:
+   `Komponenten/_server/casparcg/LIESMICH.md`.
+
+Abschalten (z. B. Rechner ohne DeckLink): im Startskript oben `CASPARCG="aus"`.
+
+### Bedienung vom Laptop aus
+Das Linux-Startskript macht den Grafik-Server im Netz erreichbar (`GRAFIK_HOST="0.0.0.0"` oben im Skript).
+Nach dem Start zeigt es die Adresse, z. B. `http://10.1.2.3:8795/` – die im Browser des Laptops öffnen.
+Für Companion auf dem Laptop zeigen alle Tasten auf diese Adresse statt auf `127.0.0.1`.
+Nur Port 8795 muss erreichbar sein; Daten-API (8790) und CasparCG (5250) bleiben auf dem Rechner.
+Der Grafik-Server hat keine Anmeldung: nur im internen Produktionsnetz betreiben.
+
 **Starten:** im Dateimanager auf `Wahlen 2027 starten.sh` doppelklicken → «Ausführen» (das Skript öffnet sich
 selbst in einem Terminalfenster) oder im Terminal `./"Wahlen 2027 starten.sh"`. Die Abfrage des Wahljahrs
 kommt als Fenster; mit `./"Wahlen 2027 starten.sh" 2027` entfällt sie. Beenden mit Ctrl+C oder Fenster
-schliessen, Notaus mit `Wahlen 2027 stoppen.sh`. Protokolle: `~/.local/state/Wahlen2027/`.
+schliessen (beendet auch CasparCG), Notaus mit `Wahlen 2027 stoppen.sh`. Protokolle: `~/.local/state/Wahlen2027/`.

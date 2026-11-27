@@ -32,6 +32,7 @@ import json
 import os
 import queue
 import re
+import socket
 import sys
 import threading
 import time
@@ -59,6 +60,7 @@ class Renderer:
 
     def __init__(self):
         self.verbindungen = {}         # verbindung_id -> queue.Queue
+        self.quellen = {}              # verbindung_id -> «casparcg», «obs», «vorschau» … (aus ?quelle= der Seite)
         self.antworten = {}            # befehl_id -> (Event, [Antwort], [Anzahl «unbekannt»], Anzahl Empfänger)
         self.instanzen = {}            # instance_id -> {"graphicId", "layer"}
         # Was gerade pro Layer geladen/sichtbar ist. Damit bekommt eine Renderer-Seite, die später
@@ -74,6 +76,10 @@ class Renderer:
 
     def verbunden(self):
         return bool(self.verbindungen)
+
+    def verbunden_mit(self, quelle):
+        with self.lock:
+            return any(q == quelle for q in self.quellen.values())
 
     def senden(self, befehl):
         if not self.verbindungen:
@@ -1199,6 +1205,132 @@ def stream_deck_wert(name):
     raise ServerFehler(404, f"Unbekannter Wert: {name}")
 
 
+# =============================================================================
+# CasparCG-Wächter: CasparCG spielt die Renderer-Seiten im HTML-Producer und gibt sie per DeckLink aus
+# (Key/Fill an den Mischer, Fill an die Videowand). Gesteuert wird weiterhin alles über diesen Server –
+# an CasparCG geht nur «PLAY <Kanal-Layer> [HTML] <Renderer-Adresse>»: beim Start, nach einem Neustart
+# von CasparCG und wenn die CasparCG-Seite nicht (mehr) verbunden ist.
+# =============================================================================
+class CasparWaechter:
+    PRUEF_INTERVALL = 5        # s zwischen Lebenszeichen an CasparCG
+    WARTEN_AUF_SEITE = 15      # s nach PLAY, bis die Seite verbunden sein muss
+    MIN_ABSTAND_NEU = 30       # s zwischen zwei automatischen Neuladungen derselben Seite
+
+    def __init__(self, adresse, ziele, url_basis):
+        host, _, port = adresse.partition(":")
+        self.host, self.port = host or "127.0.0.1", int(port or 5250)
+        self.ziele = {rid: kl for rid, kl in ziele.items() if kl}    # renderer-id -> «1-10»
+        self.url_basis = url_basis.rstrip("/")
+        self.sock, self.puffer = None, b""
+        self.lock = threading.Lock()
+        self.verbunden, self.version, self.meldung = False, None, "startet …"
+        self.letztes_play = {}     # renderer-id -> Zeitpunkt
+        self.protokoll = []        # letzte Ereignisse für die Menü-Seite
+
+    def _log(self, text):
+        print(f"CasparCG: {text}")
+        self.protokoll = (self.protokoll + [f"{time.strftime('%H:%M:%S')} {text}"])[-8:]
+
+    # ---- AMCP (Zeilenprotokoll über TCP) ----
+    def _zeile(self):
+        while b"\r\n" not in self.puffer:
+            teil = self.sock.recv(4096)
+            if not teil:
+                raise ConnectionError("Verbindung von CasparCG geschlossen")
+            self.puffer += teil
+        zeile, self.puffer = self.puffer.split(b"\r\n", 1)
+        return zeile.decode("utf-8", "replace")
+
+    def befehl(self, text):
+        """Schickt einen AMCP-Befehl, gibt (Code, Zeilen) zurück. 201 = eine Datenzeile, 200 = bis Leerzeile."""
+        with self.lock:
+            if not self.sock:
+                raise ConnectionError("nicht verbunden")
+            self.sock.sendall((text + "\r\n").encode("utf-8"))
+            erste = self._zeile()
+            code = int(erste[:3]) if erste[:3].isdigit() else 0
+            daten = []
+            if code == 201:
+                daten.append(self._zeile())
+            elif code == 200:
+                while True:
+                    z = self._zeile()
+                    if z == "":
+                        break
+                    daten.append(z)
+            return code, [erste] + daten
+
+    def _verbinden(self):
+        s = socket.create_connection((self.host, self.port), timeout=5)
+        s.settimeout(10)
+        self.sock, self.puffer = s, b""
+        code, z = self.befehl("VERSION")
+        self.version = z[1] if code == 201 and len(z) > 1 else None
+        self.verbunden = True
+        self._log(f"verbunden mit {self.host}:{self.port}" + (f" (Version {self.version})" if self.version else ""))
+
+    def _trennen(self, grund):
+        if self.verbunden:
+            self._log(f"Verbindung weg: {grund}")
+        self.verbunden = False
+        try:
+            if self.sock:
+                self.sock.close()
+        except OSError:
+            pass
+        self.sock = None
+
+    def url(self, rid):
+        pfad = "/renderer" if rid == "haupt" else f"/renderer/{rid}"
+        return f"{self.url_basis}{pfad}?quelle=casparcg"
+
+    def seite_laden(self, rid, grund):
+        kl = self.ziele[rid]
+        code, z = self.befehl(f'PLAY {kl} [HTML] "{self.url(rid)}"')
+        self.letztes_play[rid] = time.time()
+        if code in (200, 201, 202):
+            self._log(f"Kanal {kl}: Renderer «{rid}» geladen ({grund})")
+        else:
+            self._log(f"Kanal {kl}: PLAY abgelehnt – {z[0]}")
+            self.meldung = f"PLAY auf {kl} abgelehnt: {z[0]}"
+
+    def alle_neu_laden(self, grund="von Hand"):
+        for rid in self.ziele:
+            self.seite_laden(rid, grund)
+
+    def schleife(self):
+        while True:
+            try:
+                if not self.verbunden:
+                    self._verbinden()
+                    self.alle_neu_laden("Start bzw. CasparCG neu gestartet")
+                    self.meldung = ""
+                else:
+                    self.befehl("VERSION")      # Lebenszeichen; bricht ab, wenn CasparCG weg ist
+                jetzt = time.time()
+                for rid in self.ziele:
+                    if RENDERERS[rid].verbunden_mit("casparcg"):
+                        continue
+                    seit = jetzt - self.letztes_play.get(rid, 0)
+                    if seit > max(self.WARTEN_AUF_SEITE, self.MIN_ABSTAND_NEU):
+                        self.seite_laden(rid, "Seite war nicht verbunden")
+                self.meldung = "" if all(RENDERERS[r].verbunden_mit("casparcg") for r in self.ziele) \
+                    else "warte auf Renderer-Seite in CasparCG …"
+            except (OSError, ConnectionError, ValueError) as e:
+                self._trennen(e)
+                self.meldung = f"CasparCG nicht erreichbar ({self.host}:{self.port})"
+            time.sleep(self.PRUEF_INTERVALL)
+
+    def zustand(self):
+        return {"aktiv": True, "verbunden": self.verbunden, "version": self.version, "meldung": self.meldung,
+                "adresse": f"{self.host}:{self.port}", "protokoll": self.protokoll,
+                "kanaele": {rid: {"kanal": kl, "seite_verbunden": RENDERERS[rid].verbunden_mit("casparcg")}
+                            for rid, kl in self.ziele.items()}}
+
+
+CASPAR = None
+
+
 def system_zustand():
     """Überblick für die Menü-Seite: Renderer, Daten-API, Grist-Abgleich, was auf Sendung ist."""
     api = {"erreichbar": False}
@@ -1213,6 +1345,7 @@ def system_zustand():
         "renderer": {"verbunden": RENDERER.verbunden(), "anzahl": len(RENDERER.verbindungen)},
         "renderer_wand": {"verbunden": RENDERERS["wand"].verbunden(), "anzahl": len(RENDERERS["wand"].verbindungen)},
         "wahlen_api": api,
+        "casparcg": CASPAR.zustand() if CASPAR else {"aktiv": False},
         "grafiken": sorted(grafiken()),
         "auf_sendung": {
             "kanton": {"an": k.auf_sendung, "text": k.kanton if k.auf_sendung else None, "layer": k.layer},
@@ -1319,7 +1452,7 @@ class Handler(BaseHTTPRequestHandler):
                 rid = query.get("renderer", "haupt")
                 if rid not in RENDERERS:
                     return self._fehler(404, f"Renderer {rid} unbekannt")
-                return self._sse(rid)
+                return self._sse(rid, (query.get("quelle") or "")[:30])
             if pfad.startswith("/renderer/antwort/") and methode == "POST":
                 daten = self._body()
                 for R in RENDERERS.values():
@@ -1352,6 +1485,13 @@ class Handler(BaseHTTPRequestHandler):
                 return self._datei(os.path.join(HIER, "controller_beteiligung.html"))
             if pfad == "/controller/national" and methode == "GET":
                 return self._datei(os.path.join(HIER, "controller_national.html"))
+            if pfad in ("/sd/caspar/neu", "/controller/api/caspar/neu"):
+                if not CASPAR:
+                    raise ServerFehler(409, "CasparCG ist nicht eingerichtet (--casparcg)")
+                CASPAR.alle_neu_laden("von Hand")
+                return self._json(200, CASPAR.zustand())
+            if pfad in ("/sd/caspar/status", "/controller/api/caspar/status"):
+                return self._json(200, CASPAR.zustand() if CASPAR else {"aktiv": False})
             if pfad.startswith("/sd/az/") or pfad.startswith("/controller/api/az/"):
                 rest = pfad[len("/sd/az/"):] if pfad.startswith("/sd/az/") else pfad[len("/controller/api/az/"):]
                 return self._steuerung_wb(rest.strip("/"), AUSZAEHLUNG, "az")
@@ -1541,7 +1681,7 @@ class Handler(BaseHTTPRequestHandler):
             return self._text(f"{'ON AIR' if z['auf_sendung'] else 'bereit'}\n{(e or {}).get('zeile1', '-')}")
         return self._json(200, z)
 
-    def _sse(self, rid="haupt"):
+    def _sse(self, rid="haupt", quelle=""):
         R = RENDERERS[rid]
         self.send_response(200)
         self.send_header("Content-Type", "text/event-stream")
@@ -1552,7 +1692,8 @@ class Handler(BaseHTTPRequestHandler):
         vid, q = uuid.uuid4().hex, queue.Queue()
         with R.lock:
             R.verbindungen[vid] = q
-        print(f"Renderer {rid} verbunden ({len(R.verbindungen)})")
+            R.quellen[vid] = quelle
+        print(f"Renderer {rid} verbunden{' (' + quelle + ')' if quelle else ''} ({len(R.verbindungen)})")
         # Aktuellen Stand nur an diese neue Seite schicken (Antworten darauf werden ignoriert)
         for b in R.wiederherstellen_befehle():
             q.put(b)
@@ -1571,15 +1712,20 @@ class Handler(BaseHTTPRequestHandler):
         finally:
             with R.lock:
                 R.verbindungen.pop(vid, None)
+                R.quellen.pop(vid, None)
             # Instanzen und Stand bleiben: verbindet die Seite neu, wird der Stand wiederhergestellt
             print(f"Renderer {rid} getrennt ({len(R.verbindungen)})")
 
 
 def main():
-    global ARGS, CONTROLLER, BAUCHBINDEN, SCHWEIZ, NATIONAL, BETEILIGUNG, AUSZAEHLUNG
+    global ARGS, CONTROLLER, BAUCHBINDEN, SCHWEIZ, NATIONAL, BETEILIGUNG, AUSZAEHLUNG, CASPAR
     a = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     a.add_argument("--komponenten", default=os.path.dirname(HIER), help="Ordner mit den oGraf-Grafiken")
     a.add_argument("--host", default="127.0.0.1", help="0.0.0.0 = im Netz erreichbar (Stream Deck an anderem Rechner)")
+    a.add_argument("--casparcg", default="", help="CasparCG (AMCP) host:port, z. B. 127.0.0.1:5250 – leer = ohne CasparCG")
+    a.add_argument("--caspar-haupt", default="1-10", help="CasparCG Kanal-Layer für den Hauptausgang (Key/Fill), leer = nicht")
+    a.add_argument("--caspar-wand", default="2-10", help="CasparCG Kanal-Layer für die Videowand, leer = nicht")
+    a.add_argument("--caspar-url", default="", help="Adresse, unter der CasparCG diesen Server erreicht (Standard http://127.0.0.1:<port>)")
     a.add_argument("--port", type=int, default=8795)
     a.add_argument("--wahlen-api", default="http://127.0.0.1:8790/api")
     a.add_argument("--ograf-api", default=None, help="oGraf-Server-API für den Controller (Standard: dieser Server)")
@@ -1614,6 +1760,10 @@ def main():
     threading.Thread(target=BETEILIGUNG.auto_aktualisieren, daemon=True).start()
     AUSZAEHLUNG = AuszaehlungController()
     threading.Thread(target=AUSZAEHLUNG.auto_aktualisieren, daemon=True).start()
+    if ARGS.casparcg:
+        CASPAR = CasparWaechter(ARGS.casparcg, {"haupt": ARGS.caspar_haupt, "wand": ARGS.caspar_wand},
+                                ARGS.caspar_url or f"http://127.0.0.1:{ARGS.port}")
+        threading.Thread(target=CASPAR.schleife, daemon=True).start()
     for ctl in (SCHWEIZ, NATIONAL, BETEILIGUNG, AUSZAEHLUNG):   # Daten gleich holen, damit Stream-Deck-Beschriftungen sofort stehen
         try:
             ctl.aktualisieren()

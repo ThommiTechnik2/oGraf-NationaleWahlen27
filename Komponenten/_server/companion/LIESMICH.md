@@ -46,3 +46,10 @@ vollständige Import ersetzt den alten Stand.
 
 Grafik-Server läuft → nach etwa einer Sekunde stehen auf der Bauchbinden-Seite die Namen, auf der
 Schweiz-Seite die Parteien je Seite. Kanton antippen → Taste wird blau, EIN → rot.
+
+## Anderer Rechner (z. B. oGraf-Rechner, Bedienung vom Laptop)
+Alle Tasten enthalten nur den Pfad (z. B. `/sd/kanton/ZH`). Die Adresse des Grafik-Servers steht an **einer**
+Stelle: Companion → *Connections* → Verbindung «generic-http» → **Base URL**.
+- Grafik-Server auf demselben Rechner: `http://127.0.0.1:8795` (so ausgeliefert)
+- Grafik-Server auf dem oGraf-Rechner: `http://<IP des oGraf-Rechners>:8795` – das Startskript zeigt die Adresse an.
+Die Base URL immer mit `http://` und Port, ohne Schrägstrich am Ende.

@@ -16,6 +16,11 @@ SEITEN_SCHWEIZ="3,3,2,3"     # Parteien je Seite Hochrechnung Schweiz (leer = je
 GRIST_INTERVALL=10           # Sekunden zwischen Grist-Abgleichen
 PORT_API=8790
 PORT_GRAFIK=8795
+# Bedienung vom Laptop aus (Browser, Stream Deck): 0.0.0.0 = im Netz erreichbar, 127.0.0.1 = nur dieser Rechner
+GRAFIK_HOST="0.0.0.0"
+# CasparCG (SDI-Ausgabe über DeckLink): auto = starten, wenn installiert · aus = nie
+CASPARCG="auto"
+CASPAR_PORT=5250
 # -----------------------------------------------------------------------------
 
 # Per Doppelklick gestartet (kein Terminal)? Dann in einem Terminalfenster neu öffnen.
@@ -105,12 +110,29 @@ if python3 "$PROJEKT/Komponenten/_gemeinsam/verteilen.py" --still; then ok "Schr
 else warn "Schriften/Wappen konnten nicht verteilt werden (Komponenten/_gemeinsam)"; fi
 
 # Laufen schon Teile (z. B. von einem früheren Start)?
-MUSTER="wahlen_api.py|grist_sync.py loop|grafik_server.py"
+MUSTER="wahlen_api.py|grist_sync.py loop|grafik_server.py|casparcg-server"
 if pgrep -f "$MUSTER" >/dev/null; then
   warn "Es laufen noch Teile eines früheren Starts – werden beendet."
   pkill -f "$MUSTER"; sleep 1
 fi
-for p in $PORT_API $PORT_GRAFIK; do
+# ---- CasparCG ---------------------------------------------------------------
+CASPAR_BIN=""
+if [ "$CASPARCG" != "aus" ]; then
+  for b in casparcg-server-2.6 casparcg-server-2.5 casparcg-server-2.4 casparcg-server casparcg; do
+    command -v "$b" >/dev/null 2>&1 && { CASPAR_BIN=$(command -v "$b"); break; }
+  done
+  if [ -n "$CASPAR_BIN" ]; then
+    CASPAR_ORDNER="$LOGS/casparcg"
+    mkdir -p "$CASPAR_ORDNER"/{media,log,data,template}
+    cp "$SERVER_ORDNER/casparcg/casparcg.config" "$CASPAR_ORDNER/casparcg.config" \
+      || abbruch "casparcg.config fehlt in Komponenten/_server/casparcg"
+    ok "CasparCG gefunden ($CASPAR_BIN)"
+  else
+    warn "CasparCG nicht installiert – keine SDI-Ausgabe (Grafiken laufen trotzdem, z. B. in OBS)."
+  fi
+fi
+
+for p in $PORT_API $PORT_GRAFIK $([ -n "$CASPAR_BIN" ] && echo $CASPAR_PORT); do
   port_belegt $p && abbruch "Port $p ist von einem anderen Programm belegt (anzeigen mit: ss -ltnp | grep $p)"
 done
 
@@ -157,7 +179,9 @@ dienst() {   # dienst <Name> <Ordner> <Befehl …>
   (
     trap 'kill $KIND 2>/dev/null; exit 0' TERM INT HUP
     while true; do
-      ( cd "$ordner" && exec python3 -u "$@" ) >> "$log" 2>&1 &
+      if [ "$1" = "--programm" ]; then shift_prog=("${@:2}"); ( cd "$ordner" && exec "${shift_prog[@]}" ) >> "$log" 2>&1 &
+      else ( cd "$ordner" && exec python3 -u "$@" ) >> "$log" 2>&1 &
+      fi
       KIND=$!
       wait $KIND
       CODE=$?
@@ -185,8 +209,13 @@ echo "${FETT}Starte …${NORMAL}"
 dienst daten-api    "$DB_ORDNER"     wahlen_api.py --jahr "$JAHR" --port $PORT_API
 [ "$MIT_GRIST" = 1 ] && \
 dienst grist-sync   "$DB_ORDNER"     grist_sync.py loop --intervall $GRIST_INTERVALL --jahr "$JAHR"
-dienst grafik       "$SERVER_ORDNER" grafik_server.py --jahr "$JAHR" --port $PORT_GRAFIK \
-                                     --wahlen-api "http://127.0.0.1:$PORT_API/api" --seiten-schweiz "$SEITEN_SCHWEIZ"
+[ -n "$CASPAR_BIN" ] && \
+dienst casparcg     "$CASPAR_ORDNER" --programm "$CASPAR_BIN" casparcg.config
+CASPAR_ARG=()
+[ -n "$CASPAR_BIN" ] && CASPAR_ARG=(--casparcg "127.0.0.1:$CASPAR_PORT")
+dienst grafik       "$SERVER_ORDNER" grafik_server.py --jahr "$JAHR" --port $PORT_GRAFIK --host "$GRAFIK_HOST" \
+                                     --wahlen-api "http://127.0.0.1:$PORT_API/api" --seiten-schweiz "$SEITEN_SCHWEIZ" \
+                                     "${CASPAR_ARG[@]}"
 
 warte_auf() {   # warte_auf <URL> <Name>
   for _ in $(seq 1 40); do erreichbar "$1" && { ok "$2"; return 0; }; sleep 0.25; done
@@ -195,6 +224,8 @@ warte_auf() {   # warte_auf <URL> <Name>
 warte_auf "http://127.0.0.1:$PORT_API/api" "Daten-API    http://127.0.0.1:$PORT_API/api"
 warte_auf "http://127.0.0.1:$PORT_GRAFIK/" "Grafik-Server http://127.0.0.1:$PORT_GRAFIK/"
 [ "$MIT_GRIST" = 1 ] && ok "Grist-Abgleich alle $GRIST_INTERVALL s"
+[ -n "$CASPAR_BIN" ] && ok "CasparCG läuft – Grafik-Server lädt die Renderer-Seiten selbst (Menü: Lampe «CasparCG (SDI)»)"
+IP=$(hostname -I 2>/dev/null | awk '{print $1}')
 
 if [ -n "$DISPLAY$WAYLAND_DISPLAY" ] && command -v xdg-open >/dev/null 2>&1; then
   xdg-open "http://127.0.0.1:$PORT_GRAFIK/" >/dev/null 2>&1 &
@@ -204,11 +235,15 @@ echo
 echo "${FETT}Bereit.${NORMAL}  Menü: ${FETT}http://127.0.0.1:$PORT_GRAFIK/${NORMAL}"
 echo "  OBS-Browserquelle: http://127.0.0.1:$PORT_GRAFIK/renderer  (1920×1080) – in OBS einmal «Aktualisieren»"
 echo "  Videowand:         http://127.0.0.1:$PORT_GRAFIK/renderer/wand  (Vollbild, eigener Ausgang)"
+[ "$GRAFIK_HOST" = "0.0.0.0" ] && [ -n "$IP" ] && \
+echo "  Vom Laptop aus:    http://$IP:$PORT_GRAFIK/   (Companion: Base URL http://$IP:$PORT_GRAFIK)"
 echo "  Protokolle:        $LOGS"
 echo
 echo "${GELB}Dieses Fenster offen lassen. Beenden mit Ctrl+C (oder Fenster schliessen).${NORMAL}"
 echo "-------------------------------------------------------------------------------"
 touch "$LOGS/daten-api.log" "$LOGS/grist-sync.log" "$LOGS/grafik.log"
-tail -n 0 -F "$LOGS/daten-api.log" "$LOGS/grist-sync.log" "$LOGS/grafik.log" &
+LOGLISTE=("$LOGS/daten-api.log" "$LOGS/grist-sync.log" "$LOGS/grafik.log")
+[ -n "$CASPAR_BIN" ] && { touch "$LOGS/casparcg.log"; LOGLISTE+=("$LOGS/casparcg.log"); }
+tail -n 0 -F "${LOGLISTE[@]}" &
 TAIL_PID=$!
 wait $TAIL_PID

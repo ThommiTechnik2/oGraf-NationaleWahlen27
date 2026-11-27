@@ -104,7 +104,8 @@ let kette = Promise.resolve()
 function verbinden () {
   // Renderer-Id: /renderer → «haupt», /renderer/wand → «wand» (oder ?renderer=…)
   const rid = params.get('renderer') || (location.pathname.replace(/\/+$/, '').split('/')[2] || 'haupt')
-  const es = new EventSource(`/renderer/ereignisse?renderer=${encodeURIComponent(rid)}`)
+  const quelle = params.get('quelle') || ''   // z. B. «casparcg»: so erkennt der Grafik-Server, wer verbunden ist
+  const es = new EventSource(`/renderer/ereignisse?renderer=${encodeURIComponent(rid)}&quelle=${encodeURIComponent(quelle)}`)
   es.onopen = () => zeige('Renderer verbunden')
   es.onerror = () => zeige('Renderer: Verbindung unterbrochen, verbinde neu …')
   es.onmessage = ev => {
