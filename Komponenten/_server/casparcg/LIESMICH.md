@@ -32,9 +32,6 @@ nachsehen – Key = weisse Fläche auf Schwarz, Fill = die farbige Grafik.
    (zwei Geräte mit je zwei Anschlüssen). Danach den Rechner neu starten.
 3. Bei beiden Geräten als Ausgang 1080i50 einstellen und den Referenzeingang aktivieren.
 
-**Variante B** (falls die Paare nicht wie erwartet arbeiten): Profil mit vier Einzelgeräten, in
-`casparcg.config` die mit «Variante B» bezeichneten Blöcke verwenden und die A-Blöcke auskommentieren.
-Dann: SDI 1 Fill, SDI 2 Key, SDI 3 Videowand, SDI 4 frei.
 
 ## Einstellungen am Kayenne
 
